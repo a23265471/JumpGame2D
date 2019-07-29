@@ -18,6 +18,7 @@ public class SpriteController : MonoBehaviour
 
     private void Awake()
     {
+
         Init();
 
     }
@@ -42,6 +43,7 @@ public class SpriteController : MonoBehaviour
         {
             throw new System.Exception("沒有圖形元件");
         }
+        Debug.Log("fff");
 
     }
 

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B3CA9BF1-EE34-2560-49FF-618F03883830}</ProjectGuid>
+    <ProjectGuid>{73AF281D-E9A2-F292-A5E7-6DE802B95882}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -71,24 +71,23 @@
     <Compile Include="Assets\02-Script\02-Controller\SpriteController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\StageDataController.cs" />
     <Compile Include="Assets\02-Script\GameManager.cs" />
-    <Compile Include="Assets\02-Script\StageManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AssetBundleBrowser.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -292,19 +291,19 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -99,6 +99,7 @@ public class ObstacleController : MonoBehaviour
 
     private GameManager gameManager;
 
+
     private void Awake()
     {
         Init();
@@ -197,7 +198,14 @@ public class ObstacleController : MonoBehaviour
 
         currentObstacleParent = null;
         nextObstacleParent = null;
-        currentObstacle = new GameObject[3];
+       // currentObstacle = new GameObject[3];
+
+        for (int i = 0; i < currentObstacle.Length; i++)
+        {
+            currentObstacle[i] = null;
+            nextObstacle[i]=null;
+        }
+
         nextObstacle = new GameObject[3];
     }
 
@@ -340,7 +348,7 @@ public class ObstacleController : MonoBehaviour
 
     public GameObject CreateOneObstacle(int size, int sectorAmount, float minSpeed, float maxSpeed)
     {
-        GameObject ObstacleParent = GetObject(ObstaclePrefab[3].ID);
+       GameObject ObstacleParent = GetObject(ObstaclePrefab[3].ID);
 
         int[] rotationAngle;
         rotationAngle = new int[] { 0, 90, 180, 270 };

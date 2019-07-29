@@ -9,7 +9,6 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public static PlayerBehaviour Instance;
     private PlayerJsonData playerData;
-   // public Vector3 PlayerStartPosition;
 
 
     #region Component
@@ -21,13 +20,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Init();
 
-       // Debug.Log(playerData.MaxFallSpeed);
-    }
-
-    private void Start()
-    {
-        // StartCoroutine(PostJson());
-        
     }
 
     #region Init
@@ -101,7 +93,6 @@ public class PlayerBehaviour : MonoBehaviour
 
                 break;
             case "Scroll":
-                //   Debug.Log("f");
                 GameManager.Instance.NextObstacle();
                 
                 break;
@@ -125,7 +116,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (GameManager.Instance.CurrentGameState == GameManager.GameState.GameOver)
             {
-                Debug.Log("jjj");
                 break;
             }
             else

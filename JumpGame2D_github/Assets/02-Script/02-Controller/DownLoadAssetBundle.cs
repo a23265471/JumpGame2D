@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public enum AssetBundleState
@@ -35,10 +36,12 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
-        string path1 = "file:D:/MoonMoonGames/00-TestGame/2D/UnityAssetBundle/"+ assetBundleName + ".unityassetbundle"; //本地资源包路径
+        string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
         while (Caching.ready == false)yield return null;   //是否准备好
-        WWW www1 = WWW.LoadFromCacheOrDownload(@path1, 1);                                                            //从本地加载
+        WWW www1 = WWW.LoadFromCacheOrDownload(@path1, 1);                                                            
+        yield return www1;
         AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
+        Debug.Log("hhhh");
     }
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
