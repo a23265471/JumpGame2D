@@ -16,11 +16,11 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     private Dictionary<int, AssetBundle> AssetBundleDictionary;
 
-    public bool IsDownLoaded;
+  //  public bool IsDownLoaded;
 
-    WWW www1;
+    public WWW www1;
 
-    WaitUntil waitUntil;
+  //  WaitUntil waitUntil;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class DownLoadAssetBundle : MonoBehaviour
     {
         Instance = this;
         AssetBundleDictionary = new Dictionary<int, AssetBundle>();
-        waitUntil = new WaitUntil(()=>www1.isDone);
+   //     waitUntil = new WaitUntil(()=>www1.isDone);
        // LoadAssetBundle(AssetBundleState.Images, "loadstage");
         //LoadAssetBundle(AssetBundleState.Prefab, "prefab");
 
@@ -45,19 +45,20 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
-        IsDownLoaded = false;
+      //  IsDownLoaded = false;
         string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
         while (Caching.ready == false)yield return null;   //是否准备好
         www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
-        StartCoroutine(DownLoadProgress());
-        yield return www1;
+        //   StartCoroutine(DownLoadProgress());
         Debug.Log("AssetBundle start download");
+
+        yield return www1;
 
 
         AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
     }
 
-    IEnumerator DownLoadProgress()
+  /*  IEnumerator DownLoadProgress()
     {
       //  Debug.Log("DownLoad");
 
@@ -67,6 +68,7 @@ public class DownLoadAssetBundle : MonoBehaviour
 
 
     }
+    */
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {

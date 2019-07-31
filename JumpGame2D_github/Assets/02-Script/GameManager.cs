@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private int Level;
 
     WaitUntil waitUntilInputKey;
+    WaitUntil waitUntilLoaded;
     WaitForFixedUpdate WaitForFixedUpdate;
     Action doAfterInputKey;
     Action doAfterInputKeyNextPer;
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator DownloadAssetBundle()
     {
         yield return null;
-        InstallScene();
+        StartCoroutine(InstallImage());
        
     }
 
@@ -65,26 +66,30 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         WaitForFixedUpdate = new WaitForFixedUpdate();
-
+        waitUntilLoaded = new WaitUntil(() => DownLoadAssetBundle.Instance.www1.isDone);
     }
 
-    private void InstallScene()
+    IEnumerator InstallImage()
     {
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Images, "loadstage");
-        //Debug.Log("AssetBundle is DownLoaded");
 
-        StartCoroutine(InitScene());
-    }
-
-    IEnumerator InitScene()
-    {
-        yield return new WaitUntil(() => DownLoadAssetBundle.Instance.IsDownLoaded);
-    //    Debug.Log("AssetBundle is DownLoaded");
-
+        yield return waitUntilLoaded;
+        Debug.Log("AssetBundle is DownLoade Image");
+        DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Prefab, "prefab");
+        yield return waitUntilLoaded;
+        Debug.Log("AssetBundle is DownLoade prefab");
+        GetPrefab();
         InstantiateObject();
-        
+
     }
 
+    private void GetPrefab()
+    {
+        Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Player", typeof(GameObject));
+        Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "BackGround", typeof(GameObject));
+        //OptionCanvas = (Canvas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "UICanvas", typeof(Canvas));
+    }
+    
     public void InstantiateObject()
     {
         Instantiate(Player);

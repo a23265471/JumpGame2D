@@ -682,14 +682,12 @@ PrefabInstance:
         type: 3}
       propertyPath: OptionCanvas
       value: 
-      objectReference: {fileID: 5429356620166382831, guid: b7242892c5ff3dc428d2edd82f0f2bca,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8656632400706021153, guid: 3233bdfae2d92b74ba860f8824e39e65,
         type: 3}
       propertyPath: Background
       value: 
-      objectReference: {fileID: 1553273820436491170, guid: 11d8f96e4805ee643b8e7158664b2e28,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8656632400706021153, guid: 3233bdfae2d92b74ba860f8824e39e65,
         type: 3}
       propertyPath: m_Enabled
@@ -700,6 +698,11 @@ PrefabInstance:
       propertyPath: BackGroundCanvas
       value: 
       objectReference: {fileID: 2516844728001316794}
+    - target: {fileID: 8656632400706021153, guid: 3233bdfae2d92b74ba860f8824e39e65,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8656632400706021147, guid: 3233bdfae2d92b74ba860f8824e39e65,
         type: 3}
       propertyPath: ObstaclePrefab.Array.size
