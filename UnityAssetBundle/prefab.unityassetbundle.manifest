@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3286069056
+CRC: 718190762
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f7cb26b174acd3fd5afa0029f478e68a
+    Hash: 9f577b330812d155c3b52436f5f4d1db
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cffbd77a1c81380f5e842f90122ac0d4
+    Hash: 139afea63229dab389619c0ebef994ab
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,6 +36,10 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
+  Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
   Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 69fe5f943094fe640b3fb666beccea48, type: 3}
@@ -49,6 +53,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: a0bf9bd9ae1d7bc479d883ad8c0458db, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: b6145a1d02a6e5a49a124b57c3de8022, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d7bbaf8df0fda6349bd3f503462efe0d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8aa824de3680f944a9f55cc585efbebb, type: 3}
 - Class: 115
@@ -73,5 +79,6 @@ Assets:
 - Assets/03-Prefab/GameManager.prefab
 - Assets/03-Prefab/Obstacle_S.prefab
 - Assets/03-Prefab/Obstacle_M.prefab
+- Assets/03-Prefab/BackGround.prefab
 - Assets/03-Prefab/Parent.prefab
 Dependencies: []

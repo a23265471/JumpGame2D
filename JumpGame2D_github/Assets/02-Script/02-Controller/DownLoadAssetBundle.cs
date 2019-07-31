@@ -15,18 +15,27 @@ public class DownLoadAssetBundle : MonoBehaviour
     public static DownLoadAssetBundle Instance;
 
     private Dictionary<int, AssetBundle> AssetBundleDictionary;
-    
+
+    public bool IsDownLoaded;
+
+    WWW www1;
+
+    WaitUntil waitUntil;
+
     private void Awake()
     {
         Init();
+       // GameManager.Instance.Init();
     }
 
     public void Init()
     {
         Instance = this;
         AssetBundleDictionary = new Dictionary<int, AssetBundle>();
-        LoadAssetBundle(AssetBundleState.Images, "loadstage");
-        LoadAssetBundle(AssetBundleState.Prefab, "prefab");
+        waitUntil = new WaitUntil(()=>www1.isDone);
+       // LoadAssetBundle(AssetBundleState.Images, "loadstage");
+        //LoadAssetBundle(AssetBundleState.Prefab, "prefab");
+
     }
 
     public void LoadAssetBundle(AssetBundleState assetBundleState, string assetBundleName)
@@ -36,12 +45,27 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
-        string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+        IsDownLoaded = false;
+        string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
         while (Caching.ready == false)yield return null;   //是否准备好
-        WWW www1 = WWW.LoadFromCacheOrDownload(@path1, 1);                                                            
+        www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
+        StartCoroutine(DownLoadProgress());
         yield return www1;
+        Debug.Log("AssetBundle start download");
+
+
         AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
-        Debug.Log("hhhh");
+    }
+
+    IEnumerator DownLoadProgress()
+    {
+      //  Debug.Log("DownLoad");
+
+        yield return waitUntil;
+        IsDownLoaded = true;
+     //   Debug.Log(www1.progress);
+
+
     }
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)

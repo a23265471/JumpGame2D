@@ -16,12 +16,15 @@ public class PlayerBehaviour : MonoBehaviour
 
     #endregion
 
+    Vector3 currentPos;
+
     private void Awake()
     {
+     //   Debug.Log("1.load player script");
         Init();
 
     }
-
+   
     #region Init
     private void Init()
     {
@@ -111,7 +114,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     IEnumerator ScrollPosition(float dis,float ScrollPos,float speed)
     {
-        Vector3 currPos = transform.parent.gameObject.transform.position;
+        currentPos = transform.parent.gameObject.transform.position;
         while (dis < 1) 
         {
             if (GameManager.Instance.CurrentGameState == GameManager.GameState.GameOver)
@@ -120,7 +123,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else
             {
-                transform.parent.gameObject.transform.position = Vector3.Lerp(transform.parent.gameObject.transform.position, currPos + new Vector3(0, ScrollPos, 0), dis);
+                transform.parent.gameObject.transform.position = Vector3.Lerp(transform.parent.gameObject.transform.position, currentPos + new Vector3(0, ScrollPos, 0), dis);
                 dis += speed * Time.deltaTime;
                 yield return null;
             }

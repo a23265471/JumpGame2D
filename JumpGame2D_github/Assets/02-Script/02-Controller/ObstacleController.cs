@@ -99,6 +99,12 @@ public class ObstacleController : MonoBehaviour
 
     private GameManager gameManager;
 
+    GameObject obstacleAll;
+    GameObject currentCircle = null;
+    GameObject obstacleParent;
+    GameObject oneObstacle;
+
+    Vector3 currentObstaclePos;
 
     private void Awake()
     {
@@ -154,7 +160,6 @@ public class ObstacleController : MonoBehaviour
     {
         if (nextObstacleParent != null)
         {
-            Debug.Log(nextObstacleParent.gameObject.transform.position);
             throw new System.Exception("尚未卸載障礙物");
         }
         else
@@ -185,6 +190,7 @@ public class ObstacleController : MonoBehaviour
             currentObstacle = nextObstacle;
             //     Debug.Log(currentObstacleParent.transform.GetChild(0).gameObject.transform.GetChild(0).name);
             nextObstacleParent = null;
+          
             nextObstacle = new GameObject[3];
         }
 
@@ -206,22 +212,22 @@ public class ObstacleController : MonoBehaviour
             nextObstacle[i]=null;
         }
 
-        nextObstacle = new GameObject[3];
+       // nextObstacle = new GameObject[3];
     }
 
     private void ResetObstacle(ref GameObject[] Obstacle,Vector3 resetPosition,ref GameObject gameObjectParent)
     {
         CreatObstacle(ref Obstacle);
 
-        GameObject game = GetObject(ObstaclePrefab[4].ID);
+        obstacleAll = GetObject(ObstaclePrefab[4].ID);
         
         for (int i = 0; i < Obstacle.Length; i++)
         {
             if (Obstacle[i] != null)
             {
-                Obstacle[i].transform.parent = game.transform;
-                gameObjectParent = game;
-                game.transform.position = resetPosition;
+                Obstacle[i].transform.parent = obstacleAll.transform;
+                gameObjectParent = obstacleAll;
+                obstacleAll.transform.position = resetPosition;
 
                 Obstacle[i].transform.localPosition = new Vector3(0,0,0);
                 for (int j = 0; j < Obstacle[i].transform.childCount; j++)
@@ -275,7 +281,6 @@ public class ObstacleController : MonoBehaviour
         int sizeAppearRange;
         int sizeAppearRangeSum = 0;
         int currentAppearRange = 0;
-        GameObject currentCircle = null;
 
         for (int i = 0; i < appearedCircleList.Length; i++)
         {
@@ -321,7 +326,7 @@ public class ObstacleController : MonoBehaviour
 
     IEnumerator obstacleScrollDown(float dis,float scrollDis,float speed,GameObject moveGameObject)
     {
-        Vector3 currPos = moveGameObject.transform.position;
+        currentObstaclePos = moveGameObject.transform.position;
         while (dis < 1)
         {
             if (GameManager.Instance.CurrentGameState == GameManager.GameState.GameOver)
@@ -332,7 +337,7 @@ public class ObstacleController : MonoBehaviour
             {
                 dis += speed * Time.deltaTime;
                 dis = Mathf.Clamp(dis, 0, 1);
-                moveGameObject.transform.position = Vector3.Lerp(moveGameObject.transform.position, currPos + new Vector3(0, scrollDis, 0), dis);
+                moveGameObject.transform.position = Vector3.Lerp(moveGameObject.transform.position, currentObstaclePos + new Vector3(0, scrollDis, 0), dis);
                 yield return null;
             }
            
@@ -340,24 +345,18 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-  /*  private void Init()
-    {
-        CreatObjectPool();
-    }
-    */
-
     public GameObject CreateOneObstacle(int size, int sectorAmount, float minSpeed, float maxSpeed)
     {
-       GameObject ObstacleParent = GetObject(ObstaclePrefab[3].ID);
+        obstacleParent = GetObject(ObstaclePrefab[3].ID);
 
         int[] rotationAngle;
         rotationAngle = new int[] { 0, 90, 180, 270 };
         for (int i = 0; i <= Random.Range(0, sectorAmount); i++)
         {
-            GameObject obstacle = GetObject(ObstaclePrefab[size].ID);
+            oneObstacle = GetObject(ObstaclePrefab[size].ID);
             int angle;
-            obstacle.transform.parent = ObstacleParent.transform;
-            obstacle.transform.position = Vector3.zero;
+            oneObstacle.transform.parent = obstacleParent.transform;
+            oneObstacle.transform.position = Vector3.zero;
 
 
             angle = Random.Range(0, 4);
@@ -365,19 +364,16 @@ public class ObstacleController : MonoBehaviour
             while (rotationAngle[angle] == -1)
             {
                 angle = Random.Range(0, 4);
-                //  Debug.Log(rotationAngle[angle]);
-
             }
-            obstacle.transform.localEulerAngles = new Vector3(0, 0, rotationAngle[angle]);
+            oneObstacle.transform.localEulerAngles = new Vector3(0, 0, rotationAngle[angle]);
             rotationAngle[angle] = -1;
 
         }
 
-        ObstacleParent.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
-        //ObstacleParent.AddComponent<ObstacleBehaviour>();
-        ObstacleParent.GetComponent<ObstacleBehaviour>().RotateSpeed = Random.Range(minSpeed, maxSpeed);
+        obstacleParent.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
+        obstacleParent.GetComponent<ObstacleBehaviour>().RotateSpeed = Random.Range(minSpeed, maxSpeed);
 
-        return ObstacleParent;
+        return obstacleParent;
     }
 
 
@@ -398,10 +394,11 @@ public class ObstacleController : MonoBehaviour
             ObstaclePrefab[j].ID = objectId;
             for (int i = 0; i < ObstaclePrefab[j].Amount; i++)
             {
-                GameObject gameObject = Instantiate(ObstaclePrefab[j].ObstaclePrefab);
-                obstacleCollection[objectId] = gameObject;
+                
+                obstacleCollection[objectId] = Instantiate(ObstaclePrefab[j].ObstaclePrefab);
+                obstacleCollection[objectId].SetActive(false);
                 objectId += 1;
-                gameObject.SetActive(false);
+                
 
             }
 
@@ -437,16 +434,11 @@ public class ObstacleController : MonoBehaviour
 
     public void RecoverObstacle(GameObject[] obstacle)
     {
-        // Debug.Log(obstacle[0].transform.childCount);
-
         for (int i = 0; i < obstacle.Length; i++)
         {
             if (obstacle[i] == null)
             {
-                // Debug.Log("hh");
-
                 break;
-
             }
             else
             {

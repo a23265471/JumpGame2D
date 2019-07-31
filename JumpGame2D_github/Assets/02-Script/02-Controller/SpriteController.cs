@@ -20,7 +20,7 @@ public class SpriteController : MonoBehaviour
     {
 
         Init();
-
+      //  Debug.Log("ggg");
     }
 
     private void Init()
@@ -43,7 +43,7 @@ public class SpriteController : MonoBehaviour
         {
             throw new System.Exception("沒有圖形元件");
         }
-        Debug.Log("fff");
+       // Debug.Log("fff");
 
     }
 
