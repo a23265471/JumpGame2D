@@ -10,6 +10,7 @@ public class BackgroundController : MonoBehaviour
 
     int currentBackground;
     private Vector2 backgroundStartPos;
+    private Vector2 baclgroundNextPos;
 
     private void Awake()
     {
@@ -25,9 +26,9 @@ public class BackgroundController : MonoBehaviour
         {
             backgroundImageTransform[i] = transform.GetChild(i).gameObject.GetComponent<RectTransform>();
         }
-        backgroundStartPos = backgroundImageTransform[0].position;
-        currentBackground = 0;
-
+        backgroundStartPos = backgroundImageTransform[1].position;
+        baclgroundNextPos = backgroundImageTransform[0].position;
+        currentBackground = 1;
 
     }
 
@@ -54,9 +55,9 @@ public class BackgroundController : MonoBehaviour
                 dis = Mathf.Clamp(dis, 0, 1);
                 backgroundImageTransform[currentBackground].position = Vector3.Lerp(backgroundImageTransform[currentBackground].position, backgroundCurrentPos + new Vector3(0, scrollDis, 0), dis);
 
-                if (backgroundImageTransform[currentBackground].position.y < -20)
+                if (backgroundImageTransform[currentBackground].position.y < -50)
                 {
-                    backgroundImageTransform[currentBackground].position = new Vector2(backgroundImageTransform[currentBackground].position.x, 35);
+                    backgroundImageTransform[currentBackground].position = new Vector2(backgroundImageTransform[currentBackground].position.x, 50);
                     switch (currentBackground)
                     {
                         case 1:
@@ -67,7 +68,7 @@ public class BackgroundController : MonoBehaviour
                             currentBackground = 1;
                             break;
                     }
-                    backgroundImageTransform[currentBackground].position = new Vector2(backgroundImageTransform[currentBackground].position.x, 21);
+                    backgroundImageTransform[currentBackground].position = backgroundStartPos;
                     break;
                 }
 
@@ -82,10 +83,10 @@ public class BackgroundController : MonoBehaviour
 
     public void ResetBackGroundPos()
     {
-        backgroundImageTransform[1].position = new Vector2(backgroundImageTransform[currentBackground].position.x, 35);
+        backgroundImageTransform[0].position = new Vector2(backgroundImageTransform[currentBackground].position.x, 35);
 
-        backgroundImageTransform[0].position = backgroundStartPos;
-        currentBackground = 0;
+        backgroundImageTransform[1].position = backgroundStartPos;
+        currentBackground = 1;
 
     }
 

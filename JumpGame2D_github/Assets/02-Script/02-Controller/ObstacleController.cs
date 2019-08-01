@@ -258,14 +258,33 @@ public class ObstacleController : MonoBehaviour
 
         for (int currentCircle = 0; currentCircle < levelSetting.circleAmountProportion.Length; currentCircle++)
         {
-      //      Debug.Log("圓環個數機率 min : " + currentProportionRange + " Max : " + (levelSetting.circleAmountProportion[currentCircle].CircleProportion + currentProportionRange) + " 現在機率 : " + randomRange);
+   //         Debug.Log("圓環個數機率 min : " + currentProportionRange + " Max : " + (levelSetting.circleAmountProportion[currentCircle].CircleProportion + currentProportionRange) + " 現在機率 : " + randomRange);
 
             if (randomRange > currentProportionRange && randomRange <= (levelSetting.circleAmountProportion[currentCircle].CircleProportion + currentProportionRange)) 
             {
                 PartOfObstacle[] appeared = new PartOfObstacle[] { levelSetting.Circle_S, levelSetting.Circle_M, levelSetting.Circle_L };
+
+            /*    Debug.Log(levelSetting.Circle_S.AppearProportion);
+                Debug.Log(levelSetting.Circle_M.AppearProportion);*/
+
+
+
+                for (int e = 0; e < appeared.Length; e++)
+                {
+
+                    if (appeared[e].AppearProportion == 0)
+                    {
+                        appeared[e].Size = ObstacleSize.Null;
+
+                    }
+
+                }
+                    
                 for (int q = 0; q < (currentCircle + 1); q++) 
                 {
+                   
                     Obstacle[q] = CreateCircle(ref appeared);//存入當前的障礙物
+               //     Debug.Log(Obstacle[q].name);
                 }
 
                 break;
@@ -284,7 +303,7 @@ public class ObstacleController : MonoBehaviour
 
         for (int i = 0; i < appearedCircleList.Length; i++)
         {
-            if (appearedCircleList[i].Size != ObstacleSize.Null)
+            if (appearedCircleList[i].Size != ObstacleSize.Null) 
             {
                 sizeAppearRangeSum += appearedCircleList[i].AppearProportion;
 
@@ -443,6 +462,7 @@ public class ObstacleController : MonoBehaviour
             else
             {
                 int childCount = obstacle[i].transform.childCount;
+            //    Debug.Log(obstacle[i].transform.GetChild(0).name);
                 obstacle[i].transform.parent.gameObject.SetActive(false);
                 obstacle[i].transform.parent = null;
                 for (int j = 0; j < childCount; j++)

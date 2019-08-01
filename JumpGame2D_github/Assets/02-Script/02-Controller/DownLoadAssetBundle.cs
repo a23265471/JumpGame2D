@@ -50,7 +50,7 @@ public class DownLoadAssetBundle : MonoBehaviour
         while (Caching.ready == false)yield return null;   //是否准备好
         www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
         //   StartCoroutine(DownLoadProgress());
-        Debug.Log("AssetBundle start download");
+   //     Debug.Log("AssetBundle start download");
 
         yield return www1;
 
