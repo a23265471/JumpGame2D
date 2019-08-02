@@ -106,6 +106,14 @@ public class ObstacleController : MonoBehaviour
 
     Vector3 currentObstaclePos;
 
+    int circleSizeProportionSun = 0;
+    int randomRange;
+    int currentProportionRange = 0;
+
+    int sizeAppearRange;
+    int sizeAppearRangeSum = 0;
+    int currentAppearRange = 0;
+
     private void Awake()
     {
         Init();
@@ -119,8 +127,11 @@ public class ObstacleController : MonoBehaviour
         InitObstacleSetting();
         currentObstacle = new GameObject[3];
         nextObstacle = new GameObject[3];
-
-        CreatObjectPool();
+        sizeAppearRangeSum = 0;
+        currentAppearRange = 0;
+        circleSizeProportionSun = 0;
+        currentProportionRange = 0;
+       // 
     }
 
     private void InitObstacleSetting()
@@ -131,7 +142,15 @@ public class ObstacleController : MonoBehaviour
 
     }
     
-
+    public void GetPrefab()
+    {
+        for (int i = 0; i < ObstaclePrefab.Length; i++)
+        {
+            ObstaclePrefab[i].ObstaclePrefab = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, ObstaclePrefab[i].Name.ToString(), typeof(GameObject));
+        }
+        CreatObjectPool();
+    }
+    
     public void ScrollObject(int scrollObject,float scrollDis,float speed)
     {
         switch (scrollObject)
@@ -245,9 +264,9 @@ public class ObstacleController : MonoBehaviour
 
     private void CreatObstacle(ref GameObject[] Obstacle)
     {
-        int circleSizeProportionSun = 0;
-        int randomRange;
-        int currentProportionRange = 0;
+        circleSizeProportionSun = 0;
+        
+        currentProportionRange = 0;
 
         for (int i = 0; i < levelSetting.circleAmountProportion.Length; i++)
         {
@@ -297,9 +316,8 @@ public class ObstacleController : MonoBehaviour
     
     private GameObject CreateCircle(ref PartOfObstacle[] appearedCircleList/*,ref int currentRandomLength*/)
     {
-        int sizeAppearRange;
-        int sizeAppearRangeSum = 0;
-        int currentAppearRange = 0;
+        sizeAppearRangeSum = 0;
+        currentAppearRange = 0;
 
         for (int i = 0; i < appearedCircleList.Length; i++)
         {

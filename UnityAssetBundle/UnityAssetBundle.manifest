@@ -1,7 +1,11 @@
 ManifestFileVersion: 0
-CRC: 13040362
+CRC: 4271990658
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: prefab.unityassetbundle
+      Dependencies:
+        Dependency_0: uiprefab.unityassetbundle
+    Info_1:
+      Name: uiprefab.unityassetbundle
       Dependencies: {}

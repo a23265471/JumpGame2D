@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3585022217
+CRC: 1786043976
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b384ea8731224e016daf28e49584286a
+    Hash: ced11005ad7587df9d6d062f8d66cbaa
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8f81471f4cfc7bf93c7fa752ebb4eb40
@@ -18,7 +18,6 @@ ClassTypes:
 Assets:
 - Assets/01-Model/Atlas/Obstacle_L.png
 - Assets/01-Model/Atlas/Obstacle_M.png
-- Assets/01-Model/Atlas.spriteatlas
 - Assets/01-Model/Atlas/Obstacle_S.png
 - Assets/01-Model/Background_2.png
 - Assets/01-Model/Atlas/Player.png

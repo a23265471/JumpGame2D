@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject Player;
 
- /*   [SerializeField]
+    [SerializeField]
     GameObject Background;
     [SerializeField]
-    Canvas BackGroundCanvas;*/
+    Canvas BackGroundCanvas;
 
     [SerializeField]
     private int Level;
@@ -72,10 +72,18 @@ public class GameManager : MonoBehaviour
     IEnumerator InstallImage()
     {
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Images, "loadstage");
+        //Debug.Log("a");
 
         yield return waitUntilLoaded;
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Prefab, "prefab");
+        //Debug.Log("b");
+
         yield return waitUntilLoaded;
+        DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.UIPrefab, "uiprefab");
+
+        yield return waitUntilLoaded;
+        //Debug.Log("c");
+
         //Debug.Log("AssetBundle is DownLoade prefab");
         GetPrefab();
         InstantiateObject();
@@ -85,14 +93,15 @@ public class GameManager : MonoBehaviour
     private void GetPrefab()
     {
         Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Player", typeof(GameObject));
-        //Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "BackGround", typeof(GameObject));
-        OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "UICanvas", typeof(GameObject));
+        Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "background", typeof(GameObject));
+        OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "UICanvas", typeof(GameObject));
+        ObstacleController.Instance.GetPrefab();
     }
 
     public void InstantiateObject()
     {
         Instantiate(Player);
-      //  Instantiate(Background,BackGroundCanvas.transform.GetChild(0).transform);
+        Instantiate(Background,BackGroundCanvas.transform.GetChild(0).transform);
         currentCanvas = Instantiate(OptionCanvas);
 
         //   player.transform.position = PlayerStartPos;
@@ -202,7 +211,7 @@ public class GameManager : MonoBehaviour
         ObstacleController.Instance.ClearAllObstacle();
         ObstacleController.Instance.LoadNextObstacle();
         ObstacleController.Instance.StartGame();
-    //    BackgroundController.Instance.ResetBackGroundPos();
+        BackgroundController.Instance.ResetBackGroundPos();
         Time.timeScale = 0;
         PlayerBehaviour.Instance.SwitchControlPlayer(false);
         PlayerBehaviour.Instance.ResetPlayer();
@@ -215,12 +224,11 @@ public class GameManager : MonoBehaviour
     public void NextObstacle()
     {
         PlayerBehaviour.Instance.ScrollPlayer(-7.7f, 1.2f);
-      //  BackgroundController.Instance.ScrollBackGround(-8, 1.2f);
+        BackgroundController.Instance.ScrollBackGround(-8, 0.9f);
         ObstacleController.Instance.UnLoadCurrentObstacle();
         ObstacleController.Instance.UpdateCurrentObstacle();
         ObstacleController.Instance.ScrollObject(0, -8, 1.2f);
         ObstacleController.Instance.LoadNextObstacle();
-
     }
 
 }

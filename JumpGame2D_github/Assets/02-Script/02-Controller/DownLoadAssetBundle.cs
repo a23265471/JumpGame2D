@@ -7,6 +7,7 @@ public enum AssetBundleState
 {
     Images,
     Prefab,
+    UIPrefab,
     Audio
 }
 
@@ -45,12 +46,13 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
-      //  IsDownLoaded = false;
-        string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+        //  IsDownLoaded = false;
+        //  string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+        string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+
         while (Caching.ready == false)yield return null;   //是否准备好
         www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
         //   StartCoroutine(DownLoadProgress());
-   //     Debug.Log("AssetBundle start download");
 
         yield return www1;
 
@@ -72,9 +74,18 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {
+
+         /* for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
+          {
+              Debug.Log(AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames()[i]);
+          }*/
         if (AssetBundleDictionary[(int)assetBundleState] != null)
         {
+
             object asset = AssetBundleDictionary[(int)assetBundleState].LoadAsset(ObjectName, type);   //加载ab1包中的资源名为 Sphere-Head 文件的数据，返回Object对象 （这是一个预设物）
+
+          
+
 
             if (asset != null)
             {
