@@ -17,12 +17,7 @@ public class StageDataController : MonoBehaviour
         Instance = this;
         GetData();
     }
-
-    private void Start()
-    {
-
-    }
-
+    
     public void GetData()
     {
         StartCoroutine("GetJson");
@@ -34,8 +29,8 @@ public class StageDataController : MonoBehaviour
         WWWForm form = new WWWForm();
         LevelSettingJsonData levelSetting = new LevelSettingJsonData();
 
-        WWW www = new WWW("http://localhost/PHP.php");
-      //  WWW www = new WWW("http://192.168.0.137/PHP.php");
+      //  WWW www = new WWW("http://localhost/PHP.php");
+        WWW www = new WWW("http://192.168.0.137/PHP.php");
 
         yield return www;
         //   string test2 = JsonUtility.ToJson(playerDatas);

@@ -99,6 +99,11 @@ public class PlayerBehaviour : MonoBehaviour
                 GameManager.Instance.NextObstacle();
                 
                 break;
+            case"GetScore":
+                ParticleController.instance.PlayParticle();
+
+                break;
+            
                 
         }
 

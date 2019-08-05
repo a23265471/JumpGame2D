@@ -12,6 +12,9 @@ public class BackgroundController : MonoBehaviour
     private Vector2 backgroundStartPos;
     private Vector2 baclgroundNextPos;
 
+    Vector3 backgroundCurrentPos;
+    float dis;
+
     private void Awake()
     {
         Init();
@@ -40,8 +43,8 @@ public class BackgroundController : MonoBehaviour
 
     IEnumerator scrollBackdround(float scrollDis, float scrollSpeed)
     {
-        Vector3 backgroundCurrentPos = backgroundImageTransform[currentBackground].position;
-        float dis = 0;
+        backgroundCurrentPos = backgroundImageTransform[currentBackground].position;
+        dis = 0;
 
         while (dis < 1)
         {

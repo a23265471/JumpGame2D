@@ -68,6 +68,7 @@
     <Compile Include="Assets\02-Script\02-Controller\CreateObstacle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\DownLoadAssetBundle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\ObstacleController.cs" />
+    <Compile Include="Assets\02-Script\02-Controller\ParticleController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\SpriteController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\StageDataController.cs" />
     <Compile Include="Assets\02-Script\GameManager.cs" />

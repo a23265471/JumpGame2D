@@ -45,6 +45,7 @@ public class SpriteController : MonoBehaviour
         }
        // Debug.Log("fff");
 
+
     }
 
     IEnumerator GetAsset(AssetBundleState assetBundleState,System.Type type)

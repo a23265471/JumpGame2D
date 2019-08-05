@@ -114,6 +114,8 @@ public class ObstacleController : MonoBehaviour
     int sizeAppearRangeSum = 0;
     int currentAppearRange = 0;
 
+    PartOfObstacle[] appeared;
+
     private void Awake()
     {
         Init();
@@ -127,6 +129,7 @@ public class ObstacleController : MonoBehaviour
         InitObstacleSetting();
         currentObstacle = new GameObject[3];
         nextObstacle = new GameObject[3];
+        appeared = new PartOfObstacle[3];
         sizeAppearRangeSum = 0;
         currentAppearRange = 0;
         circleSizeProportionSun = 0;
@@ -281,13 +284,26 @@ public class ObstacleController : MonoBehaviour
 
             if (randomRange > currentProportionRange && randomRange <= (levelSetting.circleAmountProportion[currentCircle].CircleProportion + currentProportionRange)) 
             {
-                PartOfObstacle[] appeared = new PartOfObstacle[] { levelSetting.Circle_S, levelSetting.Circle_M, levelSetting.Circle_L };
+                for (int y = 0; y < appeared.Length; y++)
+                {
+                    switch (y)
+                    {
+                        case 0:
+                            appeared[0] = levelSetting.Circle_S;
+                            break;
+                        case 1:
+                            appeared[1] = levelSetting.Circle_M;
+                            break;
+                        case 2:
+                            appeared[2] = levelSetting.Circle_L;
+                            break;
 
-            /*    Debug.Log(levelSetting.Circle_S.AppearProportion);
-                Debug.Log(levelSetting.Circle_M.AppearProportion);*/
+                    }
+                }
 
+                //appeared = new PartOfObstacle[] { levelSetting.Circle_S, levelSetting.Circle_M, levelSetting.Circle_L };
 
-
+            
                 for (int e = 0; e < appeared.Length; e++)
                 {
 

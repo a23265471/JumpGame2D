@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Scroll
+  - GetScore
   layers:
   - Default
   - TransparentFX
