@@ -1,7 +1,13 @@
 ManifestFileVersion: 0
-CRC: 1043243035
+CRC: 1572396424
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: loadstage.unityassetbundle
+      Name: uibundle.unityassetbundle
+      Dependencies: {}
+    Info_1:
+      Name: atlas.unityassetbundle
+      Dependencies: {}
+    Info_2:
+      Name: gameobjectbundle.unityassetbundle
       Dependencies: {}

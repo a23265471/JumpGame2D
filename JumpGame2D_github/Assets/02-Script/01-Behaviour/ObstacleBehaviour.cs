@@ -1,12 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
+    public static ObstacleBehaviour instance;
     public float RotateSpeed;
     Quaternion rotation;
+    public Vector3 rotationVector;
+    Transform m_transform;
 
+    private void Awake()
+    {
+        instance = this;
+        m_transform = transform;
+       // Debug.Log(transform.rotation);*/
+    }
 
     private void Update()
     {
@@ -15,11 +22,16 @@ public class ObstacleBehaviour : MonoBehaviour
 
     private void Rotate()
     {
-     //   rotation.eulerAngles=new Vector3(0,0,20*Time.deltaTime);
-        transform.Rotate(new Vector3(0, 0, RotateSpeed * Time.deltaTime));
+        rotationVector.z = RotateSpeed * Time.deltaTime;
+        m_transform.Rotate(rotationVector);
     }
 
+    public void StopRotate()
+    {
+        //gameObject.GetComponent<ObstacleBehaviour>().enabled = false;
 
+        Debug.Log("j");
+    }
 
 
 }

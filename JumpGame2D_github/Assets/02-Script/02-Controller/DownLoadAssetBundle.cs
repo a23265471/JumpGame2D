@@ -47,8 +47,9 @@ public class DownLoadAssetBundle : MonoBehaviour
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
         //  IsDownLoaded = false;
-        string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
-      //  string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+         string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+        //  string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+   //       string path1 = "file:D:/MoonMoonGames/00-TestGame/00-JumpGame2D/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
 
         while (Caching.ready == false)yield return null;   //是否准备好
         www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
@@ -75,7 +76,7 @@ public class DownLoadAssetBundle : MonoBehaviour
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {
 
-         /* for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
+       /*   for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
           {
               Debug.Log(AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames()[i]);
           }*/

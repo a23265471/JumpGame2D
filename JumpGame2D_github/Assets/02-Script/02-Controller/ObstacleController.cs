@@ -54,7 +54,7 @@ public class ObstacleController : MonoBehaviour
 
 
     }
-        [System.Serializable]
+    [System.Serializable]
     public struct PartOfObstacle
     {
         //[Header("圓形的尺寸 S:0 M:1 L:2")]
@@ -114,6 +114,12 @@ public class ObstacleController : MonoBehaviour
     int sizeAppearRangeSum = 0;
     int currentAppearRange = 0;
 
+    int[] rotationAngle;
+    int angle;
+    float dis = 0;
+
+    ObstacleBehaviour[] obstacleBehaviours;    
+
     PartOfObstacle[] appeared;
 
     private void Awake()
@@ -124,17 +130,18 @@ public class ObstacleController : MonoBehaviour
     private void Init()
     {
         Instance = this;
-
-     //   createObstacle = gameObject.GetComponent<CreateObstacle>();
         InitObstacleSetting();
         currentObstacle = new GameObject[3];
         nextObstacle = new GameObject[3];
         appeared = new PartOfObstacle[3];
+        rotationAngle = new int[4];
+        obstacleBehaviours = new ObstacleBehaviour[ObstaclePrefab[3].Amount];
         sizeAppearRangeSum = 0;
         currentAppearRange = 0;
         circleSizeProportionSun = 0;
         currentProportionRange = 0;
-       // 
+        angle = 0;
+       
     }
 
     private void InitObstacleSetting()
@@ -146,14 +153,42 @@ public class ObstacleController : MonoBehaviour
     }
     
     public void GetPrefab()
-    {
-        for (int i = 0; i < ObstaclePrefab.Length; i++)
-        {
-            ObstaclePrefab[i].ObstaclePrefab = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, ObstaclePrefab[i].Name.ToString(), typeof(GameObject));
-        }
+    {      
         CreatObjectPool();
+        StartCoroutine(ObstacleParentGetObstacleBehaviour());
     }
-    
+
+    IEnumerator ObstacleParentGetObstacleBehaviour()
+    {
+        yield return null;
+        for (int i = 0; i < ObstaclePrefab[3].Amount; i++)
+        {
+            obstacleBehaviours[i] = obstacleCollection[ObstaclePrefab[3].ID + i].GetComponent<ObstacleBehaviour>();
+            obstacleBehaviours[i].enabled = false;
+
+        }
+    }
+
+    public void StopObstacleBehaviour()
+    {
+        for (int i = 0; i < obstacleBehaviours.Length; i++)
+        {
+            obstacleBehaviours[i].enabled = false;
+
+        }
+
+    }
+
+    public void StartObstacleBehiour()
+    {
+        for (int i = 0; i < obstacleBehaviours.Length; i++)
+        {
+            obstacleBehaviours[i].enabled = true;
+
+        }
+
+    }
+
     public void ScrollObject(int scrollObject,float scrollDis,float speed)
     {
         switch (scrollObject)
@@ -187,8 +222,6 @@ public class ObstacleController : MonoBehaviour
         else
         {
             ResetObstacle(ref nextObstacle, nextObstaclePosition, ref nextObstacleParent);
-          //  nextObstacleParent.transform.position = Vector3.zero;
-
         }
 
     }
@@ -196,8 +229,7 @@ public class ObstacleController : MonoBehaviour
     public void UnLoadCurrentObstacle()
     {
         RecoverObstacle(currentObstacle);
-        currentObstacleParent = null; 
-     // currentObstacle = null;
+        currentObstacleParent = null;
     }
 
     public void UpdateCurrentObstacle()
@@ -210,10 +242,15 @@ public class ObstacleController : MonoBehaviour
         {
             currentObstacleParent = nextObstacleParent;
             currentObstacle = nextObstacle;
-            //     Debug.Log(currentObstacleParent.transform.GetChild(0).gameObject.transform.GetChild(0).name);
             nextObstacleParent = null;
-          
+
             nextObstacle = new GameObject[3];
+            // StartCoroutine(next());
+           /* for (int i = 0; i < nextObstacle.Length; i++)
+            {
+                nextObstacle[i] = null;
+                Debug.Log("nextObstacle = null");
+            }*/
         }
 
 
@@ -222,19 +259,17 @@ public class ObstacleController : MonoBehaviour
     public void ClearAllObstacle()
     {
         RecoverObstacle(currentObstacle);
+
         RecoverObstacle(nextObstacle);
+     //   Debug.Log("7");
 
         currentObstacleParent = null;
         nextObstacleParent = null;
-       // currentObstacle = new GameObject[3];
-
         for (int i = 0; i < currentObstacle.Length; i++)
         {
             currentObstacle[i] = null;
             nextObstacle[i]=null;
         }
-
-       // nextObstacle = new GameObject[3];
     }
 
     private void ResetObstacle(ref GameObject[] Obstacle,Vector3 resetPosition,ref GameObject gameObjectParent)
@@ -373,7 +408,7 @@ public class ObstacleController : MonoBehaviour
 
     public void ObstacleScrollDown(ref GameObject scrollObject, float scrollDis, float speed)
     {
-        float dis = 0;
+        dis = 0;
         StartCoroutine(obstacleScrollDown(dis, scrollDis, speed, scrollObject));
     }
 
@@ -402,16 +437,13 @@ public class ObstacleController : MonoBehaviour
     {
         obstacleParent = GetObject(ObstaclePrefab[3].ID);
 
-        int[] rotationAngle;
         rotationAngle = new int[] { 0, 90, 180, 270 };
         for (int i = 0; i <= Random.Range(0, sectorAmount); i++)
         {
             oneObstacle = GetObject(ObstaclePrefab[size].ID);
-            int angle;
             oneObstacle.transform.parent = obstacleParent.transform;
             oneObstacle.transform.position = Vector3.zero;
-
-
+            
             angle = Random.Range(0, 4);
 
             while (rotationAngle[angle] == -1)
@@ -419,12 +451,18 @@ public class ObstacleController : MonoBehaviour
                 angle = Random.Range(0, 4);
             }
             oneObstacle.transform.localEulerAngles = new Vector3(0, 0, rotationAngle[angle]);
+
+
+
+            oneObstacle.GetComponent<SpriteController>().GetSpriteRendererAsset("ObjectAtlas", "Obstacle_" + size + angle);
+            
             rotationAngle[angle] = -1;
 
         }
 
-        obstacleParent.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
+       // obstacleParent.transform.Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
         obstacleParent.GetComponent<ObstacleBehaviour>().RotateSpeed = Random.Range(minSpeed, maxSpeed);
+    //    obstacleParent.GetComponent<ObstacleBehaviour>().SetValue(minSpeed, maxSpeed);
 
         return obstacleParent;
     }
@@ -496,8 +534,9 @@ public class ObstacleController : MonoBehaviour
             else
             {
                 int childCount = obstacle[i].transform.childCount;
-            //    Debug.Log(obstacle[i].transform.GetChild(0).name);
                 obstacle[i].transform.parent.gameObject.SetActive(false);
+             //   Debug.Log(obstacle[i].transform.name);
+
                 obstacle[i].transform.parent = null;
                 for (int j = 0; j < childCount; j++)
                 {

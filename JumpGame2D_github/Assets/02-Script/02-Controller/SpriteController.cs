@@ -4,70 +4,60 @@ using UnityEngine.U2D;
 using UnityEngine.UI;
 
 
-enum spriteAtlas {Player, Obstacle_S, Obstacle_M, Obstacle_L, background_1, background_2 }
+public enum spriteAtlas {Player, Obstacle_S, Obstacle_M, Obstacle_L_DR, Obstacle_L_DL, Obstacle_L_UR, Obstacle_L_UL, background_1, background_2 }
 
 public class SpriteController : MonoBehaviour
 {
-    [SerializeField]
-    private spriteAtlas CurrentSprite;
-
-   
-    private SpriteAtlas Atlas;
+    public spriteAtlas CurrentSprite;
+    
+    public SpriteAtlas Atlas;
     SpriteRenderer spriteRenderer;
     RawImage rawImage;
+    ParticleSystemRenderer particleSystemRenderer;
 
     private void Awake()
     {
 
-        Init();
-      //  Debug.Log("ggg");
+        // Init();
+        //  Debug.Log("ggg");
+        // GetAsset();
+
+
     }
 
-    private void Init()
+    public void GetSpriteRendererAsset(string assetName,string spriteName)
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        rawImage = gameObject.GetComponent<RawImage>();
 
-        if (spriteRenderer != null)
-        {
-
-            StartCoroutine(GetAsset(AssetBundleState.Images, typeof(SpriteAtlas)));
-
-        }
-        else if (rawImage != null)
-        {
-
-            StartCoroutine(GetRawImage(AssetBundleState.Images, typeof(RawImage)));
-        }
-        else
-        {
-            throw new System.Exception("沒有圖形元件");
-        }
-       // Debug.Log("fff");
-
-
+        StartCoroutine(GetAsset(assetName, typeof(SpriteAtlas), spriteName));
     }
 
-    IEnumerator GetAsset(AssetBundleState assetBundleState,System.Type type)
+    public void GetRawImageAsset()
+    {
+        rawImage = gameObject.GetComponent<RawImage>();
+        
+        StartCoroutine(GetRawImage());
+            
+        
+    }
+    
+    IEnumerator GetAsset(string assetName, System.Type type,string getSprite)
     {
         yield return null;
-        Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, "Atlas", type);
-        GetSprite();
+        
+        Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, assetName, type);
+        GetAtlasSprite(getSprite);
     }
 
-    IEnumerator GetRawImage(AssetBundleState assetBundleState,System.Type type)
+    IEnumerator GetRawImage()
     {
         yield return null;
         rawImage.texture = (Texture)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, CurrentSprite.ToString(), typeof(Texture));
-    }
+    }    
 
-    private void GetSprite()
+    public void GetAtlasSprite(string currentSprite)
     {
-        spriteRenderer.sprite = Atlas.GetSprite(CurrentSprite.ToString());
-        
+        spriteRenderer.sprite = Atlas.GetSprite(currentSprite);        
     }
-
-  
-
-
+    
 }

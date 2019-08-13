@@ -1,22 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Networking;
-using UnityEngine.UI;
-
 
 public class PlayerBehaviour : MonoBehaviour
 {
     public static PlayerBehaviour Instance;
     private PlayerJsonData playerData;
 
-
     #region Component
     private Rigidbody2D rigidbody2;
-
+    private SpriteRenderer spriteRenderer;
+    public Animator Animator;
+    Sprite idleSprite;
     #endregion
 
     Vector3 currentPos;
+    Vector3 startPos;
+    Vector3 jumpVector;
+    Transform m_transform;
+
 
     private void Awake()
     {
@@ -30,6 +31,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Instance = this;
         rigidbody2 = gameObject.GetComponent<Rigidbody2D>();
+        Animator = gameObject.GetComponent<Animator>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        m_transform = GetComponent<Transform>();
+        idleSprite = spriteRenderer.sprite;
+        Application.targetFrameRate = 60;
+        startPos = new Vector3(0, -4, 0);
         StartCoroutine(LoadData());
 
     }
@@ -39,6 +46,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         playerData = StageDataController.Instance.PlayerJson;
+        jumpVector = new Vector2(0, playerData.JumpForce);//1500
     }
 
     private void Update()
@@ -48,12 +56,15 @@ public class PlayerBehaviour : MonoBehaviour
             Jump();
 
         }
+
     }
 
     public void ResetPlayer()
     {
-        transform.parent.gameObject.transform.position = new Vector3(0, -4, 0);
-        transform.localPosition = Vector2.zero;
+        m_transform.parent.gameObject.transform.position = startPos;
+        Animator.SetTrigger("Idle");
+        spriteRenderer.sprite = idleSprite;
+        m_transform.localPosition = Vector2.zero;
     }
     
     public void SwitchControlPlayer(bool state)
@@ -71,16 +82,32 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Jump()
     {
+        Animator.SetTrigger("UP");
+        //Debug.Log("hhh");
+
+        StopCoroutine(JumpAnimatoinControl());
+        StartCoroutine(JumpAnimatoinControl());
+
         rigidbody2.gravityScale = 0;
         rigidbody2.mass = 0;
         rigidbody2.velocity = Vector2.zero;
-        rigidbody2.AddForce(new Vector2(0, playerData.JumpForce));//1500
+        rigidbody2.AddForce(jumpVector);
 
         rigidbody2.gravityScale = playerData.Gravity;//2
         rigidbody2.mass = playerData.Weight;//5
         
     }
 
+    IEnumerator JumpAnimatoinControl()
+    {
+
+        while (rigidbody2.velocity.y > 0.2f)
+        {
+            yield return null;
+        }
+        Animator.SetTrigger("Fall");
+    }
+    
     public void SwitchRigidbody(bool State)
     {
 
@@ -92,6 +119,7 @@ public class PlayerBehaviour : MonoBehaviour
         switch (other.tag)
         {
             case "Obstacle":
+                Animator.SetTrigger("Dead");
                 GameManager.Instance.GameOver();
 
                 break;
@@ -100,6 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
                 
                 break;
             case"GetScore":
+
                 ParticleController.instance.PlayParticle();
 
                 break;
@@ -109,6 +138,13 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     }
+
+    public void AnimatorEnable()
+    {
+        Animator.enabled = false;
+
+    }
+
 
     public void Scroll(float scrollDis,float speed)
     {
@@ -128,7 +164,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else
             {
-                transform.parent.gameObject.transform.position = Vector3.Lerp(transform.parent.gameObject.transform.position, currentPos + new Vector3(0, ScrollPos, 0), dis);
+                m_transform.parent.gameObject.transform.position = Vector3.Lerp(m_transform.parent.gameObject.transform.position, currentPos + new Vector3(0, ScrollPos, 0), dis);
                 dis += speed * Time.deltaTime;
                 yield return null;
             }

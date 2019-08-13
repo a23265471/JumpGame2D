@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 1505262421
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9cfab534dda4248143e46bf22561acde
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8f81471f4cfc7bf93c7fa752ebb4eb40
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+Assets:
+- Assets/01-Model/Atlas/Obstacle_21.png
+- Assets/01-Model/Atlas/Obstacle_22.png
+- Assets/01-Model/Atlas/Obstacle_20.png
+- Assets/01-Model/ObjectAtlas.spriteatlas
+- Assets/01-Model/Atlas/Obstacle_23.png
+Dependencies: []

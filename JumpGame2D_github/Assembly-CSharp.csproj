@@ -60,8 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\02-Script\00-Model\LevelSettingJsonData.cs" />
-    <Compile Include="Assets\02-Script\00-Model\PlayerJsonData.cs" />
+    <Compile Include="Assets\02-Script\01-Behaviour\00-Model\LevelSettingJsonData.cs" />
+    <Compile Include="Assets\02-Script\01-Behaviour\00-Model\PlayerJsonData.cs" />
+    <Compile Include="Assets\02-Script\01-Behaviour\BackgroundScroll.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\ObstacleBehaviour.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\PlayerBehaviour.cs" />
     <Compile Include="Assets\02-Script\02-Controller\BackgroundController.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\02-Script\02-Controller\DownLoadAssetBundle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\ObstacleController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\ParticleController.cs" />
+    <Compile Include="Assets\02-Script\02-Controller\ScoreController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\SpriteController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\StageDataController.cs" />
     <Compile Include="Assets\02-Script\GameManager.cs" />

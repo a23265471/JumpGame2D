@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8254326959584063291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.94, y: -4.77, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 1, y: 0.351, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSprite: 1
-  Atlas: {fileID: 4343727234628468602, guid: 416007937bd5300489b791cf10aa4c92, type: 2}
+  Atlas: {fileID: 0}

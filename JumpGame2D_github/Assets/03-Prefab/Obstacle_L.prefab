@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3682049589614471965}
   - component: {fileID: 3682049589614471966}
-  - component: {fileID: 7577526360516144566}
+  - component: {fileID: 1138693642342179974}
   - component: {fileID: 1598047003}
   m_Layer: 0
   m_Name: Obstacle_L
@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3682049589614471965
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3682049589614471953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,13 +75,13 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.375, y: 5.40625}
+  m_Size: {x: 2.01, y: 2.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &7577526360516144566
+--- !u!68 &1138693642342179974
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,20 +97,20 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.004869349, y: 4.664343}
-  - {x: 1.1210274, y: 4.5576324}
-  - {x: 2.5123174, y: 4.021154}
-  - {x: 3.7066262, y: 2.9630165}
-  - {x: 4.465936, y: 1.4573876}
-  - {x: 4.6631417, y: 0.039975125}
-  - {x: 5.381632, y: 0.020140497}
-  - {x: 5.292587, y: 1.1064686}
-  - {x: 4.8734217, y: 2.3261597}
-  - {x: 4.0200624, y: 3.621705}
-  - {x: 2.7043343, y: 4.6455693}
-  - {x: 1.3757173, y: 5.1994696}
-  - {x: 0.018537745, y: 5.396945}
-  - {x: 0.015685137, y: 4.657387}
+  - {x: 1.705703, y: -0.046771944}
+  - {x: 1.9435205, y: -0.052786827}
+  - {x: 1.868024, y: 0.45841342}
+  - {x: 1.6722193, y: 0.9555209}
+  - {x: 1.349353, y: 1.3589855}
+  - {x: 0.9205008, y: 1.6759342}
+  - {x: 0.41893548, y: 1.8779875}
+  - {x: -0.05773875, y: 1.9353895}
+  - {x: -0.059334755, y: 1.6723539}
+  - {x: 0.37562263, y: 1.6134359}
+  - {x: 0.92289776, y: 1.4012526}
+  - {x: 1.3483756, y: 0.9988048}
+  - {x: 1.6130108, y: 0.42824924}
+  - {x: 1.6899147, y: -0.052232325}
 --- !u!114 &1598047003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSprite: 3
-  Atlas: {fileID: 4343727234628468602, guid: 416007937bd5300489b791cf10aa4c92, type: 2}
+  Atlas: {fileID: 0}

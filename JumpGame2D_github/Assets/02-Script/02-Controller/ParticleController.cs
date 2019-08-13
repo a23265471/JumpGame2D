@@ -1,24 +1,74 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    public static ParticleController instance;
-    public ParticleSystem[] particles;
+    public enum ParticleInfo
+    {
+        ScoreParticle = 0,
+        aaaaa,
+        ssss,
+        dddd,
+        da,
+        wq,
+        w,
+        e,
+        r,
+        t,
+        
 
+           
+    }
+    public static ParticleController instance;
+    public TriggerParticle[] Particle;
+    private Dictionary<int, ParticleSystem> ParticleCollection;
+
+    [System.Serializable]
+    public struct TriggerParticle
+    {
+        public ParticleInfo ParticleID;
+        public ParticleSystem particleSystem;
+    }
 
     private void Awake()
     {
+        ParticleCollection = new Dictionary<int, ParticleSystem>();
         instance = this;
-        particles = new ParticleSystem[3];
-        particles[0] = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+        for (int i = 0; i < Particle.Length; i++)
+        {
+            ParticleCollection[(int)Particle[i].ParticleID] = Particle[i].particleSystem;
+
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int i = 0; i < ParticleCollection.Count; i++)
+            {
+                ParticleCollection[i].Stop();
+                ParticleCollection[i].Play();
+            }
+        }
+
+    }
+
+
+
+
+    private void Init()
+    {
+        
+
     }
 
     public void PlayParticle()
     {
-        particles[0].Stop();
-        particles[0].Play();
+       
     }
 
 }
+
+
