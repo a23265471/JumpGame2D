@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 2
       m_BuildTarget: WebGL
-      m_MaxTextureSize: 256
+      m_MaxTextureSize: 512
       m_ResizeAlgorithm: 0
       m_TextureFormat: 12
       m_TextureCompression: 1
@@ -42,18 +42,34 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ea913b9b0a7464646a03f4ad8eec53ae, type: 3}
-    totalSpriteSurfaceArea: 65536
+    totalSpriteSurfaceArea: 97796
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 2bc86220fdd15bd4282c5e9a926fd121, type: 3}
   - {fileID: 21300000, guid: 483723a0a9c2aea4a9d5731ccb0f8e3c, type: 3}
+  - {fileID: 21300000, guid: 93eff8b1207285142a90828cb3a3eabe, type: 3}
+  - {fileID: 21300000, guid: a9a6f542aba335e4b9bb4646f3c672c9, type: 3}
   - {fileID: 21300000, guid: 0341680308cbd21468f9200e74e58c95, type: 3}
   - {fileID: 21300000, guid: ea74973385f3dfa4ca8b28ae1a3ab846, type: 3}
+  - {fileID: 21300000, guid: 1690f40674d39014ca9a1d6e60bcf23c, type: 3}
+  - {fileID: 21300000, guid: 73651d664f3dde74297b025b1ea28108, type: 3}
+  - {fileID: 21300000, guid: a95b31d7d960f8d45bab2e4c0c5da8fd, type: 3}
+  - {fileID: 21300000, guid: 042d054a022510642b5dbf9c4329ab53, type: 3}
+  - {fileID: 21300000, guid: 90a3384ad9940f1488be5b60370608b3, type: 3}
   - {fileID: 21300000, guid: b6a3cdcc31205614b85dcca6d5ff40cd, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Obstacle_01
   - Obstacle_21
+  - Obstacle_12
+  - Obstacle_11
   - Obstacle_22
   - Obstacle_20
+  - Obstacle_13
+  - Obstacle_03
+  - Obstacle_00
+  - Obstacle_02
+  - Obstacle_10
   - Obstacle_23
   m_Tag: ObjectAtlas
   m_IsVariant: 0

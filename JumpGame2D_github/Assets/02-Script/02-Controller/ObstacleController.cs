@@ -153,7 +153,12 @@ public class ObstacleController : MonoBehaviour
     }
     
     public void GetPrefab()
-    {      
+    {
+        for (int i = 0; i < ObstaclePrefab.Length; i++) 
+        {
+            ObstaclePrefab[i].ObstaclePrefab = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, ObstaclePrefab[i].Name.ToString(), typeof(GameObject));
+        }
+
         CreatObjectPool();
         StartCoroutine(ObstacleParentGetObstacleBehaviour());
     }

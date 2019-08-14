@@ -20,6 +20,7 @@ public class DownLoadAssetBundle : MonoBehaviour
   //  public bool IsDownLoaded;
 
     public WWW www1;
+    object asset;
 
   //  WaitUntil waitUntil;
 
@@ -33,6 +34,8 @@ public class DownLoadAssetBundle : MonoBehaviour
     {
         Instance = this;
         AssetBundleDictionary = new Dictionary<int, AssetBundle>();
+
+
    //     waitUntil = new WaitUntil(()=>www1.isDone);
        // LoadAssetBundle(AssetBundleState.Images, "loadstage");
         //LoadAssetBundle(AssetBundleState.Prefab, "prefab");
@@ -52,7 +55,7 @@ public class DownLoadAssetBundle : MonoBehaviour
    //       string path1 = "file:D:/MoonMoonGames/00-TestGame/00-JumpGame2D/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
 
         while (Caching.ready == false)yield return null;   //是否准备好
-        www1 = WWW.LoadFromCacheOrDownload(@path1, 1);
+        www1 = WWW.LoadFromCacheOrDownload(@path1, 3);
         //   StartCoroutine(DownLoadProgress());
 
         yield return www1;
@@ -61,32 +64,16 @@ public class DownLoadAssetBundle : MonoBehaviour
         AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
     }
 
-  /*  IEnumerator DownLoadProgress()
-    {
-      //  Debug.Log("DownLoad");
-
-        yield return waitUntil;
-        IsDownLoaded = true;
-     //   Debug.Log(www1.progress);
-
-
-    }
-    */
-
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {
 
-       /*   for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
+      /*    for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
           {
               Debug.Log(AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames()[i]);
           }*/
         if (AssetBundleDictionary[(int)assetBundleState] != null)
         {
-
-            object asset = AssetBundleDictionary[(int)assetBundleState].LoadAsset(ObjectName, type);   //加载ab1包中的资源名为 Sphere-Head 文件的数据，返回Object对象 （这是一个预设物）
-
-          
-
+            asset = AssetBundleDictionary[(int)assetBundleState].LoadAsset(ObjectName, type);   //加载ab1包中的资源名为 Sphere-Head 文件的数据，返回Object对象 （这是一个预设物）
 
             if (asset != null)
             {
@@ -102,6 +89,17 @@ public class DownLoadAssetBundle : MonoBehaviour
         else
         {
             throw new System.Exception("AssetBundle 沒有被加載");
+
+        }
+
+    }
+
+    public void UnloadAllAssetBundle()
+    {
+        for (int i = 0; i < AssetBundleDictionary.Count; i++)
+        {
+            AssetBundleDictionary[i].Unload(true);
+           // Resources.UnloadAsset(AssetBundleDictionary[i]);
 
         }
 

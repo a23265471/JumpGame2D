@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    public enum Order
-    {
-        First,
-        second
-    }
+  //  public static BackgroundScroll Instance;
+    private Vector2 startPos;
     private Transform m_transform;
+    private RectTransform rectTransform;
     private float position_Y;
     private Vector2 movePos;
-    public Order currentOder;
     private float height;
 
     public float scrollDis;
     public float Speed;
+    private float nextPosY;
+
+    [SerializeField]
+    private RectTransform otherTrans;
 
     private void Awake()
     {
@@ -25,37 +26,56 @@ public class BackgroundScroll : MonoBehaviour
 
     private void Init()
     {
+     //   Instance = this;
         m_transform = transform;
+        startPos = transform.position;
+        rectTransform = GetComponent<RectTransform>();
         movePos = Vector2.zero;
     }
 
-    private void Update()
+  /*  private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(Scroll());
+            ScrollBackground();
 
         }
+    }
+    */
 
+    public void ScrollBackground()
+    {
+        StartCoroutine(Scroll());
     }
 
     IEnumerator Scroll()
     {
-        while (m_transform.position.y <= -scrollDis)
+       
+        nextPosY = rectTransform.anchoredPosition.y - scrollDis;
+        while (rectTransform.anchoredPosition.y >= nextPosY)
         {
-            position_Y = transform.position.y;
+            position_Y = rectTransform.anchoredPosition.y;
             position_Y -= Speed * Time.deltaTime;
             movePos.y = position_Y;
-            m_transform.position = movePos;
+            rectTransform.anchoredPosition = movePos;
             yield return null;
 
 
         }
 
-      //  movePos.y= height;
+        if (rectTransform.anchoredPosition.y <= -1200)
+        {
+            movePos.y = otherTrans.anchoredPosition.y + 1200;
+            rectTransform.anchoredPosition = movePos;
+
+        }
 
     }
 
+    public void ResetBackground()
+    {
+        m_transform.position = startPos;
 
+    }
 
 }

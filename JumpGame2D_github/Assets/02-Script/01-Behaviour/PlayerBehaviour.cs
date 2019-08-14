@@ -121,6 +121,7 @@ public class PlayerBehaviour : MonoBehaviour
             case "Obstacle":
                 Animator.SetTrigger("Dead");
                 GameManager.Instance.GameOver();
+                Debug.Log(other.name);
 
                 break;
             case "Scroll":
@@ -129,7 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
                 break;
             case"GetScore":
 
-                ParticleController.instance.PlayParticle();
+             //   ParticleController.instance.PlayParticle();
 
                 break;
             

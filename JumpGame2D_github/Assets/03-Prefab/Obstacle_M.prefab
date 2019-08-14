@@ -10,15 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2416905234930828899}
   - component: {fileID: 2416905234930828898}
-  - component: {fileID: 2266842361721473229}
   - component: {fileID: 690866055}
+  - component: {fileID: 8650127130198312350}
   m_Layer: 0
   m_Name: Obstacle_M
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2416905234930828899
 Transform:
   m_ObjectHideFlags: 0
@@ -75,13 +75,27 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.96875, y: 8.9375}
+  m_Size: {x: 1.62, y: 1.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &2266842361721473229
+--- !u!114 &690866055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416905234930828911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e8fe91d9a5fbd41832b2b5a567bd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentSprite: 2
+  Atlas: {fileID: 0}
+--- !u!68 &8650127130198312350
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,31 +111,16 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.035128873, y: 3.596537}
-  - {x: 0.89190984, y: 3.5044277}
-  - {x: 1.9657274, y: 3.0543356}
-  - {x: 2.9792309, y: 2.0898187}
-  - {x: 3.4417124, y: 1.1074417}
-  - {x: 3.613458, y: 0.022916233}
-  - {x: 4.28119, y: 0.024014361}
-  - {x: 4.0957675, y: 1.2639116}
-  - {x: 3.5161636, y: 2.4243395}
-  - {x: 3.2290318, y: 2.814238}
-  - {x: 2.3240144, y: 3.6089587}
-  - {x: 1.0231943, y: 4.1761203}
-  - {x: 0.005685582, y: 4.2808657}
-  - {x: -0.0036884756, y: 3.6297798}
---- !u!114 &690866055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2416905234930828911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e8fe91d9a5fbd41832b2b5a567bd99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentSprite: 2
-  Atlas: {fileID: 0}
+  - {x: 1.2860942, y: -0.052704334}
+  - {x: 1.5586059, y: -0.04701972}
+  - {x: 1.4674602, y: 0.4949596}
+  - {x: 1.15417, y: 0.984962}
+  - {x: 0.829438, y: 1.2875528}
+  - {x: 0.36790013, y: 1.4992367}
+  - {x: -0.06020546, y: 1.5289295}
+  - {x: -0.047970295, y: 1.3008881}
+  - {x: 0.31477737, y: 1.2507398}
+  - {x: 0.7276671, y: 1.06493}
+  - {x: 1.0642521, y: 0.7169261}
+  - {x: 1.2516456, y: 0.35385132}
+  - {x: 1.2851875, y: -0.056640387}

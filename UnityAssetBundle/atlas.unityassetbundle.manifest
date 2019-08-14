@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1505262421
+CRC: 2819953886
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9cfab534dda4248143e46bf22561acde
+    Hash: 7836d7264df95172c69ae87cab988928
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8f81471f4cfc7bf93c7fa752ebb4eb40
@@ -16,9 +16,17 @@ ClassTypes:
 - Class: 687078895
   Script: {instanceID: 0}
 Assets:
+- Assets/01-Model/Atlas/Obstacle_01.png
 - Assets/01-Model/Atlas/Obstacle_21.png
+- Assets/01-Model/Atlas/Obstacle_12.png
+- Assets/01-Model/Atlas/Obstacle_11.png
 - Assets/01-Model/Atlas/Obstacle_22.png
 - Assets/01-Model/Atlas/Obstacle_20.png
+- Assets/01-Model/Atlas/Obstacle_13.png
+- Assets/01-Model/Atlas/Obstacle_03.png
+- Assets/01-Model/Atlas/Obstacle_00.png
+- Assets/01-Model/Atlas/Obstacle_02.png
+- Assets/01-Model/Atlas/Obstacle_10.png
 - Assets/01-Model/ObjectAtlas.spriteatlas
 - Assets/01-Model/Atlas/Obstacle_23.png
 Dependencies: []
