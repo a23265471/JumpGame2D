@@ -1,5 +1,5 @@
 <linker>
    <assembly fullname="UnityEngine">
-      <type fullname="UnityEngine.Animations" preserve="all"/>
+      <type fullname="UnityEngine.AnimationClip" preserve="all"/>
    </assembly>
 </linker>
