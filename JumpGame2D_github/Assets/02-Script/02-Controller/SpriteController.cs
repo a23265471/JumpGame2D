@@ -23,20 +23,21 @@ public class SpriteController : MonoBehaviour
         // GetAsset();
 
 
+
     }
 
     public void GetSpriteRendererAsset(string assetName,string spriteName)
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
-        StartCoroutine(GetAsset(assetName, typeof(SpriteAtlas), spriteName));
+        GetAtlasSprite(spriteName);
+       // StartCoroutine(GetAsset(assetName, typeof(SpriteAtlas), spriteName));
     }
 
     public void GetRawImageAsset()
     {
         rawImage = gameObject.GetComponent<RawImage>();
         
-        StartCoroutine(GetRawImage());
+      //  StartCoroutine(GetRawImage());
             
         
     }

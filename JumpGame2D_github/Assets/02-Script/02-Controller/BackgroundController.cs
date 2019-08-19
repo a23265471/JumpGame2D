@@ -13,6 +13,8 @@ public class BackgroundController : MonoBehaviour
 
     Vector3 backgroundCurrentPos;
     float dis;
+    public int BackgroundStageColor; 
+
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class BackgroundController : MonoBehaviour
         backgroundStartPos = backgroundImageTransform[1].position;
         baclgroundNextPos = backgroundImageTransform[0].position;
         currentBackground = 1;
+        BackgroundStageColor = 0;
 
     }
 
@@ -89,7 +92,7 @@ public class BackgroundController : MonoBehaviour
 
         backgroundImageTransform[1].position = backgroundStartPos;
         currentBackground = 1;
-
+        BackgroundStageColor = 0;
     }
 
 

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-  //  public static BackgroundScroll Instance;
-    private Vector2 startPos;
-    private Transform m_transform;
+    //  public static BackgroundScroll Instance;
+    [SerializeField]
+    private float StartPos_Y;
     private RectTransform rectTransform;
-    private float position_Y;
+    public float position_Y;
     private Vector2 movePos;
     private float height;
 
@@ -16,8 +16,8 @@ public class BackgroundScroll : MonoBehaviour
     public float Speed;
     private float nextPosY;
 
-    [SerializeField]
-    private RectTransform otherTrans;
+ //   public int BackgroundStageColor;
+    
 
     private void Awake()
     {
@@ -27,21 +27,11 @@ public class BackgroundScroll : MonoBehaviour
     private void Init()
     {
      //   Instance = this;
-        m_transform = transform;
-        startPos = transform.position;
+      //  startPos.y = rectTransform.anchoredPosition.y;
         rectTransform = GetComponent<RectTransform>();
         movePos = Vector2.zero;
+     //   BackgroundStageColor = 0;
     }
-
-  /*  private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ScrollBackground();
-
-        }
-    }
-    */
 
     public void ScrollBackground()
     {
@@ -50,23 +40,45 @@ public class BackgroundScroll : MonoBehaviour
 
     IEnumerator Scroll()
     {
-       
         nextPosY = rectTransform.anchoredPosition.y - scrollDis;
-        while (rectTransform.anchoredPosition.y >= nextPosY)
+        
+        while (rectTransform.anchoredPosition.y > nextPosY)
         {
             position_Y = rectTransform.anchoredPosition.y;
             position_Y -= Speed * Time.deltaTime;
+            if (position_Y < nextPosY)
+            {
+                position_Y = nextPosY;
+            }
             movePos.y = position_Y;
             rectTransform.anchoredPosition = movePos;
             yield return null;
 
+           // Debug.Log(rectTransform.anchoredPosition);
 
         }
 
-        if (rectTransform.anchoredPosition.y <= -1200)
+
+
+      //  BackgroundStageColor += 1;
+        
+        if (rectTransform.anchoredPosition.y <= -rectTransform.sizeDelta.y)
         {
-            movePos.y = otherTrans.anchoredPosition.y + 1200;
+            movePos.y = 1200;
             rectTransform.anchoredPosition = movePos;
+            switch (GameManager.Instance.CurrentBackground)
+            {
+                case 0:
+                    GameManager.Instance.CurrentBackground = 1;
+                    break;
+                case 1:
+                    GameManager.Instance.CurrentBackground = 0;
+                    break;
+
+
+            }
+
+       //     BackgroundStageColor = 0;
 
         }
 
@@ -74,7 +86,14 @@ public class BackgroundScroll : MonoBehaviour
 
     public void ResetBackground()
     {
-        m_transform.position = startPos;
+        StopCoroutine(Scroll());
+        movePos.y = StartPos_Y;
+        rectTransform.anchoredPosition = movePos;
+        GameManager.Instance.CurrentBackground = 1;
+
+        //     Debug.Log(rectTransform.anchoredPosition);
+
+     //   BackgroundStageColor = 0;
 
     }
 

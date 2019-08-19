@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{73AF281D-E9A2-F292-A5E7-6DE802B95882}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,8 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\02-Script\01-Behaviour\00-Model\LevelSettingJsonData.cs" />
-    <Compile Include="Assets\02-Script\01-Behaviour\00-Model\PlayerJsonData.cs" />
+    <Compile Include="Assets\02-Script\00-Model\LevelSettingJsonData.cs" />
+    <Compile Include="Assets\02-Script\00-Model\PlayerJsonData.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\BackgroundScroll.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\ObstacleBehaviour.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\PlayerBehaviour.cs" />
@@ -74,7 +75,9 @@
     <Compile Include="Assets\02-Script\02-Controller\SpriteController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\StageDataController.cs" />
     <Compile Include="Assets\02-Script\GameManager.cs" />
-    <None Include="Assets\link.xml" />
+    <None Include="Assets\link.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/MoonMoonGames/00-TestGame/00-JumpGame2D/JumpGame2D_github/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

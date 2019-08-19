@@ -286,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830412735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24557793, y: 3.38, z: 0}
+  m_LocalPosition: {x: 0, y: 4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1002187675}
@@ -527,21 +527,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7933756897883468447, guid: 164400c17a6980b48b6fdf3292ffbc4e,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933756897883468447, guid: 164400c17a6980b48b6fdf3292ffbc4e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7933756897883468447, guid: 164400c17a6980b48b6fdf3292ffbc4e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 164400c17a6980b48b6fdf3292ffbc4e, type: 3}
 --- !u!114 &2516844728001316792
@@ -706,15 +691,15 @@ RectTransform:
   m_GameObject: {fileID: 4837459373622126944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0895951, y: 1.0125, z: 1}
+  m_LocalScale: {x: 1.01, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2516844728001316795}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3.45, y: 0}
+  m_SizeDelta: {x: 800, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4837459373622126950
 MonoBehaviour:
@@ -767,13 +752,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentGameState: 0
   PlayerStartPos: {x: 0, y: -4.4, z: 0}
-  OptionCanvas: {fileID: 0}
-  Player: {fileID: 0}
+  OptionCanvas: {fileID: 5429356620166382824, guid: b7242892c5ff3dc428d2edd82f0f2bca,
+    type: 3}
+  Player: {fileID: 6906196062866029070, guid: 164400c17a6980b48b6fdf3292ffbc4e, type: 3}
   Background: {fileID: 966484004732766009, guid: b5d123d889e2a8c4ba9a582067b2ba06,
     type: 3}
   BackGroundCanvas: {fileID: 2516844728001316794}
   Level: 0
   PlayTime: 63
+  CurrentBackground: 0
+  BackgroundColor: 0
   TimerText: {fileID: 0}
 --- !u!1 &5174929701325581129
 GameObject:
@@ -814,7 +802,7 @@ MonoBehaviour:
     - Name: 1 Circle
       CircleProportion: 2
     - Name: 2 Circle
-      CircleProportion: 3
+      CircleProportion: 4
     - Name: 3 Circle
       CircleProportion: 6
     Circle_S:
@@ -822,40 +810,45 @@ MonoBehaviour:
       MinSpeed: 50
       MaxSpeed: 80
       MaxSector: 3
-      AppearProportion: 3
+      AppearProportion: 2
     Circle_M:
       Size: 0
-      MinSpeed: 130
-      MaxSpeed: 150
+      MinSpeed: 140
+      MaxSpeed: 170
       MaxSector: 2
       AppearProportion: 5
     Circle_L:
       Size: 0
-      MinSpeed: 180
-      MaxSpeed: 200
+      MinSpeed: 200
+      MaxSpeed: 230
       MaxSector: 1
       AppearProportion: 7
   ObstaclePrefab:
   - Name: 0
     ID: 0
     Amount: 8
-    ObstaclePrefab: {fileID: 0}
+    ObstaclePrefab: {fileID: 8254326959584063291, guid: c9083c8d932d0e34f8305019311e64cf,
+      type: 3}
   - Name: 1
     ID: 0
     Amount: 8
-    ObstaclePrefab: {fileID: 0}
+    ObstaclePrefab: {fileID: 2416905234930828911, guid: 6b6e891e4d24eb7458126eddf94123c8,
+      type: 3}
   - Name: 2
     ID: 0
     Amount: 8
-    ObstaclePrefab: {fileID: 0}
+    ObstaclePrefab: {fileID: 3682049589614471953, guid: 440dda342989021458bd1ebdc3e57bf2,
+      type: 3}
   - Name: 3
     ID: 0
     Amount: 6
-    ObstaclePrefab: {fileID: 0}
+    ObstaclePrefab: {fileID: 7382385529687730585, guid: 75ca84ee3f6ca8341ad6abe293364220,
+      type: 3}
   - Name: 4
     ID: 0
     Amount: 4
-    ObstaclePrefab: {fileID: 0}
+    ObstaclePrefab: {fileID: 5094849771615291158, guid: 7271533739918f6468ed51b46950b281,
+      type: 3}
 --- !u!114 &5945426732947615443
 MonoBehaviour:
   m_ObjectHideFlags: 0

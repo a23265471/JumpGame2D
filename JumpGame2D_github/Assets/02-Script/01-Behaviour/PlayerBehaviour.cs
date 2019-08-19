@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     public static PlayerBehaviour Instance;
-    private PlayerJsonData playerData;
+    public PlayerJsonData playerData;
 
     #region Component
     private Rigidbody2D rigidbody2;
@@ -37,15 +37,25 @@ public class PlayerBehaviour : MonoBehaviour
         idleSprite = spriteRenderer.sprite;
         Application.targetFrameRate = 60;
         startPos = new Vector3(0, -4, 0);
-        StartCoroutine(LoadData());
+   //     playerData = null;
+        //StartCoroutine(LoadData());
 
     }
     #endregion
-    
+
+    public void loadData()
+    {
+        StartCoroutine(LoadData());
+   //     
+
+    }
+
     IEnumerator LoadData()
     {
-        yield return new WaitForEndOfFrame();
+        yield return null;
+        Debug.Log(StageDataController.Instance.PlayerJson.JumpForce);
         playerData = StageDataController.Instance.PlayerJson;
+
         jumpVector = new Vector2(0, playerData.JumpForce);//1500
     }
 
@@ -54,7 +64,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             Jump();
-
+          //  Debug.Log(playerData.JumpForce);
         }
 
     }
@@ -121,7 +131,7 @@ public class PlayerBehaviour : MonoBehaviour
             case "Obstacle":
                 Animator.SetTrigger("Dead");
                 GameManager.Instance.GameOver();
-                Debug.Log(other.name);
+             //   Debug.Log(other.name);
 
                 break;
             case "Scroll":

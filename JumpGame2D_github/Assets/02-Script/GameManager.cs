@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private GameObject GameOverPanel;
     private GameObject StartGamePanel;
 
-    private GameObject currentCanvas;
+   // private GameObject currentCanvas;
     #endregion
     [SerializeField]
     GameObject Player;
@@ -50,7 +50,9 @@ public class GameManager : MonoBehaviour
     Action doAfterInputKey;
     Action doAfterInputKeyNextPer;
     Action doAfterSecondFun;
-    BackgroundScroll[] backgroundScrolls; 
+    private BackgroundScroll[] backgroundScrolls;
+    public int CurrentBackground;
+    public int BackgroundColor;
 
     bool TimerCanCount;
     
@@ -75,23 +77,19 @@ public class GameManager : MonoBehaviour
     public void Init()
     {
         Instance = this;
+
         WaitForFixedUpdate = new WaitForFixedUpdate();
         waitUntilLoaded = new WaitUntil(() => DownLoadAssetBundle.Instance.www1.isDone);
         timingSecond = new WaitForSeconds(1);
         waitForSecond = new WaitForSeconds(1);
         backgroundScrolls = new BackgroundScroll[2];
+        CurrentBackground = 1;
         time = PlayTime;
 
+
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ResestAssetBundle();
-        }
-    }
-
+    #region 初始化與載入資源
     IEnumerator InstallImage()
     {
         ResestAssetBundle();
@@ -117,11 +115,12 @@ public class GameManager : MonoBehaviour
 
     private void GetPrefab()
     {
+
         //Debug.Log("s");
 
-        Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
-        Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "background", typeof(GameObject));
-        OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "UICanvas", typeof(GameObject));
+        //   Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
+        //  Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "background", typeof(GameObject));
+        // OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "UICanvas", typeof(GameObject));
         ObstacleController.Instance.GetPrefab();
     }
 
@@ -129,20 +128,22 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(Player);
         Background = Instantiate(Background, BackGroundCanvas.transform.GetChild(0).transform);
-        currentCanvas = Instantiate(OptionCanvas);
+        OptionCanvas = Instantiate(OptionCanvas);
 
-        StartCoroutine(SetScene());
+        StartCoroutine(SetGameObject());
 
     }
 
-    IEnumerator SetScene()
+    IEnumerator SetGameObject()
     {
         yield return null;
-        GameOverPanel = currentCanvas.transform.GetChild(0).gameObject;
-        StartGamePanel = currentCanvas.transform.GetChild(1).gameObject;
-        TimerText = currentCanvas.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        GameOverPanel = OptionCanvas.transform.GetChild(0).gameObject;
+        StartGamePanel = OptionCanvas.transform.GetChild(1).gameObject;
+        TimerText = OptionCanvas.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         backgroundScrolls[0] = Background.transform.GetChild(0).gameObject.GetComponent<BackgroundScroll>();
         backgroundScrolls[1] = Background.transform.GetChild(1).gameObject.GetComponent<BackgroundScroll>();
+        StageDataController.Instance.GetData();
+
 
         ResetScene();
 
@@ -150,67 +151,65 @@ public class GameManager : MonoBehaviour
 
     public void ResetScene()
     {
-      //  Debug.Log("2.get player script");
+        //  Debug.Log("2.get player script");
         PlayerBehaviour.Instance.ResetPlayer();
         PlayerBehaviour.Instance.SwitchControlPlayer(false);
         PlayerBehaviour.Instance.Animator.enabled = false;
 
-       // Time.timeScale = 0;
+        // Time.timeScale = 0;
         CurrentGameState = GameState.Start;
         ObstacleController.Instance.LoadNextObstacle();
         ObstacleController.Instance.StartGame();
-       // StartCoroutine(ReadyGameCroutine());
+        // StartCoroutine(ReadyGameCroutine());
         ReadyGame();
     }
-    
+
     private void ReadyGame()
-    {    
+    {
         doAfterInputKey = StartGame;
         doAfterInputKeyNextPer = PlayGameBuffer;
 
         StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
-        
-    }
-
-    private void RestartGame()
-    {
-      //  Debug.Log("6");
-
-        ObstacleController.Instance.ClearAllObstacle();
-
-        ObstacleController.Instance.LoadNextObstacle();
-
-        ObstacleController.Instance.StartGame();
-     //   BackgroundScroll.Instance.ResetBackground();
-        backgroundScrolls[0].ResetBackground();
-        backgroundScrolls[1].ResetBackground();
-
-        doAfterInputKey = ResetGame;
-        doAfterInputKeyNextPer = PlayGameBuffer;
-
-        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
-    }
-
-    IEnumerator WaitUntilGetKey(KeyCode keyCode, Action doAfterGetKeyDown,Action doAfterInputKeyNextPer)
-    {
-        while (!Input.GetKeyDown(keyCode))
-        {
-            yield return null;
-
-        }
-        doAfterGetKeyDown();
-
-        yield return null;
-        doAfterInputKeyNextPer?.Invoke();
 
     }
-    
+
     private void StartGame()
     {
         ObstacleController.Instance.StartObstacleBehiour();
         StartGamePanel.SetActive(false);
     }
 
+    #endregion
+    
+    private void ResetGame()
+    {
+        //  Debug.Log("6");
+        BackgroundColor = 0;
+
+        ObstacleController.Instance.ClearAllObstacle();
+        ObstacleController.Instance.StartGame();
+
+        ObstacleController.Instance.LoadNextObstacle();
+
+
+        backgroundScrolls[0].ResetBackground();
+        backgroundScrolls[1].ResetBackground();
+
+        doAfterInputKey = RestartGame;
+        doAfterInputKeyNextPer = PlayGameBuffer;
+
+        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
+    }
+
+    public void RestartGame()
+    {
+        PlayerBehaviour.Instance.ResetPlayer();
+        ObstacleController.Instance.StartObstacleBehiour();
+
+        GameOverPanel.SetActive(false);
+    }
+
+  
     public void PlayGameBuffer()
     {
         doAfterInputKey = PlayGame;
@@ -226,14 +225,7 @@ public class GameManager : MonoBehaviour
         PlayerBehaviour.Instance.SwitchControlPlayer(true);
     }
 
-    public void ResetGame()
-    {
-        PlayerBehaviour.Instance.ResetPlayer();
-        ObstacleController.Instance.StartObstacleBehiour();
-
-        GameOverPanel.SetActive(false);
-    }
-
+    
     public void GameOver()
     {
         if (CurrentGameState != GameState.GameOver)
@@ -249,9 +241,73 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(DoAfterSecond(doAfterSecondFun));
 
+        }
+      
+    }
+
+    public void OpenGameOverPanel()
+    {
+        GameOverPanel.SetActive(true);
+        doAfterSecondFun = ResetGame;
+        //   Debug.Log("5");
+        StartCoroutine(DoAfterSecond(doAfterSecondFun));
+
+    }
+
+    public void NextObstacle()
+    {
+        PlayerBehaviour.Instance.ScrollPlayer(-7.7f, 1.2f);
+
+        switch (backgroundScrolls[CurrentBackground].position_Y)
+        {
+            case -3600:
+                backgroundScrolls[0].ScrollBackground();
+                backgroundScrolls[1].ScrollBackground();
+                BackgroundColor = -1;
+                break;
+
+            default:
+                backgroundScrolls[CurrentBackground].ScrollBackground();
+               
+                break;
+        }
+
+        switch (BackgroundColor)
+        {
+            case 2:
+                BackgroundColor = -1;
+
+                break;
+
+            default:
+                BackgroundColor += 1;
+
+                break;
 
         }
-       
+
+
+        ObstacleController.Instance.UnLoadCurrentObstacle();
+        //  Debug.Log("1.");
+        ObstacleController.Instance.UpdateCurrentObstacle();
+        //   Debug.Log("2.");
+        ObstacleController.Instance.ScrollObject(0, -7, 1.2f);
+        ObstacleController.Instance.LoadNextObstacle();
+        //  Debug.Log("3.");
+
+    }
+
+    IEnumerator WaitUntilGetKey(KeyCode keyCode, Action doAfterGetKeyDown, Action doAfterInputKeyNextPer)
+    {
+        while (!Input.GetKeyDown(keyCode))
+        {
+            yield return null;
+
+        }
+        doAfterGetKeyDown();
+
+        yield return null;
+        doAfterInputKeyNextPer?.Invoke();
 
     }
 
@@ -263,16 +319,9 @@ public class GameManager : MonoBehaviour
         doAfterSecond();
     }
 
-    public void OpenGameOverPanel()
-    {
-        GameOverPanel.SetActive(true);
-        doAfterSecondFun = RestartGame;
-     //   Debug.Log("5");
+   
 
-        StartCoroutine(DoAfterSecond(doAfterSecondFun));
-
-
-    }
+    #region 計時
     public void ReStartTimer()
     {
         //   time = PlayTime;
@@ -290,27 +339,6 @@ public class GameManager : MonoBehaviour
         StopCoroutine(Timer());
 
     }
-
-    public void NextObstacle()
-    {
-        PlayerBehaviour.Instance.ScrollPlayer(-7.7f, 1.2f);
-     //   BackgroundScroll.Instance.ScrollBackground();
-        backgroundScrolls[0].ScrollBackground();
-        backgroundScrolls[1].ScrollBackground();
-
-        ObstacleController.Instance.UnLoadCurrentObstacle();
-      //  Debug.Log("1.");
-
-        ObstacleController.Instance.UpdateCurrentObstacle();
-     //   Debug.Log("2.");
-
-        ObstacleController.Instance.ScrollObject(0, -8, 1.2f);
-        ObstacleController.Instance.LoadNextObstacle();
-      //  Debug.Log("3.");
-
-    }
-
-
 
     IEnumerator Timer()
     {
@@ -334,5 +362,5 @@ public class GameManager : MonoBehaviour
         DownLoadAssetBundle.Instance.UnloadAllAssetBundle();
 
     }
-
+    #endregion
 }

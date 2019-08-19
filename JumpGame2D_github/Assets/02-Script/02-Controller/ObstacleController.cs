@@ -16,6 +16,8 @@ public class ObstacleController : MonoBehaviour
     }
 
     //private CreateObstacle createObstacle;
+    private PlayerJsonData stageData;
+
     private GameObject[] currentObstacle;
     private GameObject[] nextObstacle;
 
@@ -51,9 +53,9 @@ public class ObstacleController : MonoBehaviour
         public string Name;
         [Range(0, 10)]
         public int CircleProportion;
-
-
+        
     }
+
     [System.Serializable]
     public struct PartOfObstacle
     {
@@ -105,6 +107,7 @@ public class ObstacleController : MonoBehaviour
     GameObject oneObstacle;
 
     Vector3 currentObstaclePos;
+    Vector3 obstacleStartPos;
 
     int circleSizeProportionSun = 0;
     int randomRange;
@@ -114,9 +117,12 @@ public class ObstacleController : MonoBehaviour
     int sizeAppearRangeSum = 0;
     int currentAppearRange = 0;
 
+
     int[] rotationAngle;
     int angle;
     float dis = 0;
+
+    int currentBackgroundColor;
 
     ObstacleBehaviour[] obstacleBehaviours;    
 
@@ -141,7 +147,7 @@ public class ObstacleController : MonoBehaviour
         circleSizeProportionSun = 0;
         currentProportionRange = 0;
         angle = 0;
-       
+        obstacleStartPos = new Vector3(0, 1, 0);
     }
 
     private void InitObstacleSetting()
@@ -149,15 +155,15 @@ public class ObstacleController : MonoBehaviour
         levelSetting.Circle_S.Size = ObstacleSize.Small;
         levelSetting.Circle_M.Size = ObstacleSize.Medium;
         levelSetting.Circle_L.Size = ObstacleSize.Large;
-
     }
     
     public void GetPrefab()
     {
-        for (int i = 0; i < ObstaclePrefab.Length; i++) 
+      /*  for (int i = 0; i < ObstaclePrefab.Length; i++) 
         {
             ObstaclePrefab[i].ObstaclePrefab = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, ObstaclePrefab[i].Name.ToString(), typeof(GameObject));
-        }
+        }*/
+
 
         CreatObjectPool();
         StartCoroutine(ObstacleParentGetObstacleBehaviour());
@@ -173,6 +179,45 @@ public class ObstacleController : MonoBehaviour
 
         }
     }
+
+    public void GetStageData()
+    {
+        stageData = StageDataController.Instance.PlayerJson;
+
+    }
+
+    IEnumerator getStageData()
+    {
+        yield return null;
+
+    }
+
+    public void GetLevelData()
+    {       
+        levelSetting.circleAmountProportion[0].CircleProportion = stageData.Small_AppearProportion;
+        levelSetting.circleAmountProportion[1].CircleProportion = stageData.Medium_AppearProportion;
+        levelSetting.circleAmountProportion[2].CircleProportion = stageData.Big_AppearProportion;
+
+        levelSetting.Circle_S.MinSpeed = stageData.Small_MinSpeed;
+        levelSetting.Circle_S.MaxSpeed = stageData.Small_MaxSpeed;
+        levelSetting.Circle_S.MaxSector = stageData.Small_MaxSector;
+        levelSetting.Circle_S.AppearProportion = stageData.Small_AppearProportion;
+
+        levelSetting.Circle_M.MinSpeed = stageData.Medium_MinSpeed;
+        levelSetting.Circle_M.MaxSpeed = stageData.Medium_MaxSpeed;
+        levelSetting.Circle_M.MaxSector = stageData.Medium_MaxSector;
+        levelSetting.Circle_M.AppearProportion = stageData.Medium_AppearProportion;
+
+        levelSetting.Circle_L.MinSpeed = stageData.Big_MinSpeed;
+        levelSetting.Circle_L.MaxSpeed = stageData.Big_MaxSpeed;
+        levelSetting.Circle_L.MaxSector = stageData.Big_MaxSector;
+        levelSetting.Circle_L.AppearProportion = stageData.Big_AppearProportion;
+
+
+
+    }
+
+
 
     public void StopObstacleBehaviour()
     {
@@ -213,8 +258,8 @@ public class ObstacleController : MonoBehaviour
 
     public void StartGame()
     {
-
-        ResetObstacle(ref currentObstacle,Vector3.zero,ref currentObstacleParent);
+        currentBackgroundColor = GameManager.Instance.BackgroundColor;
+        SetObstacle(ref currentObstacle, obstacleStartPos, currentBackgroundColor, ref currentObstacleParent);
 
     }
 
@@ -226,7 +271,10 @@ public class ObstacleController : MonoBehaviour
         }
         else
         {
-            ResetObstacle(ref nextObstacle, nextObstaclePosition, ref nextObstacleParent);
+            currentBackgroundColor = GameManager.Instance.BackgroundColor;
+            //Debug.Log(currentBackgroundColor);
+
+            SetObstacle(ref nextObstacle, nextObstaclePosition, currentBackgroundColor + 1, ref nextObstacleParent);
         }
 
     }
@@ -277,9 +325,9 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-    private void ResetObstacle(ref GameObject[] Obstacle,Vector3 resetPosition,ref GameObject gameObjectParent)
+    private void SetObstacle(ref GameObject[] Obstacle,Vector3 resetPosition,int backgroundColor,ref GameObject gameObjectParent)
     {
-        CreatObstacle(ref Obstacle);
+        CreatObstacle(ref Obstacle, backgroundColor);
 
         obstacleAll = GetObject(ObstaclePrefab[4].ID);
         
@@ -305,7 +353,7 @@ public class ObstacleController : MonoBehaviour
 
     }
 
-    private void CreatObstacle(ref GameObject[] Obstacle)
+    private void CreatObstacle(ref GameObject[] Obstacle,int backgroundColor)
     {
         circleSizeProportionSun = 0;
         
@@ -358,7 +406,7 @@ public class ObstacleController : MonoBehaviour
                 for (int q = 0; q < (currentCircle + 1); q++) 
                 {
                    
-                    Obstacle[q] = CreateCircle(ref appeared);//存入當前的障礙物
+                    Obstacle[q] = CreateCircle(ref appeared, backgroundColor);//存入當前的障礙物
                //     Debug.Log(Obstacle[q].name);
                 }
 
@@ -370,7 +418,7 @@ public class ObstacleController : MonoBehaviour
 
     }
     
-    private GameObject CreateCircle(ref PartOfObstacle[] appearedCircleList/*,ref int currentRandomLength*/)
+    private GameObject CreateCircle(ref PartOfObstacle[] appearedCircleList,int backgroundColor)
     {
         sizeAppearRangeSum = 0;
         currentAppearRange = 0;
@@ -396,7 +444,7 @@ public class ObstacleController : MonoBehaviour
 
                 if (sizeAppearRange > currentAppearRange && sizeAppearRange <= (currentAppearRange + appearedCircleList[j].AppearProportion))
                 {
-                    currentCircle = CreateOneObstacle((int)appearedCircleList[j].Size, appearedCircleList[j].MaxSector, appearedCircleList[j].MinSpeed, appearedCircleList[j].MaxSpeed);
+                    currentCircle = CreateOneObstacle(backgroundColor, (int)appearedCircleList[j].Size, appearedCircleList[j].MaxSector, appearedCircleList[j].MinSpeed, appearedCircleList[j].MaxSpeed);
                     appearedCircleList[j].Size = ObstacleSize.Null;
 
                     //break;
@@ -438,7 +486,7 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-    public GameObject CreateOneObstacle(int size, int sectorAmount, float minSpeed, float maxSpeed)
+    public GameObject CreateOneObstacle(int color,int size, int sectorAmount, float minSpeed, float maxSpeed)
     {
         obstacleParent = GetObject(ObstaclePrefab[3].ID);
 
@@ -459,7 +507,7 @@ public class ObstacleController : MonoBehaviour
 
 
 
-            oneObstacle.GetComponent<SpriteController>().GetSpriteRendererAsset("ObjectAtlas", "Obstacle_" + size + angle);
+            oneObstacle.GetComponent<SpriteController>().GetSpriteRendererAsset("ObjectAtlas", "Obstacle_" + color + size + angle);
             
             rotationAngle[angle] = -1;
 
