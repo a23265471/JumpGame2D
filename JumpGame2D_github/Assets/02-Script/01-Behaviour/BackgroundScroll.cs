@@ -30,6 +30,7 @@ public class BackgroundScroll : MonoBehaviour
       //  startPos.y = rectTransform.anchoredPosition.y;
         rectTransform = GetComponent<RectTransform>();
         movePos = Vector2.zero;
+        scrollDis = rectTransform.sizeDelta.y/4;
      //   BackgroundStageColor = 0;
     }
 
@@ -60,11 +61,11 @@ public class BackgroundScroll : MonoBehaviour
 
 
 
-      //  BackgroundStageColor += 1;
-        
+        //  BackgroundStageColor += 1;
+
         if (rectTransform.anchoredPosition.y <= -rectTransform.sizeDelta.y)
         {
-            movePos.y = 1200;
+            movePos.y = rectTransform.sizeDelta.y / 4;
             rectTransform.anchoredPosition = movePos;
             switch (GameManager.Instance.CurrentBackground)
             {

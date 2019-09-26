@@ -24,10 +24,7 @@ public class GameManager : MonoBehaviour
     #region Panel
     [SerializeField]
     private GameObject OptionCanvas;
-    private GameObject GameOverPanel;
-    private GameObject StartGamePanel;
 
-   // private GameObject currentCanvas;
     #endregion
     [SerializeField]
     GameObject Player;
@@ -40,10 +37,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int Level;
 
+    public GameObject audioController;
+
     public int PlayTime;
 
     WaitUntil waitUntilInputKey;
-    WaitUntil waitUntilLoaded;
     WaitForFixedUpdate WaitForFixedUpdate;
     WaitForSeconds timingSecond;
     WaitForSeconds waitForSecond;
@@ -54,24 +52,26 @@ public class GameManager : MonoBehaviour
     public int CurrentBackground;
     public int BackgroundColor;
 
-    bool TimerCanCount;
+    int timer_Minute;
+    int timer_Second;
     
-    [SerializeField]
-    private Text TimerText;
-    int time;
+    public int time;
     int waitSec;
+    public int currentStory;
+
+    IEnumerator timerCoroutine;
 
     private void Awake()
     {
         Init();
+        Application.ExternalCall("LoadData");
         StartCoroutine(DownloadAssetBundle());
     }
-
+    
     private IEnumerator DownloadAssetBundle()
     {
         yield return null;
         StartCoroutine(InstallImage());
-       
     }
 
     public void Init()
@@ -79,35 +79,33 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         WaitForFixedUpdate = new WaitForFixedUpdate();
-        waitUntilLoaded = new WaitUntil(() => DownLoadAssetBundle.Instance.www1.isDone);
         timingSecond = new WaitForSeconds(1);
-        waitForSecond = new WaitForSeconds(1);
+        waitForSecond = new WaitForSeconds(2);
         backgroundScrolls = new BackgroundScroll[2];
         CurrentBackground = 1;
-        time = PlayTime;
-
-
+        timerCoroutine = Timer();
     }
 
     #region 初始化與載入資源
     IEnumerator InstallImage()
     {
-        ResestAssetBundle();
+       
 
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Images, "atlas");
-        //Debug.Log("a");
 
-        yield return waitUntilLoaded;
+        while (!DownLoadAssetBundle.Instance.request.isDone)
+        {
+            yield return null;
+        }
+        yield return null;
+
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Prefab, "gameobjectbundle");
-        //Debug.Log("b");
+        while (!DownLoadAssetBundle.Instance.request.isDone)
+        {
+            yield return null;
+        }
+        yield return null;
 
-        yield return waitUntilLoaded;
-        DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.UIPrefab, "uibundle");
-
-        yield return waitUntilLoaded;
-        //Debug.Log("c");
-
-        //Debug.Log("AssetBundle is DownLoade prefab");
         GetPrefab();
         InstantiateObject();
 
@@ -115,21 +113,18 @@ public class GameManager : MonoBehaviour
 
     private void GetPrefab()
     {
+        Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
+        Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "background2", typeof(GameObject));
+        OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "UICanvas", typeof(GameObject));
 
-        //Debug.Log("s");
-
-        //   Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
-        //  Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "background", typeof(GameObject));
-        // OptionCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.UIPrefab, "UICanvas", typeof(GameObject));
         ObstacleController.Instance.GetPrefab();
     }
 
     public void InstantiateObject()
     {
         Instantiate(Player);
-        Background = Instantiate(Background, BackGroundCanvas.transform.GetChild(0).transform);
+        Background = Instantiate(Background, BackGroundCanvas.transform);
         OptionCanvas = Instantiate(OptionCanvas);
-
         StartCoroutine(SetGameObject());
 
     }
@@ -137,83 +132,88 @@ public class GameManager : MonoBehaviour
     IEnumerator SetGameObject()
     {
         yield return null;
-        GameOverPanel = OptionCanvas.transform.GetChild(0).gameObject;
-        StartGamePanel = OptionCanvas.transform.GetChild(1).gameObject;
-        TimerText = OptionCanvas.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         backgroundScrolls[0] = Background.transform.GetChild(0).gameObject.GetComponent<BackgroundScroll>();
         backgroundScrolls[1] = Background.transform.GetChild(1).gameObject.GetComponent<BackgroundScroll>();
-        StageDataController.Instance.GetData();
 
-
-        ResetScene();
-
+        StageDataController.Instance.SetData();
+        SetScene();
+        
     }
 
-    public void ResetScene()
+    public void SetScene()
     {
-        //  Debug.Log("2.get player script");
-        PlayerBehaviour.Instance.ResetPlayer();
-        PlayerBehaviour.Instance.SwitchControlPlayer(false);
-        PlayerBehaviour.Instance.Animator.enabled = false;
+        time = PlayTime;
 
-        // Time.timeScale = 0;
+        PlayerBehaviour.Instance.ResetPlayer();    
+        PlayerBehaviour.Instance.enabled = false;
+
         CurrentGameState = GameState.Start;
-        ObstacleController.Instance.LoadNextObstacle();
+        ObstacleController.Instance.LoadLevelData(1);
         ObstacleController.Instance.StartGame();
-        // StartCoroutine(ReadyGameCroutine());
-        ReadyGame();
+        ObstacleController.Instance.LoadLevelData(2);
+        ObstacleController.Instance.LoadNextObstacle();
+        ObstacleController.Instance.LoadLevelData(3);
+
+        UIPanelController.instance.ResetText();
+        
+        ResetTimer();
+
+
+
+        Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
+
+        OpenFreePanel();
+    
+        // SetFreeTimePanel(1, 2);
+
+        /*  OpenPayPointPanel();
+          SetConsumePanel(1223, 5555);*/
+        //StartPanel();
     }
 
-    private void ReadyGame()
-    {
-        doAfterInputKey = StartGame;
-        doAfterInputKeyNextPer = PlayGameBuffer;
-
-        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
-
-    }
-
-    private void StartGame()
+    private void StartObstacle()
     {
         ObstacleController.Instance.StartObstacleBehiour();
-        StartGamePanel.SetActive(false);
+        PlayerBehaviour.Instance.enabled = true;
+
     }
 
     #endregion
-    
-    private void ResetGame()
+
+    public void GetPlayerInfo_PlayerID(string PlayerID)
     {
-        //  Debug.Log("6");
+        UIPanelController.instance.SetPlayerInfo_PlayerID(PlayerID);
+    }
+
+    public void GetPlayerInfo_GameID(string GameID)
+    {
+        UIPanelController.instance.SetPlayerInfo_GameID(GameID);
+    }
+
+    public void ResetGame()
+    {
         BackgroundColor = 0;
 
         ObstacleController.Instance.ClearAllObstacle();
+
+        ObstacleController.Instance.LoadLevelData(1);
         ObstacleController.Instance.StartGame();
 
+        ObstacleController.Instance.LoadLevelData(2);
         ObstacleController.Instance.LoadNextObstacle();
+        ObstacleController.Instance.LoadLevelData(3);
 
+        PlayerBehaviour.Instance.ResetPlayer();
+        PlayerBehaviour.Instance.enabled = false;
+
+        StageDataController.Instance.ResetTotalScore();
+        UIPanelController.instance.ChangePlayTextColor(0);
+        UIPanelController.instance.ResetText();
+
+        ResetTimer();
 
         backgroundScrolls[0].ResetBackground();
         backgroundScrolls[1].ResetBackground();
-
-        doAfterInputKey = RestartGame;
-        doAfterInputKeyNextPer = PlayGameBuffer;
-
-        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
-    }
-
-    public void RestartGame()
-    {
-        PlayerBehaviour.Instance.ResetPlayer();
-        ObstacleController.Instance.StartObstacleBehiour();
-
-        GameOverPanel.SetActive(false);
-    }
-
-  
-    public void PlayGameBuffer()
-    {
-        doAfterInputKey = PlayGame;
-        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, null));
 
     }
 
@@ -221,6 +221,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentGameState = GameState.Play;
         ReStartTimer();
+
         PlayerBehaviour.Instance.Animator.enabled = true;
         PlayerBehaviour.Instance.SwitchControlPlayer(true);
     }
@@ -231,26 +232,25 @@ public class GameManager : MonoBehaviour
         if (CurrentGameState != GameState.GameOver)
         {
             CurrentGameState = GameState.GameOver;
+
             StopTime();
+
             PlayerBehaviour.Instance.SwitchControlPlayer(false);
+            PlayerBehaviour.Instance.enabled = false;
 
             ObstacleController.Instance.StopObstacleBehaviour();
-           // Debug.Log("4");
 
-            doAfterSecondFun = OpenGameOverPanel;
+            doAfterSecondFun = SendScoreToServer;
 
             StartCoroutine(DoAfterSecond(doAfterSecondFun));
 
         }
-      
+
     }
 
-    public void OpenGameOverPanel()
+    public void SendScoreToServer()
     {
-        GameOverPanel.SetActive(true);
-        doAfterSecondFun = ResetGame;
-        //   Debug.Log("5");
-        StartCoroutine(DoAfterSecond(doAfterSecondFun));
+        Application.ExternalCall("GetFinalScore", StageDataController.Instance.TotalScore);
 
     }
 
@@ -260,37 +260,40 @@ public class GameManager : MonoBehaviour
 
         switch (backgroundScrolls[CurrentBackground].position_Y)
         {
-            case -3600:
+            case -1290:
                 backgroundScrolls[0].ScrollBackground();
                 backgroundScrolls[1].ScrollBackground();
+
                 BackgroundColor = -1;
                 break;
 
             default:
                 backgroundScrolls[CurrentBackground].ScrollBackground();
-               
+
                 break;
         }
 
         switch (BackgroundColor)
         {
             case 2:
+                UIPanelController.instance.ChangePlayTextColor(3);
+
                 BackgroundColor = -1;
 
                 break;
 
             default:
+
                 BackgroundColor += 1;
+                UIPanelController.instance.ChangePlayTextColor(BackgroundColor);
 
                 break;
-
         }
-
 
         ObstacleController.Instance.UnLoadCurrentObstacle();
         //  Debug.Log("1.");
         ObstacleController.Instance.UpdateCurrentObstacle();
-        //   Debug.Log("2.");
+        //  Debug.Log("2.");
         ObstacleController.Instance.ScrollObject(0, -7, 1.2f);
         ObstacleController.Instance.LoadNextObstacle();
         //  Debug.Log("3.");
@@ -311,6 +314,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void DoAfterInput(Action doAfterInputKey, Action doAfterInputKeyNextPer)
+    {
+        StartCoroutine(WaitUntilGetKey(KeyCode.Mouse0, doAfterInputKey, doAfterInputKeyNextPer));
+    }
+
     IEnumerator DoAfterSecond(Action doAfterSecond)
     {
 
@@ -319,42 +327,173 @@ public class GameManager : MonoBehaviour
         doAfterSecond();
     }
 
-   
+    #region UI們
+
+    #region 扣點欄
+    public void OpenConsumPointPanel()//被javaScript呼叫,打開消耗點數的頁面
+    {
+        UIPanelController.instance.OpenPayPointPanel();
+    }
+
+    public void SetConsumePoint(int consumeOncePoint)//被javaScript呼叫,設置需消耗的點數
+    {
+        UIPanelController.instance.SetConsumePoint(consumeOncePoint);
+    }
+
+    public void SetPlayerPoint(int playerPoint)//被javaScript呼叫,設置玩家的點數
+    {
+        UIPanelController.instance.SetCustomerPoint(playerPoint);
+    }
+    #endregion
+
+    #region 免費欄
+    public void OpenFreePanel()//被javaScript呼叫,打開免費遊玩的畫面
+    {
+        UIPanelController.instance.OpenFreeTimesPanel();
+    }
+
+
+    public void SetPresetFreeCount(int presetFreeCount)//被javaScript呼叫,設置預設的免費遊園次數
+    {
+        UIPanelController.instance.SetPresetFreeCount(presetFreeCount);
+    }
+
+    public void SetPlayerFreeTimes(int playerFreeCount)//被javaScript呼叫,設置玩家的免費遊玩次數
+    {
+        UIPanelController.instance.SetPlayerFreeCount(playerFreeCount);
+
+    }
+    #endregion
+
+    public void OpenResultPanel()
+    {
+        UIPanelController.instance.UIOpenResultPanel();
+    }
+
+    public void StartStroy()
+    {       
+        currentStory = -1;
+        NextStory();
+    }
+    
+    public void NextStory()
+    {
+        currentStory += 1;
+        UIPanelController.instance.Story(currentStory);
+        if (currentStory > 6)
+        {
+            StartObstacle();
+            DoAfterInput(PlayGame, null);
+            Application.ExternalCall("AudioStopFadeOut");
+            Application.ExternalCall("AudioPlay", "BGM_Play", 1,true);
+
+            UIPanelController.instance.OpenPlayUI();
+        }
+       
+
+    }
+
+    public void GoToNoviceTeaching()
+    {
+        currentStory = 5;
+        NextStory();
+    }
+
+    public void OpenWinPanel()//被javaScript呼叫
+    {
+        UIPanelController.instance.ClosePlayUI();
+        Application.ExternalCall("AudioPlay", "BGM_Story", 0.3f, true);
+        Application.ExternalCall("AudioPlay","Win", 1f, false);
+        //AudioController.Instance.PlayAudio(2, 7, false);
+
+
+        UIPanelController.instance.GameOverPanel(0);
+        OpenResultPanel();
+
+    }
+
+    public void OpenLosePanel()//被javaScript呼叫
+    {
+        UIPanelController.instance.ClosePlayUI();
+        Application.ExternalCall("AudioPlay", "BGM_Story", 0.3f, true);
+        Application.ExternalCall("AudioPlay", "Lose", 0.8f, false);
+       // AudioController.Instance.PlayAudio(2, 8, false);
+
+
+        UIPanelController.instance.GameOverPanel(1);
+        OpenResultPanel();
+
+    }
+
+    public void OpenAgainButton()//被javaScript呼叫
+    {
+        UIPanelController.instance.OpenRestartButton();
+    }
+
+    public void OpenReceiveButton()//被javaScript呼叫
+    {
+        UIPanelController.instance.OpenReceivebutton();
+    }
+
+
+    #endregion
+
 
     #region 計時
+
+    public void ResetTimer()
+    {
+        time = PlayTime;
+        ShowTime();
+
+    }
+
     public void ReStartTimer()
     {
-        //   time = PlayTime;
-        StopCoroutine(Timer());
-        TimerCanCount = true;
-        StartCoroutine(Timer());
+        StopCoroutine(timerCoroutine);
+
+        time = PlayTime;
+        ShowTime();
+
+        timerCoroutine = Timer();
+        StartCoroutine(timerCoroutine);
 
     }
 
     public void StopTime()
     {
-        TimerCanCount = false;
-        time = PlayTime;
-        TimerText.text = "Timer : " + Mathf.Floor(time * 0.017f) + " : " + (time % 60).ToString("0#");
-        StopCoroutine(Timer());
-
+        StopCoroutine(timerCoroutine);
+        
     }
 
     IEnumerator Timer()
     {
-        while (time > 0 && TimerCanCount)
+        while (time > 0)
         {
             time -= 1;
-            TimerText.text = "Timer : " + time/60 + " : " + (time - ((time / 60 )*60)).ToString("0#");
+            ShowTime();
+
             waitSec = 1;
 
             yield return timingSecond;
            
-
             yield return null;
         }
-     //   Debug.Log(time);
+        //   Debug.Log(time);
+
+        Application.ExternalCall("AudioPlay", "TimesUP", 1, false);
+       //  AudioController.Instance.PlayAudio(1, 6, false);
+
+        UIPanelController.instance.OpengTimesUP();
+
         GameOver();
+    }
+
+    public void ShowTime()
+    {
+        timer_Minute = time / 60;
+        timer_Second = time - ((time / 60) * 60);
+        UIPanelController.instance.Timer(timer_Minute, timer_Second);
     }
 
     public void ResestAssetBundle()
@@ -362,5 +501,9 @@ public class GameManager : MonoBehaviour
         DownLoadAssetBundle.Instance.UnloadAllAssetBundle();
 
     }
+
+
     #endregion
+
+  
 }

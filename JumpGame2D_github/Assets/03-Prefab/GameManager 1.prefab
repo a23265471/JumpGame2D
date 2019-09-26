@@ -1,0 +1,186 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3362815858578844821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7358587206941134750}
+  - component: {fileID: 3295823177977056495}
+  - component: {fileID: 4269448205375099361}
+  - component: {fileID: 6616916302569433865}
+  - component: {fileID: 4321329242252077327}
+  m_Layer: 0
+  m_Name: GameManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7358587206941134750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362815858578844821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.46182138, y: -6.2506523, z: 153.8694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3295823177977056495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362815858578844821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c262c1eb3a15f4d86257627da2bc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentGameState: 0
+  PlayerStartPos: {x: 0, y: -4.4, z: 0}
+  OptionCanvas: {fileID: 0}
+  Player: {fileID: 0}
+  Background: {fileID: 0}
+  BackGroundCanvas: {fileID: 0}
+  Level: 0
+  PlayTime: 30
+  CurrentBackground: 0
+  BackgroundColor: 0
+  time: 0
+  currentStory: 0
+--- !u!114 &4269448205375099361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362815858578844821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b692c6d97e7240746b2ecaa5326b7ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextObstaclePosition: {x: 0, y: 8, z: 0}
+  levelSetting:
+    Level: 0
+    circleAmountProportion:
+    - Name: 1 Circle
+      CircleProportion: 8
+    - Name: 2 Circle
+      CircleProportion: 7
+    - Name: 3 Circle
+      CircleProportion: 5
+    Circle_S:
+      Size: 0
+      MinSpeed: 50
+      MaxSpeed: 80
+      MaxSector: 2
+      AppearProportion: 4
+    Circle_M:
+      Size: 0
+      MinSpeed: 140
+      MaxSpeed: 170
+      MaxSector: 2
+      AppearProportion: 1
+    Circle_L:
+      Size: 0
+      MinSpeed: 200
+      MaxSpeed: 230
+      MaxSector: 1
+      AppearProportion: 8
+  ObstaclePrefab:
+  - Name: 0
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 8254326959584063291, guid: c9083c8d932d0e34f8305019311e64cf,
+      type: 3}
+  - Name: 1
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 2416905234930828911, guid: 6b6e891e4d24eb7458126eddf94123c8,
+      type: 3}
+  - Name: 2
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 3682049589614471953, guid: 440dda342989021458bd1ebdc3e57bf2,
+      type: 3}
+  - Name: 3
+    ID: 0
+    Amount: 6
+    ObstaclePrefab: {fileID: 7382385529687730585, guid: 75ca84ee3f6ca8341ad6abe293364220,
+      type: 3}
+  - Name: 4
+    ID: 0
+    Amount: 4
+    ObstaclePrefab: {fileID: 5094849771615291158, guid: 7271533739918f6468ed51b46950b281,
+      type: 3}
+  - Name: 5
+    ID: 0
+    Amount: 2
+    ObstaclePrefab: {fileID: 4129674404976425816, guid: f0d02110f5ec0d94ca6cb8550387cb03,
+      type: 3}
+  CircleCount: 0
+  BigSecterCount: 0
+  SmallSecterCount: 0
+  MediumSecterCount: 0
+  CurrentTotalScore: 0
+--- !u!114 &6616916302569433865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362815858578844821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fe5f943094fe640b3fb666beccea48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerJson:
+    Gravity: 0
+    JumpForce: 0
+    Weight: 0
+    Time: 0
+    One_CircleProportion: 0
+    Two_CircleProportion: 0
+    Three_CircleProportion: 0
+    Small_MinSpeed: 0
+    Small_MaxSpeed: 0
+    Small_MaxSector: 0
+    Small_AppearProportion: 0
+    Medium_MinSpeed: 0
+    Medium_MaxSpeed: 0
+    Medium_MaxSector: 0
+    Medium_AppearProportion: 0
+    Big_MinSpeed: 0
+    Big_MaxSpeed: 0
+    Big_MaxSector: 0
+    Big_AppearProportion: 0
+  TotalScore: 0
+  CurrentScore: 0
+  OneSmallSectorScore: 30
+  OneMediumSectorScore: 20
+  OneBigSectorScore: 10
+  CircleCountMagnificationScore: 0.3
+--- !u!114 &4321329242252077327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362815858578844821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6145a1d02a6e5a49a124b57c3de8022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

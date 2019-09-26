@@ -1,0 +1,82 @@
+ManifestFileVersion: 0
+CRC: 1639517144
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7e4ce3ac87f2e93962654814828d9542
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8f81471f4cfc7bf93c7fa752ebb4eb40
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+Assets:
+- Assets/01-Model/Atlas/Obstacle_103.png
+- Assets/01-Model/Atlas/Obstacle_001.png
+- Assets/01-Model/UIBackground/Lose.png
+- Assets/01-Model/Atlas/Obstacle_112.png
+- Assets/01-Model/UIBackground/StoryBackground_B.png
+- Assets/01-Model/Atlas/Obstacle_313.png
+- Assets/01-Model/Atlas/Obstacle_021.png
+- Assets/01-Model/Atlas/Obstacle_311.png
+- Assets/01-Model/Atlas/s-25-25.png
+- Assets/01-Model/Atlas/Obstacle_301.png
+- Assets/01-Model/Atlas/Obstacle_221.png
+- Assets/01-Model/Atlas/Obstacle_121.png
+- Assets/01-Model/Atlas/Obstacle_012.png
+- Assets/01-Model/Atlas/s-24.png
+- Assets/01-Model/Atlas/Obstacle_011.png
+- Assets/01-Model/UIBackground/StoryBackground_P.png
+- Assets/01-Model/UIBackground/Win.png
+- Assets/01-Model/Atlas/Obstacle_302.png
+- Assets/01-Model/Atlas/Obstacle_101.png
+- Assets/01-Model/Atlas/Obstacle_022.png
+- Assets/01-Model/Atlas/Obstacle_020.png
+- Assets/01-Model/Atlas/Obstacle_322.png
+- Assets/01-Model/Atlas/Obstacle_300.png
+- Assets/01-Model/Atlas/Obstacle_222.png
+- Assets/01-Model/Atlas/Obstacle_202.png
+- Assets/01-Model/Atlas/Obstacle_013.png
+- Assets/01-Model/Atlas/Obstacle_211.png
+- Assets/01-Model/Atlas/material-26-26.png
+- Assets/01-Model/Atlas/Obstacle_003.png
+- Assets/01-Model/Atlas/Obstacle_210.png
+- Assets/01-Model/Atlas/Obstacle_100.png
+- Assets/01-Model/Atlas/Obstacle_200.png
+- Assets/01-Model/PlayBackground.png
+- Assets/01-Model/Atlas/Obstacle_310.png
+- Assets/01-Model/Atlas/Obstacle_320.png
+- Assets/01-Model/Atlas/Obstacle_000.png
+- Assets/01-Model/UIAtlas.spriteatlas
+- Assets/01-Model/Atlas/Obstacle_312.png
+- Assets/01-Model/Atlas/Obstacle_102.png
+- Assets/01-Model/Atlas/Obstacle_213.png
+- Assets/01-Model/Atlas/Obstacle_122.png
+- Assets/01-Model/Atlas/UI2-23-23.png
+- Assets/01-Model/Atlas/Obstacle_002.png
+- Assets/01-Model/Atlas/Obstacle_010.png
+- Assets/01-Model/Atlas/Obstacle_212.png
+- Assets/01-Model/Atlas/Obstacle_123.png
+- Assets/01-Model/ObjectAtlas.spriteatlas
+- Assets/01-Model/UIBackground/Story_5.png
+- Assets/01-Model/Atlas/ScorePoint_1.png
+- Assets/01-Model/Atlas/Obstacle_223.png
+- Assets/01-Model/Atlas/Obstacle_111.png
+- Assets/01-Model/Atlas/Obstacle_023.png
+- Assets/01-Model/Atlas/Obstacle_110.png
+- Assets/01-Model/Atlas/Obstacle_201.png
+- Assets/01-Model/Atlas/Obstacle_321.png
+- Assets/01-Model/UIBackground/NoviceTeaching.png
+- Assets/01-Model/Atlas/Obstacle_113.png
+- Assets/01-Model/Atlas/Obstacle_323.png
+- Assets/01-Model/Atlas/Obstacle_220.png
+- Assets/01-Model/Atlas/Obstacle_120.png
+- Assets/01-Model/Atlas/Obstacle_303.png
+- Assets/01-Model/Atlas/Obstacle_203.png
+- Assets/01-Model/Atlas/UI-19-19-19-19.png
+Dependencies: []

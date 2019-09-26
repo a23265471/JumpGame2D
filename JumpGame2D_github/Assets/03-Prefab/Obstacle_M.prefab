@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2416905234930828899
 Transform:
   m_ObjectHideFlags: 0
@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e8fe91d9a5fbd41832b2b5a567bd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentSprite: 2
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  CurrentSprite: 0
+  AtlasName: ObjectAtlas
+  Atlas: {fileID: 0}
 --- !u!68 &8650127130198312350
 EdgeCollider2D:
   m_ObjectHideFlags: 0

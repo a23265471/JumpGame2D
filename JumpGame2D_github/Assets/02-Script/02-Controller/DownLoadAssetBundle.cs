@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using UnityEngine.Networking;
 using UnityEngine;
 
 public enum AssetBundleState
 {
     Images,
     Prefab,
-    UIPrefab,
     Audio
 }
 
@@ -17,10 +16,12 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     private Dictionary<int, AssetBundle> AssetBundleDictionary;
 
-  //  public bool IsDownLoaded;
-
-    public WWW www1;
+    //  public bool IsDownLoaded;
+    string path1;
+    //  public WWW www1;
+    public UnityWebRequest request;
     object asset;
+    AudioClip audioAsset;
 
   //  WaitUntil waitUntil;
 
@@ -34,12 +35,11 @@ public class DownLoadAssetBundle : MonoBehaviour
     {
         Instance = this;
         AssetBundleDictionary = new Dictionary<int, AssetBundle>();
+    }
 
-
-   //     waitUntil = new WaitUntil(()=>www1.isDone);
-       // LoadAssetBundle(AssetBundleState.Images, "loadstage");
-        //LoadAssetBundle(AssetBundleState.Prefab, "prefab");
-
+    public void SetIP(string url)
+    {
+        path1 = url;
     }
 
     public void LoadAssetBundle(AssetBundleState assetBundleState, string assetBundleName)
@@ -49,28 +49,39 @@ public class DownLoadAssetBundle : MonoBehaviour
 
     IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
     {
-        //  IsDownLoaded = false;
-         string path1 = "http://192.168.0.137/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
-        //  string path1 = "http://localhost/public/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
-   //       string path1 = "file:D:/MoonMoonGames/00-TestGame/00-JumpGame2D/UnityAssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+        request = UnityWebRequestAssetBundle.GetAssetBundle("http://192.168.0.137:8080/games/games011/AssetBundle/" + assetBundleName + ".unityassetbundle");
+        yield return request.SendWebRequest();
+        // AssetBundle ab = DownloadHandlerAssetBundle.GetContent (request );
 
-        while (Caching.ready == false)yield return null;   //是否准备好
-        www1 = WWW.LoadFromCacheOrDownload(@path1, 3);
-        //   StartCoroutine(DownLoadProgress());
-
-        yield return www1;
-
-
-        AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
+      //  Debug.Log((request.downloadHandler as DownloadHandlerAssetBundle).assetBundle.name);
+        AssetBundleDictionary[(int)assetBundleState] = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
+      //  Debug.Log(AssetBundleDictionary[(int)assetBundleState]);
+            
     }
+
+
+    /*  IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
+      {
+          //  IsDownLoaded = false;
+        //  path1 = "http://192.168.0.137/Dachuang/public/games/games011/AssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
+
+          while (Caching.ready == false)yield return null;   //是否准备好
+          www1 = WWW.LoadFromCacheOrDownload(@path1, 19);
+
+          yield return www1;
+
+
+          AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
+      }*/
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {
 
-      /*    for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
+        /*  for (int i = 0; i < AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames().Length; i++)
           {
               Debug.Log(AssetBundleDictionary[(int)assetBundleState].GetAllAssetNames()[i]);
           }*/
+
         if (AssetBundleDictionary[(int)assetBundleState] != null)
         {
             asset = AssetBundleDictionary[(int)assetBundleState].LoadAsset(ObjectName, type);   //加载ab1包中的资源名为 Sphere-Head 文件的数据，返回Object对象 （这是一个预设物）
@@ -98,11 +109,11 @@ public class DownLoadAssetBundle : MonoBehaviour
     {
         for (int i = 0; i < AssetBundleDictionary.Count; i++)
         {
-            AssetBundleDictionary[i].Unload(true);
+            AssetBundleDictionary[i].Unload(false);
            // Resources.UnloadAsset(AssetBundleDictionary[i]);
 
         }
 
     }
-
+    
 }

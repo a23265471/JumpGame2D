@@ -37,23 +37,20 @@ public class PlayerBehaviour : MonoBehaviour
         idleSprite = spriteRenderer.sprite;
         Application.targetFrameRate = 60;
         startPos = new Vector3(0, -4, 0);
-   //     playerData = null;
-        //StartCoroutine(LoadData());
-
+        
+        jumpVector = new Vector2(0, playerData.JumpForce);
     }
     #endregion
 
-    public void loadData()
+    public void LoadData()
     {
-        StartCoroutine(LoadData());
-   //     
-
+        StartCoroutine(loadData());
     }
 
-    IEnumerator LoadData()
+    IEnumerator loadData()
     {
         yield return null;
-        Debug.Log(StageDataController.Instance.PlayerJson.JumpForce);
+       // Debug.Log(StageDataController.Instance.PlayerJson.JumpForce);
         playerData = StageDataController.Instance.PlayerJson;
 
         jumpVector = new Vector2(0, playerData.JumpForce);//1500
@@ -93,6 +90,11 @@ public class PlayerBehaviour : MonoBehaviour
     public void Jump()
     {
         Animator.SetTrigger("UP");
+
+        Application.ExternalCall("AudioPlay","Jump", 1, false);
+       // AudioController.Instance.PlayAudio(1, 5, false);
+
+
         //Debug.Log("hhh");
 
         StopCoroutine(JumpAnimatoinControl());
@@ -129,6 +131,9 @@ public class PlayerBehaviour : MonoBehaviour
         switch (other.tag)
         {
             case "Obstacle":
+                Application.ExternalCall("AudioPlay","Dead", 1, false);
+                //AudioController.Instance.PlayAudio(1, 3, false);
+
                 Animator.SetTrigger("Dead");
                 GameManager.Instance.GameOver();
              //   Debug.Log(other.name);
@@ -138,13 +143,7 @@ public class PlayerBehaviour : MonoBehaviour
                 GameManager.Instance.NextObstacle();
                 
                 break;
-            case"GetScore":
-
-             //   ParticleController.instance.PlayParticle();
-
-                break;
-            
-                
+          
         }
 
 
@@ -182,4 +181,15 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
     
+    public void CloseBehaviour()
+    {
+        Instance.enabled = false;
+
+    }
+
+    public void OpenBehaviour()
+    {
+        Instance.enabled = true;
+
+    }
 }

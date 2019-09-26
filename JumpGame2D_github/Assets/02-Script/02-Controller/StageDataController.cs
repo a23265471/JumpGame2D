@@ -7,60 +7,63 @@ public class StageDataController : MonoBehaviour
 
     public static StageDataController Instance;
     public PlayerJsonData PlayerJson;
-    public LevelSettingJsonData LevelSettingJson;
+
+    public int TotalScore;
+  //  public int CurrentScore;
+    public int OneSmallSectorScore;
+    public int OneMediumSectorScore;
+    public int OneBigSectorScore;
+    public float CircleCountMagnificationScore;
+    private int score;
+
 
     private void Awake()
     {
         Instance = this;
-       // GetData();
+      
     }
     
-    public void GetData()
+    public void GetData(
+       /* float Gravity, float JumpForce, float Weight, int Time,
+        int One_CircleProportion, int Two_CircleProportion, int Three_CircleProportion,
+        float Small_MinSpeed, float Small_MaxSpeed, int Small_MaxSector,int Small_AppearProportion,
+        float Medium_MinSpeed, float Medium_MaxSpeed, int Medium_MaxSector, int Medium_AppearProportion,
+        float Big_MinSpeed, float Big_MaxSpeed, int Big_MaxSector, int Big_AppearProportion*/string dataJson)
     {
-        StartCoroutine("GetJson");
 
-    }
-
-    IEnumerator GetJson()
-    {
-        WWWForm form = new WWWForm();
-        LevelSettingJsonData levelSetting = new LevelSettingJsonData();
-
-      //  WWW www = new WWW("http://localhost/PHP.php");
-        WWW www = new WWW("http://192.168.0.137/PHP.php");
+         PlayerJson = new PlayerJsonData();
+         PlayerJson = JsonUtility.FromJson<PlayerJsonData>(dataJson);
         
-        yield return www;
-        //   string test2 = JsonUtility.ToJson(playerDatas);
-        if (www.error == null)
-        {
-
-            PlayerJson = new PlayerJsonData();
-            PlayerJson = JsonUtility.FromJson<PlayerJsonData>(www.text.Trim("[]".ToCharArray()));
-           // Debug.Log(PlayerJson.JumpForce);
-
-        }
-        else
-        {
-            PlayerJson = new PlayerJsonData();
-            PlayerJson.JumpAcceleration = 0;
-            PlayerJson.JumpForce = 1500;
-            PlayerJson.Gravity = 2;
-            PlayerJson.Score = 0;
-            PlayerJson.Weight = 5;
-
-
-            //   Debug.Log(PlayerBehaviour.Instance.playerData.JumpForce);
-
-
-
-        }
-        Debug.Log("資料下載");
-
-        PlayerBehaviour.Instance.loadData();
-
-
-
     }
 
+    public void SetData()
+    {
+        PlayerBehaviour.Instance.LoadData();        
+        GameManager.Instance.PlayTime = PlayerJson.Time;
+        OneSmallSectorScore = PlayerJson.OneSmallSectorScore;
+        OneMediumSectorScore = PlayerJson.OneMediumSectorScore;
+        OneBigSectorScore = PlayerJson.OneBigSectorScore;
+        CircleCountMagnificationScore = PlayerJson.CircleCountMagnificationScore;
+    }
+
+    
+    
+    public int Score(int circleCount,int smallSectorCount, int mediumSectorCount, int bigSectorCount)
+    {
+        score = (int)Mathf.Round((smallSectorCount * OneSmallSectorScore + mediumSectorCount * OneMediumSectorScore + bigSectorCount * OneBigSectorScore) * circleCount * CircleCountMagnificationScore);
+
+        return score;
+    }
+
+    public int GetCurrentObstacleScore()
+    {
+        TotalScore += ObstacleController.Instance.CurrentTotalScore;
+        return ObstacleController.Instance.CurrentTotalScore;
+    }
+
+    public void ResetTotalScore()
+    {
+        TotalScore = 0;
+    }
 
 }

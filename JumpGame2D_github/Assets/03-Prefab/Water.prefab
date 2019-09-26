@@ -161,6 +161,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48b025818cbede499c51925f5e1790f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Gravity: 2
+    JumpForce: 1500
+    Weight: 5
+    Score: 0
+    One_CircleProportion: 0
+    Two_CircleProportion: 0
+    Three_CircleProportion: 0
+    Small_MinSpeed: 0
+    Small_MaxSpeed: 0
+    Small_MaxSector: 0
+    Small_AppearProportion: 0
+    Medium_MinSpeed: 0
+    Medium_MaxSpeed: 0
+    Medium_MaxSector: 0
+    Medium_AppearProportion: 0
+    Big_MinSpeed: 0
+    Big_MaxSpeed: 0
+    Big_MaxSector: 0
+    Big_AppearProportion: 0
   Animator: {fileID: 0}
 --- !u!50 &1152107613143915640
 Rigidbody2D:
