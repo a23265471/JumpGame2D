@@ -133,6 +133,8 @@ public class UIPanelController : MonoBehaviour
     private float plusScoreNext_Y;
     private Vector2 plusScoreScrollDis;
     public float PlusScoreScrollSpeed;
+
+    private WaitForSeconds waitForStory;
     #endregion
 
     private void Awake()
@@ -154,6 +156,7 @@ public class UIPanelController : MonoBehaviour
         TimesUPSpriteController = TimesUP.GetComponent<SpriteController>();
         
         plusScoreScrollDis = new Vector2(0, 0);
+        waitForStory = new WaitForSeconds(0.5f);
        // SetPlayerInfo("Sindy", "201909265645dfs5");
     }
 
@@ -253,7 +256,7 @@ public class UIPanelController : MonoBehaviour
                 waterPanel[0].SetActive(true);//111
                 waterPanel[1].SetActive(false);//111
 
-                Application.ExternalCall("AudioPlay", "Jump", 1, false);
+             //   Application.ExternalCall("AudioPlay", "Jump", 1, false);
                 //AudioController.Instance.PlayAudio(1, 5, false);
                 Application.ExternalCall("AudioPlay", "BGM_Story", 1, true);
 
@@ -354,6 +357,7 @@ public class UIPanelController : MonoBehaviour
 
                 SpecialThanksButton.SetActive(false);
 
+
                 ChangeSprite(BackgroundSpriteContoller, "NoviceTeaching");
                 break;
          
@@ -382,6 +386,8 @@ public class UIPanelController : MonoBehaviour
         ReceiveButton.SetActive(false);
         skipButtom.SetActive(false);
         SpecialThanksButton.SetActive(false);
+        NextStoryButtom.SetActive(false);
+
     }
 
     public void MessageSelect(int select)//select = 0 FreeTimes; select = 1 PayForPlay; select = 2 Score
@@ -512,15 +518,32 @@ public class UIPanelController : MonoBehaviour
     }
 
     #region 按鈕的事件們
-    public void StartStory() //新手教學+劇情
+
+    public void ConsumePlayerPoint()
     {
-        Application.ExternalCall("ConsumePointOrFreeCount");
         Application.ExternalCall("AudioPlay", "Jump", 1, false);
-        // AudioController.Instance.PlayAudio(1, 5, false);
+        Application.ExternalCall("ConsumePlayerPoint");
+
+    }
+
+    public void ConsumeFreeCount()
+    {
+        Application.ExternalCall("AudioPlay", "Jump", 1, false);
+        Application.ExternalCall("ConsumeFreeCount");
+
+    }
+
+    public void UIStartStory()
+    {
+        StartCoroutine(startStory());
+    }
+
+    IEnumerator startStory()
+    {
+        yield return waitForStory;
         StoryPanel.SetActive(true);
 
         GameManager.Instance.StartStroy();
-
     }
 
     public void NextStory()

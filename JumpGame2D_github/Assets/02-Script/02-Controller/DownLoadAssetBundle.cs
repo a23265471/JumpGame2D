@@ -109,7 +109,7 @@ public class DownLoadAssetBundle : MonoBehaviour
     {
         for (int i = 0; i < AssetBundleDictionary.Count; i++)
         {
-            AssetBundleDictionary[i].Unload(false);
+            AssetBundleDictionary[i].Unload(true);
            // Resources.UnloadAsset(AssetBundleDictionary[i]);
 
         }

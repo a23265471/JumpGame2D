@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
     #region 初始化與載入資源
     IEnumerator InstallImage()
     {
-       
 
+        DownLoadAssetBundle.Instance.UnloadAllAssetBundle();
         DownLoadAssetBundle.Instance.LoadAssetBundle(AssetBundleState.Images, "atlas");
 
         while (!DownLoadAssetBundle.Instance.request.isDone)
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
 
-        OpenFreePanel();
+       // OpenFreePanel();
     
         // SetFreeTimePanel(1, 2);
 
@@ -365,6 +365,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void StartStory()//被javaScript呼叫,開始故事及新手教學
+    {
+        UIPanelController.instance.UIStartStory();
+    }
+
     public void OpenResultPanel()
     {
         UIPanelController.instance.UIOpenResultPanel();
@@ -479,7 +484,6 @@ public class GameManager : MonoBehaviour
            
             yield return null;
         }
-        //   Debug.Log(time);
 
         Application.ExternalCall("AudioPlay", "TimesUP", 1, false);
        //  AudioController.Instance.PlayAudio(1, 6, false);
