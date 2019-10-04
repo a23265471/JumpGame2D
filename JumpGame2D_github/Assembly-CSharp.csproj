@@ -65,6 +65,7 @@
     <Compile Include="Assets\02-Script\01-Behaviour\ObstacleBehaviour.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\PlayerBehaviour.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\ScoreEffect.cs" />
+    <Compile Include="Assets\02-Script\01-Behaviour\UIBehaviour.cs" />
     <Compile Include="Assets\02-Script\02-Controller\AudioController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\CreateObstacle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\DownLoadAssetBundle.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\02-Script\02-Controller\ObstacleController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\SpriteController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\StageDataController.cs" />
+    <Compile Include="Assets\02-Script\02-Controller\UIController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\UIPanelController.cs" />
     <Compile Include="Assets\02-Script\GameManager.cs" />
     <None Include="Assets\link.xml" />

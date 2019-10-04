@@ -16,16 +16,22 @@ public enum spriteAtlas
     Free_Up,Free_Down,
     StoryWater_0, StoryWater_1, StoryWater_2, StoryWater_3, StoryWater_4,
     StoryText_0, StoryText_1, StoryText_2, StoryText_3, StoryText_4,
-    StartPanel,
-    StartPanel_Free,
+    Free,
+    Cost,
     Win,Lose,
-    ResultPanel,
+    Result,
     Quit_Up, Quit_Down,
     ScorePoint_0, ScorePoint_1, ScorePoint_2, ScorePoint_3,
+    Slash, colon_0, colon_1, colon_2, colon_3,//Colon_顏色
+
+    Plus_0, Plus_1, Plus_2, Plus_3,
+    TimesUP, SpecialThank, SpecialThank_1, SpecialThank_2, SpecialThank_3, SpecialThanks_small,
+    Title, Description_1, Description_2, Description_3, Coin, TextPanel, DescriptionPanel,
 
     //紅色 = 0,藍色 = 1,綠色 = 2,黃色 = 3
     Score_0, Score_1, Score_2,Score_3,//Score_顏色
     Time_0, Time_1, Time_2, Time_3,//Time_顏色
+     
 
     //Number_顏色數字
     Number_00, Number_01, Number_02, Number_03, Number_04, Number_05, Number_06, Number_07, Number_08, Number_09,
@@ -34,10 +40,7 @@ public enum spriteAtlas
     Number_30, Number_31, Number_32, Number_33, Number_34, Number_35, Number_36, Number_37, Number_38, Number_39,
     Number_40, Number_41, Number_42, Number_43, Number_44, Number_45, Number_46, Number_47, Number_48, Number_49,
 
-    Slash, colon_0, colon_1, colon_2, colon_3,//Colon_顏色
-
-    Plus_0, Plus_1, Plus_2, Plus_3,
-    TimesUP,SpecialThank, SpecialThank_1, SpecialThank_2, SpecialThank_3,SpecialThanks_small,
+   
 
 }
 
@@ -59,20 +62,25 @@ public class SpriteController : MonoBehaviour
     private Color alpha;
     SpriteRenderer spriteRenderer;
     RawImage rawImage;
+    public bool UIimageFitSize;
+    public float ScaleMultiple;
+
     Image UIimage;
-    ParticleSystemRenderer particleSystemRenderer;
+    RectTransform rectTransform;
+    Vector2 UIimageSize;
 
     IEnumerator fadeInCoroutine;
     IEnumerator fadeOutCoroutine;
 
 
     private void Awake()
-    {       
+    {
         rawImage = gameObject.GetComponent<RawImage>();
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         UIimage = gameObject.GetComponent<Image>();
         alpha = new Color(0, 0, 0, 1);
+        UIimageSize = new Vector2(0, 0);
 
         fadeInCoroutine = fadeIn(1);
         fadeOutCoroutine = fadeOut(1);
@@ -88,7 +96,12 @@ public class SpriteController : MonoBehaviour
             CurrentSpriteCompnet = SpriteComponent.RawImage;
             StartCoroutine(GetRawImage());
         }
-            
+
+        if (UIimage != null)
+        {
+            rectTransform = gameObject.GetComponent<RectTransform>();
+        }
+
     }
 
     public void GetAtlas(string atlasName)
@@ -96,12 +109,16 @@ public class SpriteController : MonoBehaviour
         StartCoroutine(GetAsset(atlasName, typeof(SpriteAtlas)));
     }
 
-    IEnumerator GetAsset(string assetName, System.Type type)
+    IEnumerator GetAsset(string assetName, System.Type type)//******************************************************************************要改ㄉ地方
     {
         yield return null;
 
-        Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, assetName, type);
-     
+        if (Atlas == null)
+        {
+            Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, assetName, type);
+
+        }
+
         if (spriteRenderer != null)
         {
             CurrentSpriteCompnet = SpriteComponent.SpriteRender;
@@ -114,7 +131,6 @@ public class SpriteController : MonoBehaviour
         {
 
             CurrentSpriteCompnet = SpriteComponent.UIImage;
-
             if (CurrentSprite != spriteAtlas.None)
             {
                 // Debug.Log("j");
@@ -138,12 +154,21 @@ public class SpriteController : MonoBehaviour
             case SpriteComponent.SpriteRender:
                 spriteRenderer.sprite = Atlas.GetSprite(currentSprite);
 
+
                 break;
 
             case SpriteComponent.UIImage:
 
-               // Debug.Log(Atlas.spriteCount);
                 UIimage.sprite = Atlas.GetSprite(currentSprite);
+
+                if (UIimageFitSize)
+                {
+                    UIimageSize = Vector2.zero;
+                    UIimageSize.x = UIimage.sprite.rect.width * ScaleMultiple;
+                    UIimageSize.y = UIimage.sprite.rect.height * ScaleMultiple;
+                    rectTransform.sizeDelta = UIimageSize;
+
+                }
 
                 break;
                                

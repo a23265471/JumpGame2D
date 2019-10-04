@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ea913b9b0a7464646a03f4ad8eec53ae, type: 3}
-    totalSpriteSurfaceArea: 687135
+    totalSpriteSurfaceArea: 808191
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -52,23 +52,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d78fcf90b191e5c41b4aafee0c3d4795, type: 3}
   - {fileID: 21300000, guid: 483723a0a9c2aea4a9d5731ccb0f8e3c, type: 3}
   - {fileID: 21300000, guid: c99f75413c9eeba4bb30598fbe521ffc, type: 3}
-  - {fileID: 21300000, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300016, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300006, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300008, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300010, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300014, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300002, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300012, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
-  - {fileID: 21300004, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
   - {fileID: 21300000, guid: e52a4a81b86a8b04d917103f0e83145b, type: 3}
   - {fileID: 21300000, guid: bb17789189841ad4181f1044e2e6d79c, type: 3}
   - {fileID: 21300000, guid: 785731b13c218a0428664563a2c73b99, type: 3}
   - {fileID: 21300000, guid: 93eff8b1207285142a90828cb3a3eabe, type: 3}
-  - {fileID: 21300000, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
-  - {fileID: 21300004, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
-  - {fileID: 21300006, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
-  - {fileID: 21300002, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
   - {fileID: 21300000, guid: a9a6f542aba335e4b9bb4646f3c672c9, type: 3}
   - {fileID: 21300000, guid: 60b5658291743d84b928b983a98c98b6, type: 3}
   - {fileID: 21300000, guid: db661af219eaa744391301ba78908a23, type: 3}
@@ -80,6 +67,27 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9192b7e5b334c124db8d44af9be18702, type: 3}
   - {fileID: 21300000, guid: 1690f40674d39014ca9a1d6e60bcf23c, type: 3}
   - {fileID: 21300000, guid: 38390016953a05e46b50b8370721b2a5, type: 3}
+  - {fileID: 21300026, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300004, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300012, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300010, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300008, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300032, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300030, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300024, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300028, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300006, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300000, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300018, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300020, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300014, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300016, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300022, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300002, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300040, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300036, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300038, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300034, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300006, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
   - {fileID: 21300000, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
   - {fileID: 21300004, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
@@ -205,23 +213,10 @@ SpriteAtlas:
   - Obstacle_313
   - Obstacle_021
   - Obstacle_311
-  - StartPanel_Free
-  - colon_1
-  - colon_0
-  - colon_3
-  - colon_2
-  - StoryText_2
-  - StoryText_0
-  - StoryText_1
-  - TimesUP
   - Obstacle_301
   - Obstacle_221
   - Obstacle_121
   - Obstacle_012
-  - StartPanel
-  - StoryText_3
-  - StoryText_4
-  - ResultPanel
   - Obstacle_011
   - Obstacle_302
   - Obstacle_101
@@ -233,6 +228,27 @@ SpriteAtlas:
   - Obstacle_202
   - Obstacle_013
   - Obstacle_211
+  - UIText-29_13
+  - Precautions
+  - Description_2
+  - Description_3
+  - Description_1
+  - DescriptionPanel
+  - colon_1
+  - colon_0
+  - colon_2
+  - Free
+  - Title
+  - StoryText_2
+  - StoryText_3
+  - StoryText_0
+  - StoryText_1
+  - StoryText_4
+  - Result
+  - Coin
+  - Cost
+  - TimesUP
+  - TextPanel
   - SpecialThank_1
   - SpecialThank_3
   - SpecialThank_2

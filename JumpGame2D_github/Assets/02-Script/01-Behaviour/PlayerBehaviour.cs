@@ -35,7 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         m_transform = GetComponent<Transform>();
         idleSprite = spriteRenderer.sprite;
-        Application.targetFrameRate = 60;
+      //  Application.targetFrameRate = 60;
         startPos = new Vector3(0, -4, 0);
         
         jumpVector = new Vector2(0, playerData.JumpForce);

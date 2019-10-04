@@ -42,10 +42,36 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 5bcb1e39e5bd03148ab85b6f0458fcee, type: 3}
-    totalSpriteSurfaceArea: 236182
+    totalSpriteSurfaceArea: 211146
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300016, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300006, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300008, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300010, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300014, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300002, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300012, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300004, guid: 0d540161392e4e740ad48c3d639d0df9, type: 3}
+  - {fileID: 21300000, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
+  - {fileID: 21300004, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
+  - {fileID: 21300006, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
+  - {fileID: 21300002, guid: 50b34912688515944b2b02b07e68fd31, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - StartPanel_Free
+  - colon_1
+  - colon_0
+  - colon_3
+  - colon_2
+  - StoryText_2
+  - StoryText_0
+  - StoryText_1
+  - TimesUP
+  - StartPanel
+  - StoryText_3
+  - StoryText_4
+  - ResultPanel
   m_Tag: TextAtlas
   m_IsVariant: 0

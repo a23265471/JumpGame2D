@@ -77,7 +77,7 @@ public class ObstacleController : MonoBehaviour
 
 
     }
-
+    
     public enum ObstacleState
     {
         obstacle_s,
