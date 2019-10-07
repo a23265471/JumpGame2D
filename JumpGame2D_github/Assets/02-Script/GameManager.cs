@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
 
     #region Panel
     [SerializeField]
-    private GameObject StaticCanvas;
-    [SerializeField]
+    private GameObject[] UICanvas;
+  /*  [SerializeField]
     private GameObject PlayCanvas;
     [SerializeField]
     private GameObject MoveableCanvas;
-
+    */
 
     #endregion
     [SerializeField]
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int Level;
 
-    public GameObject audioController;
+    //public GameObject audioController;
 
     public int PlayTime;
 
@@ -120,10 +120,10 @@ public class GameManager : MonoBehaviour
     {
         Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
         Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "background2", typeof(GameObject));
-      /*  StaticCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "StaticCanvas", typeof(GameObject));
-        PlayCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "PlayCanvas", typeof(GameObject));
-        MoveableCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "MoveableCanvas", typeof(GameObject));*/
-
+      /*  UICanvas[0]  = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "StaticCanvas", typeof(GameObject));
+        UICanvas[1] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "PlayCanvas", typeof(GameObject));
+        UICanvas[2] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "MoveableCanvas", typeof(GameObject));*/
+        
         ObstacleController.Instance.GetPrefab();
     }
 
@@ -131,9 +131,12 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(Player);
         Background = Instantiate(Background, BackGroundCanvas.transform);
-        StaticCanvas = Instantiate(StaticCanvas);
-        PlayCanvas = Instantiate(PlayCanvas);
-        MoveableCanvas = Instantiate(MoveableCanvas);
+        UICanvas[0] = Instantiate(UICanvas[0]);
+        UICanvas[1] = Instantiate(UICanvas[1]);
+        UICanvas[2] = Instantiate(UICanvas[2]);
+
+        /*    PlayCanvas = Instantiate(PlayCanvas);
+            MoveableCanvas = Instantiate(MoveableCanvas);*/
 
         StartCoroutine(SetGameObject());
 
@@ -144,6 +147,10 @@ public class GameManager : MonoBehaviour
         yield return null;
         backgroundScrolls[0] = Background.transform.GetChild(0).gameObject.GetComponent<BackgroundScroll>();
         backgroundScrolls[1] = Background.transform.GetChild(1).gameObject.GetComponent<BackgroundScroll>();
+
+        UIController.instance.CreatDictionary(UICanvas);
+
+     //   UIController.instance.SetUiBehaviour(StaticCanvas);
 
         StageDataController.Instance.SetData();
         SetScene();

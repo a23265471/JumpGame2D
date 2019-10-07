@@ -14,32 +14,26 @@ public class UIBehaviour : MonoBehaviour
     [System.Serializable]
     public struct Panel
     {
-        public string ID;
+        public string Name;
+        public int ID;
         public CanvasGroup Active;
     }
 
     [System.Serializable]
     public struct Image
     {
-        public string ID;
+        public string Name;
+        public int ID;
         public SpriteController spriteController;
     }
 
     [System.Serializable]
     public struct Number
     {
-        public string ID;
+        public string Name;
+        public int ID;
         public NumberController numberController;
     }
 
-    private void Awake()
-    {
-        panel = null;
-    }
 
-    public void sss()
-    {
-
-        Debug.Log("j");
-    }
 }

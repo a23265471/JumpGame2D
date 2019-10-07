@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour                                                                      
 {
-    public UIBehaviour[] UICanvas;
-   // public CanvasGroup sss;
+    public static UIController instance;
+    private UIBehaviour[] UICanvas;
 
-    public Dictionary<string, CanvasGroup> PanelCollection;
-    public Dictionary<string, SpriteController> ImageCollection;
-    public Dictionary<string, NumberController> NumberCollection;
+    public Dictionary<int, CanvasGroup> PanelCollection;
+    public Dictionary<int, SpriteController> ImageCollection;
+    public Dictionary<int, NumberController> NumberCollection;
 
     int temporaryInt;
     int temporaryInt2;
@@ -18,16 +18,28 @@ public class UIController : MonoBehaviour
     int ImageCollectionLenght;
     int NumberCollectionLenght;
 
-    public void Awake()
+    private void Awake()
     {
-        for (temporaryInt = 0; temporaryInt < UICanvas.Length; temporaryInt++)
+        instance = this;
+    }
+
+    public void CreatDictionary(GameObject[] uIBehaviour)
+    {
+        UICanvas = new UIBehaviour[uIBehaviour.Length];
+
+        for(temporaryInt=0; temporaryInt< UICanvas.Length; temporaryInt++)
         {
+            UICanvas[temporaryInt] = uIBehaviour[temporaryInt].GetComponent<UIBehaviour>();
             panelCollectionLenght += UICanvas[temporaryInt].panel.Length;
             ImageCollectionLenght += UICanvas[temporaryInt].image.Length;
             NumberCollectionLenght += UICanvas[temporaryInt].number.Length;
         }
-        
-        for (temporaryInt = 0; temporaryInt < UICanvas.Length; temporaryInt++)
+
+        PanelCollection = new Dictionary<int, CanvasGroup>(panelCollectionLenght);
+        ImageCollection = new Dictionary<int, SpriteController>(ImageCollectionLenght);
+        NumberCollection = new Dictionary<int, NumberController>(NumberCollectionLenght);
+
+        for(temporaryInt=0;temporaryInt< UICanvas.Length; temporaryInt++)
         {
             for (temporaryInt2 = 0; temporaryInt2 < UICanvas[temporaryInt].panel.Length; temporaryInt2++)
             {
@@ -43,10 +55,11 @@ public class UIController : MonoBehaviour
             {
                 NumberCollection[UICanvas[temporaryInt].number[temporaryInt2].ID] = UICanvas[temporaryInt].number[temporaryInt2].numberController;
             }
-        }
-        
-    }
 
+        }
+
+    }
+    
     public void SetImage(SpriteController spriteController, string spriteName)
     {
         spriteController.GetSprite(spriteName);
@@ -58,12 +71,30 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void SetPanelActive(CanvasGroup canvasGroup, int active, bool interatable, bool blockRaycast)
+    public void SetObjectActive(int ID, int alpha, bool interatable, bool blockRaycast)
     {
-        canvasGroup.alpha = active;
-        canvasGroup.interactable = interatable;
-        canvasGroup.blocksRaycasts = blockRaycast;
+        PanelCollection[ID].alpha = alpha;
+        PanelCollection[ID].interactable = interatable;
+        PanelCollection[ID].blocksRaycasts = blockRaycast;
     }
 
+    public void OpenPanel(int ID)
+    {
+        SetObjectActive(ID, 1, true, true);
 
+
+    }
+
+    public void OpenButton(int ID)
+    {
+        SetObjectActive(ID, 1, true, true);
+
+    }
+
+    public void CloseAllButton()
+    {
+        for (temporaryInt = 11; temporaryInt < PanelCollection.Count; temporaryInt++)
+        {
+        }
+    }
 }
