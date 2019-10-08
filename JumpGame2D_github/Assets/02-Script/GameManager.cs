@@ -150,7 +150,9 @@ public class GameManager : MonoBehaviour
 
         UIController.instance.CreatDictionary(UICanvas);
 
-     //   UIController.instance.SetUiBehaviour(StaticCanvas);
+        //   UIController.instance.SetUiBehaviour(StaticCanvas);
+
+        UIController.instance.CloseAllPanel();
 
         StageDataController.Instance.SetData();
         SetScene();

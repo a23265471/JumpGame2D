@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class UIBehaviour : MonoBehaviour
 {
+    [Header ("版面")]
     public Panel[] panel;
 
+    [Header("圖片")]
     public Image[] image;
 
+    [Header("數字")]
     public Number[] number;
 
     [System.Serializable]

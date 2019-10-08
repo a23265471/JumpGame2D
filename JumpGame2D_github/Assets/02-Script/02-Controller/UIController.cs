@@ -1,15 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : MonoBehaviour                                                                      
 {
     public static UIController instance;
+    public PanelObject[] Menu;
+
+
+    [System.Serializable]
+    public struct PanelObject
+    {
+        [SerializeField]
+        string name;
+        public int ID;
+        public int[] ActiveObjectID;
+        public ImageInfo[] Image;
+        public NumberInfo[] Number;
+    }
+
+    [System.Serializable]
+    public struct NumberInfo
+    {
+        public int ID;
+        public int Value;
+        public bool DeletZore;
+        public delegate int GetValue(int value);
+    }
+
+    [System.Serializable]
+    public struct ImageInfo
+    {
+       public spriteAtlas ImageName;
+       public int ID;
+        
+    }
+
     private UIBehaviour[] UICanvas;
 
     public Dictionary<int, CanvasGroup> PanelCollection;
     public Dictionary<int, SpriteController> ImageCollection;
     public Dictionary<int, NumberController> NumberCollection;
+    public Dictionary<int, PanelObject> MenuCollection;
 
     int temporaryInt;
     int temporaryInt2;
@@ -38,8 +69,9 @@ public class UIController : MonoBehaviour
         PanelCollection = new Dictionary<int, CanvasGroup>(panelCollectionLenght);
         ImageCollection = new Dictionary<int, SpriteController>(ImageCollectionLenght);
         NumberCollection = new Dictionary<int, NumberController>(NumberCollectionLenght);
+        MenuCollection = new Dictionary<int, PanelObject>(Menu.Length);
 
-        for(temporaryInt=0;temporaryInt< UICanvas.Length; temporaryInt++)
+        for (temporaryInt=0;temporaryInt< UICanvas.Length; temporaryInt++)
         {
             for (temporaryInt2 = 0; temporaryInt2 < UICanvas[temporaryInt].panel.Length; temporaryInt2++)
             {
@@ -58,19 +90,13 @@ public class UIController : MonoBehaviour
 
         }
 
+        for (temporaryInt = 0; temporaryInt < Menu.Length; temporaryInt++) 
+        {
+            MenuCollection[Menu[temporaryInt].ID] = Menu[temporaryInt];
+        }
+
     }
     
-    public void SetImage(SpriteController spriteController, string spriteName)
-    {
-        spriteController.GetSprite(spriteName);
-    }
-
-    public void SetNumber(NumberController numberController, int number)
-    {
-        numberController.SetNumber(number);
-
-    }
-
     public void SetObjectActive(int ID, int alpha, bool interatable, bool blockRaycast)
     {
         PanelCollection[ID].alpha = alpha;
@@ -78,23 +104,51 @@ public class UIController : MonoBehaviour
         PanelCollection[ID].blocksRaycasts = blockRaycast;
     }
 
-    public void OpenPanel(int ID)
+    public void CloseAllPanel()
     {
-        SetObjectActive(ID, 1, true, true);
-
-
+     
     }
 
-    public void OpenButton(int ID)
+    public void OpenMenu(int ID)
     {
-        SetObjectActive(ID, 1, true, true);
-
-    }
-
-    public void CloseAllButton()
-    {
-        for (temporaryInt = 11; temporaryInt < PanelCollection.Count; temporaryInt++)
+        for(temporaryInt=0;temporaryInt< MenuCollection[ID].ActiveObjectID.Length; temporaryInt++)
         {
+            SetObjectActive(MenuCollection[ID].ActiveObjectID[temporaryInt], 1, true, true);
+        }
+        
+        for(temporaryInt=0;temporaryInt< MenuCollection[ID].Image.Length; temporaryInt++)
+        {
+            ImageCollection[MenuCollection[ID].Image[temporaryInt].ID].GetSprite(MenuCollection[ID].Image[temporaryInt].ImageName.ToString());
+        }
+ 
+        for(temporaryInt=0;temporaryInt< MenuCollection[ID].Number.Length; temporaryInt++)
+        {
+            switch (MenuCollection[ID].Number[temporaryInt].DeletZore)
+            {
+                case true:
+                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].SetNumber(MenuCollection[ID].Number[temporaryInt].Value);
+                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].DeleteZero(MenuCollection[ID].Number[temporaryInt].Value);
+                    break;
+
+                case false:
+                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].SetNumber(MenuCollection[ID].Number[temporaryInt].Value);
+                    break;
+
+            }
+
         }
     }
+
+    public void SetNumber(int menuID, int numberID, int value)
+    {
+        NumberCollection[MenuCollection[menuID].Number[numberID].ID].SetNumber(value);
+    }
+
+    public void SetImage(int menuID, int imageID, string ImageName)
+    {
+   //     MenuCollection[menuID].Image[imageID].ID
+
+    }
+
+
 }
