@@ -182,12 +182,15 @@ public class GameManager : MonoBehaviour
 
         Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
 
-        OpenFreePanel();
-    
+           OpenFreePanel();
+           SetPresetFreeCount(3);
+           SetPlayerFreeTimes(2);
+
         // SetFreeTimePanel(1, 2);
 
-        /*  OpenPayPointPanel();
-          SetConsumePanel(1223, 5555);*/
+     /*   OpenConsumPointPanel();
+        SetConsumePoint(1026);
+        SetPlayerPoint(5678);*/
         //StartPanel();
     }
 
@@ -354,42 +357,58 @@ public class GameManager : MonoBehaviour
     #region 扣點欄
     public void OpenConsumPointPanel()//被javaScript呼叫,打開消耗點數的頁面
     {
-       // UIPanelController.instance.OpenPayPointPanel();
+        UIController.instance.OpenMenu(0);
+        UIController.instance.SetImage(1, "Coin",true,1);
+        UIController.instance.SetObjectActive(8, 1,true, false);
+        UIController.instance.SetVerticalLayoutSpace(10);
+
+        // UIPanelController.instance.OpenPayPointPanel();
     }
 
     public void SetConsumePoint(int consumeOncePoint)//被javaScript呼叫,設置需消耗的點數
     {
-      //  UIPanelController.instance.SetConsumePoint(consumeOncePoint);
+        //  UIPanelController.instance.SetConsumePoint(consumeOncePoint);
+        UIController.instance.SetNumber(2, consumeOncePoint, 4, true);
+        UIController.instance.SetNumber(0, consumeOncePoint, 4, true);
+
     }
 
     public void SetPlayerPoint(int playerPoint)//被javaScript呼叫,設置玩家的點數
     {
-      //  UIPanelController.instance.SetCustomerPoint(playerPoint);
+        //  UIPanelController.instance.SetCustomerPoint(playerPoint);
+        UIController.instance.SetNumber(1, playerPoint, 4, true);
+
     }
     #endregion
 
     #region 免費欄
     public void OpenFreePanel()//被javaScript呼叫,打開免費遊玩的畫面
     {
-      //  UIPanelController.instance.OpenFreeTimesPanel();
+
+        UIController.instance.CloseAllPanel();
+        UIController.instance.OpenMenu(0);
+        UIController.instance.SetImage(1, "Free", false, 1);
+        UIController.instance.SetVerticalLayoutSpace(4);
+
     }
 
 
     public void SetPresetFreeCount(int presetFreeCount)//被javaScript呼叫,設置預設的免費遊園次數
     {
-      //  UIPanelController.instance.SetPresetFreeCount(presetFreeCount);
+        UIController.instance.SetNumber(2, presetFreeCount, 4, true);
     }
 
     public void SetPlayerFreeTimes(int playerFreeCount)//被javaScript呼叫,設置玩家的免費遊玩次數
     {
-     //   UIPanelController.instance.SetPlayerFreeCount(playerFreeCount);
+        //   UIPanelController.instance.SetPlayerFreeCount(playerFreeCount);
+        UIController.instance.SetNumber(1, playerFreeCount, 4, true);
 
     }
     #endregion
 
     public void StartStory()//被javaScript呼叫,開始故事及新手教學
     {
-      //  UIPanelController.instance.UIStartStory();
+        UIController.instance.UIStartStory();
     }
 
     

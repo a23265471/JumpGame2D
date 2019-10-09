@@ -67,6 +67,7 @@
     <Compile Include="Assets\02-Script\01-Behaviour\ScoreEffect.cs" />
     <Compile Include="Assets\02-Script\01-Behaviour\UIBehaviour.cs" />
     <Compile Include="Assets\02-Script\02-Controller\AudioController.cs" />
+    <Compile Include="Assets\02-Script\02-Controller\ButtonTriggerController.cs" />
     <Compile Include="Assets\02-Script\02-Controller\CreateObstacle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\DownLoadAssetBundle.cs" />
     <Compile Include="Assets\02-Script\02-Controller\NumberController.cs" />

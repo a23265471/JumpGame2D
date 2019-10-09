@@ -649,8 +649,8 @@ public class UIPanelController : MonoBehaviour
 
     public void ConsumeFreeCount()
     {
-        /*  Application.ExternalCall("AudioPlay", "Jump", 1, false);
-          Application.ExternalCall("ConsumeFreeCount");*/
+          Application.ExternalCall("AudioPlay", "Jump", 1, false);
+          Application.ExternalCall("ConsumeFreeCount");
         UIStartStory();
     }
 

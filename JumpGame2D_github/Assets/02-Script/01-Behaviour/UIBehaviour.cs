@@ -14,6 +14,9 @@ public class UIBehaviour : MonoBehaviour
     [Header("數字")]
     public Number[] number;
 
+    public VerticalLayoutGroup verticalLayoutGroup;
+
+
     [System.Serializable]
     public struct Panel
     {
@@ -37,6 +40,5 @@ public class UIBehaviour : MonoBehaviour
         public int ID;
         public NumberController numberController;
     }
-
 
 }

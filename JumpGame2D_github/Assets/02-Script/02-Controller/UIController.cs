@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class UIController : MonoBehaviour                                                                      
+public class UIController : MonoBehaviour
 {
     public static UIController instance;
     public PanelObject[] Menu;
-
 
     [System.Serializable]
     public struct PanelObject
@@ -30,17 +30,19 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public struct ImageInfo
     {
-       public spriteAtlas ImageName;
-       public int ID;
-        
+        public spriteAtlas ImageName;
+        public int ID;
+
     }
 
     private UIBehaviour[] UICanvas;
 
-    public Dictionary<int, CanvasGroup> PanelCollection;
-    public Dictionary<int, SpriteController> ImageCollection;
-    public Dictionary<int, NumberController> NumberCollection;
-    public Dictionary<int, PanelObject> MenuCollection;
+    private Dictionary<int, CanvasGroup> PanelCollection;
+    private Dictionary<int, SpriteController> ImageCollection;
+    private Dictionary<int, NumberController> NumberCollection;
+    private Dictionary<int, PanelObject> MenuCollection;
+
+    private WaitForSeconds waitSecond;
 
     int temporaryInt;
     int temporaryInt2;
@@ -52,13 +54,14 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        waitSecond = new WaitForSeconds(0.7f);
     }
 
     public void CreatDictionary(GameObject[] uIBehaviour)
     {
         UICanvas = new UIBehaviour[uIBehaviour.Length];
 
-        for(temporaryInt=0; temporaryInt< UICanvas.Length; temporaryInt++)
+        for (temporaryInt = 0; temporaryInt < UICanvas.Length; temporaryInt++)
         {
             UICanvas[temporaryInt] = uIBehaviour[temporaryInt].GetComponent<UIBehaviour>();
             panelCollectionLenght += UICanvas[temporaryInt].panel.Length;
@@ -71,7 +74,7 @@ public class UIController : MonoBehaviour
         NumberCollection = new Dictionary<int, NumberController>(NumberCollectionLenght);
         MenuCollection = new Dictionary<int, PanelObject>(Menu.Length);
 
-        for (temporaryInt=0;temporaryInt< UICanvas.Length; temporaryInt++)
+        for (temporaryInt = 0; temporaryInt < UICanvas.Length; temporaryInt++)
         {
             for (temporaryInt2 = 0; temporaryInt2 < UICanvas[temporaryInt].panel.Length; temporaryInt2++)
             {
@@ -90,13 +93,14 @@ public class UIController : MonoBehaviour
 
         }
 
-        for (temporaryInt = 0; temporaryInt < Menu.Length; temporaryInt++) 
+        for (temporaryInt = 0; temporaryInt < Menu.Length; temporaryInt++)
         {
             MenuCollection[Menu[temporaryInt].ID] = Menu[temporaryInt];
         }
 
     }
-    
+
+    #region 物件的設置
     public void SetObjectActive(int ID, int alpha, bool interatable, bool blockRaycast)
     {
         PanelCollection[ID].alpha = alpha;
@@ -106,49 +110,102 @@ public class UIController : MonoBehaviour
 
     public void CloseAllPanel()
     {
-     
+        for (temporaryInt = 0; temporaryInt < UICanvas.Length; temporaryInt++)
+        {
+            for (temporaryInt2 = 0; temporaryInt2 < UICanvas[temporaryInt].panel.Length; temporaryInt2++)
+            {
+                UICanvas[temporaryInt].panel[temporaryInt2].Active.alpha = 0;
+                UICanvas[temporaryInt].panel[temporaryInt2].Active.interactable = false;
+                UICanvas[temporaryInt].panel[temporaryInt2].Active.blocksRaycasts = false;
+            }
+
+        }
+
     }
 
     public void OpenMenu(int ID)
     {
-        for(temporaryInt=0;temporaryInt< MenuCollection[ID].ActiveObjectID.Length; temporaryInt++)
+        for (temporaryInt = 0; temporaryInt < MenuCollection[ID].ActiveObjectID.Length; temporaryInt++)
         {
             SetObjectActive(MenuCollection[ID].ActiveObjectID[temporaryInt], 1, true, true);
         }
-        
-        for(temporaryInt=0;temporaryInt< MenuCollection[ID].Image.Length; temporaryInt++)
-        {
-            ImageCollection[MenuCollection[ID].Image[temporaryInt].ID].GetSprite(MenuCollection[ID].Image[temporaryInt].ImageName.ToString());
-        }
- 
-        for(temporaryInt=0;temporaryInt< MenuCollection[ID].Number.Length; temporaryInt++)
-        {
-            switch (MenuCollection[ID].Number[temporaryInt].DeletZore)
-            {
-                case true:
-                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].SetNumber(MenuCollection[ID].Number[temporaryInt].Value);
-                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].DeleteZero(MenuCollection[ID].Number[temporaryInt].Value);
-                    break;
 
-                case false:
-                    NumberCollection[MenuCollection[ID].Number[temporaryInt].ID].SetNumber(MenuCollection[ID].Number[temporaryInt].Value);
-                    break;
-
-            }
-
-        }
     }
 
-    public void SetNumber(int menuID, int numberID, int value)
+    public void SetNumber(int numberID, int value, int font, bool deletZore)
     {
-        NumberCollection[MenuCollection[menuID].Number[numberID].ID].SetNumber(value);
+        NumberCollection[numberID].SetNumber(value);
+
+        if (deletZore)
+        {
+            NumberCollection[numberID].DeleteZero(value);
+        }
+
+        NumberCollection[numberID].ChangeColor(font);
+
     }
 
-    public void SetImage(int menuID, int imageID, string ImageName)
+    public void SetImage(int imageID, string ImageName, bool fitSize, float scale)
     {
-   //     MenuCollection[menuID].Image[imageID].ID
+        ImageCollection[imageID].UIimageFitSize = fitSize;
+        ImageCollection[imageID].ScaleMultiple = scale;
+        ImageCollection[imageID].GetSprite(ImageName);
 
     }
 
+    public void SetVerticalLayoutSpace(float space)
+    {
+        UICanvas[0].verticalLayoutGroup.spacing = space;
+    }
+    #endregion
 
+    #region 按鈕事件們
+
+    public void ClickSound()
+    {
+        Application.ExternalCall("AudioPlay", "Jump", 1, false);
+    }
+
+    public void ConsumePoint()
+    {
+        Application.ExternalCall("ConsumePlayerPoint");
+        SetObjectActive(12, 1, false, false);
+
+        UIStartStory();//*******************************************************************待刪
+    }
+
+    public void ConsumeFreeTimes()
+    {
+        Application.ExternalCall("ConsumePlayerPoint");
+        SetObjectActive(11, 1, false, false);
+
+        UIStartStory();//*******************************************************************待刪
+    }
+
+    #endregion
+
+    public void UIStartStory()//****************************在GameManager裡被Javascript呼叫
+    {
+        StartCoroutine(WaitSecond());
+
+    }
+
+    IEnumerator WaitSecond()
+    {
+        yield return waitSecond;
+        OpenMenu(1);
+
+    }
+
+    public void Story(int stroyPage)
+    {
+        switch (stroyPage)
+        {
+            case 1:
+
+
+                break;
+        }
+
+    }
 }
