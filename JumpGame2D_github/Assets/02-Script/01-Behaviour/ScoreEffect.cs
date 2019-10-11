@@ -31,10 +31,10 @@ public class ScoreEffect : MonoBehaviour
         circleCollider2D.enabled = false;
 
         Application.ExternalCall("AudioPlay", "GetScore", 1,false);
-       // AudioController.Instance.PlayAudio(2, 4, false);
+        // AudioController.Instance.PlayAudio(2, 4, false);
 
-        UIPanelController.instance.AddScore(StageDataController.Instance.GetCurrentObstacleScore());
-
+        //  UIPanelController.instance.AddScore(StageDataController.Instance.GetCurrentObstacleScore());
+        UIController.instance.AddScore(StageDataController.Instance.GetCurrentObstacleScore());
     }
 
     public void GetSprite(int color)

@@ -23,27 +23,28 @@ public class StageDataController : MonoBehaviour
       
     }
     
-    public void GetData(
-       /* float Gravity, float JumpForce, float Weight, int Time,
-        int One_CircleProportion, int Two_CircleProportion, int Three_CircleProportion,
-        float Small_MinSpeed, float Small_MaxSpeed, int Small_MaxSector,int Small_AppearProportion,
-        float Medium_MinSpeed, float Medium_MaxSpeed, int Medium_MaxSector, int Medium_AppearProportion,
-        float Big_MinSpeed, float Big_MaxSpeed, int Big_MaxSector, int Big_AppearProportion*/string dataJson)
+    public void GetData(string dataJson)
     {
 
          PlayerJson = new PlayerJsonData();
          PlayerJson = JsonUtility.FromJson<PlayerJsonData>(dataJson);
-        
+    
     }
 
-    public void SetData()
+    public void SetData()//*******************************************要改回來
     {
-        PlayerBehaviour.Instance.LoadData();        
-        GameManager.Instance.PlayTime = PlayerJson.Time;
-        OneSmallSectorScore = PlayerJson.OneSmallSectorScore;
-        OneMediumSectorScore = PlayerJson.OneMediumSectorScore;
-        OneBigSectorScore = PlayerJson.OneBigSectorScore;
-        CircleCountMagnificationScore = PlayerJson.CircleCountMagnificationScore;
+        /*  PlayerBehaviour.Instance.LoadData();        
+          GameManager.Instance.PlayTime = PlayerJson.Time;
+          OneSmallSectorScore = PlayerJson.OneSmallSectorScore;
+          OneMediumSectorScore = PlayerJson.OneMediumSectorScore;
+          OneBigSectorScore = PlayerJson.OneBigSectorScore;
+          CircleCountMagnificationScore = PlayerJson.CircleCountMagnificationScore;*/
+        PlayerBehaviour.Instance.LoadData();
+        GameManager.Instance.PlayTime = 5;
+        OneSmallSectorScore = 5;
+        OneMediumSectorScore = 3;
+        OneBigSectorScore = 2;
+        CircleCountMagnificationScore = 10;
     }
 
     

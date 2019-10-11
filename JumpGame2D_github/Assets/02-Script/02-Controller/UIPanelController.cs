@@ -666,12 +666,12 @@ public class UIPanelController : MonoBehaviour
 
  //       StoryPanel.SetActive(true);
 
-        GameManager.Instance.StartStroy();
+     //   GameManager.Instance.StartStroy();
     }
 
     public void NextStory()
     {
-        GameManager.Instance.NextStory();
+     //   GameManager.Instance.NextStory();
        
     }
 
@@ -688,7 +688,7 @@ public class UIPanelController : MonoBehaviour
 
     public void SkipStory()
     {
-        GameManager.Instance.GoToNoviceTeaching();
+    //    GameManager.Instance.GoToNoviceTeaching();
         
     }
     
@@ -798,5 +798,5 @@ public class UIPanelController : MonoBehaviour
 
     }
 
-   
+    
 }

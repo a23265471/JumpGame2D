@@ -67,7 +67,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9192b7e5b334c124db8d44af9be18702, type: 3}
   - {fileID: 21300000, guid: 1690f40674d39014ca9a1d6e60bcf23c, type: 3}
   - {fileID: 21300000, guid: 38390016953a05e46b50b8370721b2a5, type: 3}
-  - {fileID: 21300026, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300004, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300012, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300010, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
@@ -75,6 +74,7 @@ SpriteAtlas:
   - {fileID: 21300032, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300030, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300024, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  - {fileID: 21300026, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300028, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300006, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
   - {fileID: 21300000, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
@@ -228,7 +228,6 @@ SpriteAtlas:
   - Obstacle_202
   - Obstacle_013
   - Obstacle_211
-  - UIText-29_13
   - Precautions
   - Description_2
   - Description_3
@@ -236,6 +235,7 @@ SpriteAtlas:
   - DescriptionPanel
   - colon_1
   - colon_0
+  - colon_3
   - colon_2
   - Free
   - Title

@@ -15,7 +15,7 @@ TextureImporter:
     21300020: StoryText_3
     21300022: StoryText_4
     21300024: colon_0
-    21300026: UIText-29_13
+    21300026: colon_3
     21300028: colon_2
     21300030: colon_1
     21300032: DescriptionPanel
@@ -398,7 +398,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIText-29_13
+      name: colon_3
       rect:
         serializedVersion: 2
         x: 226

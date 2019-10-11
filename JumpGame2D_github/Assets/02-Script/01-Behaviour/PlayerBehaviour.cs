@@ -37,8 +37,6 @@ public class PlayerBehaviour : MonoBehaviour
         idleSprite = spriteRenderer.sprite;
       //  Application.targetFrameRate = 60;
         startPos = new Vector3(0, -4, 0);
-        
-        jumpVector = new Vector2(0, playerData.JumpForce);
     }
     #endregion
 
@@ -47,13 +45,13 @@ public class PlayerBehaviour : MonoBehaviour
         StartCoroutine(loadData());
     }
 
-    IEnumerator loadData()
+    IEnumerator loadData()//*******************************************要改回來
     {
         yield return null;
        // Debug.Log(StageDataController.Instance.PlayerJson.JumpForce);
         playerData = StageDataController.Instance.PlayerJson;
 
-        jumpVector = new Vector2(0, playerData.JumpForce);//1500
+        jumpVector = new Vector2(0, /*playerData.JumpForce*/1500);//1500
     }
 
     private void Update()
@@ -87,16 +85,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
-    public void Jump()
+    public void Jump()//*******************************************要改回來
     {
         Animator.SetTrigger("UP");
 
         Application.ExternalCall("AudioPlay","Jump", 1, false);
        // AudioController.Instance.PlayAudio(1, 5, false);
-
-
-        //Debug.Log("hhh");
-
         StopCoroutine(JumpAnimatoinControl());
         StartCoroutine(JumpAnimatoinControl());
 
@@ -105,8 +99,8 @@ public class PlayerBehaviour : MonoBehaviour
         rigidbody2.velocity = Vector2.zero;
         rigidbody2.AddForce(jumpVector);
 
-        rigidbody2.gravityScale = playerData.Gravity;//2
-        rigidbody2.mass = playerData.Weight;//5
+        rigidbody2.gravityScale = /*playerData.Gravity*/2;//2
+        rigidbody2.mass = /*playerData.Weight*/5;//5
         
     }
 

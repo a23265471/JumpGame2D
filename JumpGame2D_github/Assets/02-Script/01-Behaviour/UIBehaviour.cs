@@ -14,8 +14,12 @@ public class UIBehaviour : MonoBehaviour
     [Header("數字")]
     public Number[] number;
 
-    public VerticalLayoutGroup verticalLayoutGroup;
+    [Header("按鈕")]
+    public ButtonEvent[] buttonEvents;
 
+    public VerticalLayoutGroup verticalLayoutGroup;
+    public RectTransform rectTransform;
+    public Text PlayerID;
 
     [System.Serializable]
     public struct Panel
@@ -41,4 +45,11 @@ public class UIBehaviour : MonoBehaviour
         public NumberController numberController;
     }
 
+    [System.Serializable]
+    public struct ButtonEvent
+    {
+        public string Name;
+        public int ID;
+        public ButtonTriggerController buttonController;
+    }
 }

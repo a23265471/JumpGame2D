@@ -231,7 +231,7 @@ public class ObstacleController : MonoBehaviour
         switch (stage)
         {
             case 1:
-                   levelSetting.circleAmountProportion[0].CircleProportion = stageData.Stage1_One_CircleProportion;
+                  /* levelSetting.circleAmountProportion[0].CircleProportion = stageData.Stage1_One_CircleProportion;
                    levelSetting.circleAmountProportion[1].CircleProportion = stageData.Stage1_Two_CircleProportion;
                    levelSetting.circleAmountProportion[2].CircleProportion = stageData.Stage1_Three_CircleProportion;
 
@@ -248,16 +248,16 @@ public class ObstacleController : MonoBehaviour
                    levelSetting.Circle_L.MinSpeed = stageData.Stage1_Big_MinSpeed;
                    levelSetting.Circle_L.MaxSpeed = stageData.Stage1_Big_MaxSpeed;
                    levelSetting.Circle_L.MaxSector = stageData.Stage1_Big_MaxSector;
-                   levelSetting.Circle_L.AppearProportion = stageData.Stage1_Big_AppearProportion;
+                   levelSetting.Circle_L.AppearProportion = stageData.Stage1_Big_AppearProportion;*/
 
-            /*    levelSetting.circleAmountProportion[0].CircleProportion = 0;
-                levelSetting.circleAmountProportion[1].CircleProportion = 1;
+                levelSetting.circleAmountProportion[0].CircleProportion = 1;
+                levelSetting.circleAmountProportion[1].CircleProportion = 0;
                 levelSetting.circleAmountProportion[2].CircleProportion = 0;
 
                 levelSetting.Circle_S.MinSpeed = 50;
                 levelSetting.Circle_S.MaxSpeed =80;
                 levelSetting.Circle_S.MaxSector = 2;
-                levelSetting.Circle_S.AppearProportion = 1;
+                levelSetting.Circle_S.AppearProportion = 0;
 
                 levelSetting.Circle_M.MinSpeed = 150;
                 levelSetting.Circle_M.MaxSpeed = 180;
@@ -267,12 +267,12 @@ public class ObstacleController : MonoBehaviour
                 levelSetting.Circle_L.MinSpeed = 200;
                 levelSetting.Circle_L.MaxSpeed = 230;
                 levelSetting.Circle_L.MaxSector = 2;
-                levelSetting.Circle_L.AppearProportion = 1;*/
+                levelSetting.Circle_L.AppearProportion = 1;
 
                 break;
 
             case 2:
-                 levelSetting.circleAmountProportion[0].CircleProportion = stageData.Stage2_One_CircleProportion;
+               /*  levelSetting.circleAmountProportion[0].CircleProportion = stageData.Stage2_One_CircleProportion;
                  levelSetting.circleAmountProportion[1].CircleProportion = stageData.Stage2_Two_CircleProportion;
                  levelSetting.circleAmountProportion[2].CircleProportion = stageData.Stage2_Three_CircleProportion;
 
@@ -289,29 +289,67 @@ public class ObstacleController : MonoBehaviour
                  levelSetting.Circle_L.MinSpeed = stageData.Stage2_Big_MinSpeed;
                  levelSetting.Circle_L.MaxSpeed = stageData.Stage2_Big_MaxSpeed;
                  levelSetting.Circle_L.MaxSector = stageData.Stage2_Big_MaxSector;
-                 levelSetting.Circle_L.AppearProportion = stageData.Stage2_Big_AppearProportion;
+                 levelSetting.Circle_L.AppearProportion = stageData.Stage2_Big_AppearProportion;*/
+
+                levelSetting.circleAmountProportion[0].CircleProportion = 1;
+                levelSetting.circleAmountProportion[1].CircleProportion = 0;
+                levelSetting.circleAmountProportion[2].CircleProportion = 0;
+
+                levelSetting.Circle_S.MinSpeed = 50;
+                levelSetting.Circle_S.MaxSpeed = 80;
+                levelSetting.Circle_S.MaxSector = 2;
+                levelSetting.Circle_S.AppearProportion = 0;
+
+                levelSetting.Circle_M.MinSpeed = 150;
+                levelSetting.Circle_M.MaxSpeed = 180;
+                levelSetting.Circle_M.MaxSector = 2;
+                levelSetting.Circle_M.AppearProportion = 1;
+
+                levelSetting.Circle_L.MinSpeed = 200;
+                levelSetting.Circle_L.MaxSpeed = 230;
+                levelSetting.Circle_L.MaxSector = 2;
+                levelSetting.Circle_L.AppearProportion = 1;
 
                 break;
 
             case 3:
-                levelSetting.circleAmountProportion[0].CircleProportion = stageData.One_CircleProportion;
-                levelSetting.circleAmountProportion[1].CircleProportion = stageData.Two_CircleProportion;
-                levelSetting.circleAmountProportion[2].CircleProportion = stageData.Three_CircleProportion;
+                /*    levelSetting.circleAmountProportion[0].CircleProportion = stageData.One_CircleProportion;
+                    levelSetting.circleAmountProportion[1].CircleProportion = stageData.Two_CircleProportion;
+                    levelSetting.circleAmountProportion[2].CircleProportion = stageData.Three_CircleProportion;
 
-                levelSetting.Circle_S.MinSpeed = stageData.Small_MinSpeed;
-                levelSetting.Circle_S.MaxSpeed = stageData.Small_MaxSpeed;
-                levelSetting.Circle_S.MaxSector = stageData.Small_MaxSector;
-                levelSetting.Circle_S.AppearProportion = stageData.Small_AppearProportion;
+                    levelSetting.Circle_S.MinSpeed = stageData.Small_MinSpeed;
+                    levelSetting.Circle_S.MaxSpeed = stageData.Small_MaxSpeed;
+                    levelSetting.Circle_S.MaxSector = stageData.Small_MaxSector;
+                    levelSetting.Circle_S.AppearProportion = stageData.Small_AppearProportion;
 
-                levelSetting.Circle_M.MinSpeed = stageData.Medium_MinSpeed;
-                levelSetting.Circle_M.MaxSpeed = stageData.Medium_MaxSpeed;
-                levelSetting.Circle_M.MaxSector = stageData.Medium_MaxSector;
-                levelSetting.Circle_M.AppearProportion = stageData.Medium_AppearProportion;
+                    levelSetting.Circle_M.MinSpeed = stageData.Medium_MinSpeed;
+                    levelSetting.Circle_M.MaxSpeed = stageData.Medium_MaxSpeed;
+                    levelSetting.Circle_M.MaxSector = stageData.Medium_MaxSector;
+                    levelSetting.Circle_M.AppearProportion = stageData.Medium_AppearProportion;
 
-                levelSetting.Circle_L.MinSpeed = stageData.Big_MinSpeed;
-                levelSetting.Circle_L.MaxSpeed = stageData.Big_MaxSpeed;
-                levelSetting.Circle_L.MaxSector = stageData.Big_MaxSector;
-                levelSetting.Circle_L.AppearProportion = stageData.Big_AppearProportion;
+                    levelSetting.Circle_L.MinSpeed = stageData.Big_MinSpeed;
+                    levelSetting.Circle_L.MaxSpeed = stageData.Big_MaxSpeed;
+                    levelSetting.Circle_L.MaxSector = stageData.Big_MaxSector;
+                    levelSetting.Circle_L.AppearProportion = stageData.Big_AppearProportion;*/
+
+                levelSetting.circleAmountProportion[0].CircleProportion = 1;
+                levelSetting.circleAmountProportion[1].CircleProportion = 0;
+                levelSetting.circleAmountProportion[2].CircleProportion = 0;
+
+                levelSetting.Circle_S.MinSpeed = 50;
+                levelSetting.Circle_S.MaxSpeed = 80;
+                levelSetting.Circle_S.MaxSector = 2;
+                levelSetting.Circle_S.AppearProportion = 0;
+
+                levelSetting.Circle_M.MinSpeed = 150;
+                levelSetting.Circle_M.MaxSpeed = 180;
+                levelSetting.Circle_M.MaxSector = 2;
+                levelSetting.Circle_M.AppearProportion = 1;
+
+                levelSetting.Circle_L.MinSpeed = 200;
+                levelSetting.Circle_L.MaxSpeed = 230;
+                levelSetting.Circle_L.MaxSector = 2;
+                levelSetting.Circle_L.AppearProportion = 1;
                 break;
         }
        
