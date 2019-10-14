@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8028880498554068269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4240204107643303711}
   - component: {fileID: 5130161294906749996}
   - component: {fileID: 1152107613143915640}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
     Gravity: 2
     JumpForce: 1500
     Weight: 5
-    Score: 0
+    Time: 0
     One_CircleProportion: 0
     Two_CircleProportion: 0
     Three_CircleProportion: 0
@@ -181,6 +181,40 @@ MonoBehaviour:
     Big_MaxSpeed: 0
     Big_MaxSector: 0
     Big_AppearProportion: 0
+    Stage1_One_CircleProportion: 0
+    Stage1_Two_CircleProportion: 0
+    Stage1_Three_CircleProportion: 0
+    Stage1_Small_MinSpeed: 0
+    Stage1_Small_MaxSpeed: 0
+    Stage1_Small_MaxSector: 0
+    Stage1_Small_AppearProportion: 0
+    Stage1_Medium_MinSpeed: 0
+    Stage1_Medium_MaxSpeed: 0
+    Stage1_Medium_MaxSector: 0
+    Stage1_Medium_AppearProportion: 0
+    Stage1_Big_MinSpeed: 0
+    Stage1_Big_MaxSpeed: 0
+    Stage1_Big_MaxSector: 0
+    Stage1_Big_AppearProportion: 0
+    Stage2_One_CircleProportion: 0
+    Stage2_Two_CircleProportion: 0
+    Stage2_Three_CircleProportion: 0
+    Stage2_Small_MinSpeed: 0
+    Stage2_Small_MaxSpeed: 0
+    Stage2_Small_MaxSector: 0
+    Stage2_Small_AppearProportion: 0
+    Stage2_Medium_MinSpeed: 0
+    Stage2_Medium_MaxSpeed: 0
+    Stage2_Medium_MaxSector: 0
+    Stage2_Medium_AppearProportion: 0
+    Stage2_Big_MinSpeed: 0
+    Stage2_Big_MaxSpeed: 0
+    Stage2_Big_MaxSector: 0
+    Stage2_Big_AppearProportion: 0
+    OneSmallSectorScore: 0
+    OneMediumSectorScore: 0
+    OneBigSectorScore: 0
+    CircleCountMagnificationScore: 0
   Animator: {fileID: 0}
 --- !u!50 &1152107613143915640
 Rigidbody2D:

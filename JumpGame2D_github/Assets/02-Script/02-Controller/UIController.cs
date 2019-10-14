@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        waitSecond = new WaitForSeconds(0.3f);
+        waitSecond = new WaitForSeconds(0.5f);
         CurrentStory = 0;
         openThanks = false;
         playerInfo = new StringBuilder();
@@ -124,6 +124,9 @@ public class UIController : MonoBehaviour
         ScorePanelTransform = UICanvas[2].rectTransform;
         scoreStartPos_Y = ScorePanelTransform.anchoredPosition.y;
         SetButtonEven();
+
+    //    CloseAllPanel();
+
     }
 
     #region 物件設置
@@ -158,6 +161,15 @@ public class UIController : MonoBehaviour
 
     }
 
+    public void CloseMenu(int ID)
+    {
+        for (temporaryInt = 0; temporaryInt < MenuCollection[ID].ActiveObjectID.Length; temporaryInt++)
+        {
+            SetObjectActive(MenuCollection[ID].ActiveObjectID[temporaryInt], 0, false, false);
+        }
+
+    }
+
     public void SetNumber(int numberID, int value, int font, bool deletZore)
     {
         NumberCollection[numberID].SetNumber(value);
@@ -179,7 +191,7 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void SetVerticalLayoutSpace(float space)
+    public void SetStartVerticalLayoutSpace(float space)
     {
         UICanvas[0].verticalLayoutGroup.spacing = space;
     }
@@ -194,6 +206,9 @@ public class UIController : MonoBehaviour
         ButtonCollection[5].OnClickEven = Receive_Button;
         ButtonCollection[6].OnClickEven = Thanks_Button;
         ButtonCollection[7].OnClickEven = NextStory_Button;
+        ButtonCollection[8].OnClickEven = Precautions_Button;
+        ButtonCollection[9].OnClickEven = Back_Button;
+
 
     }
 
@@ -217,19 +232,21 @@ public class UIController : MonoBehaviour
     public void ConsumePoint_Button()
     {
         ClickSound();
-        Application.ExternalCall("ConsumePlayerPoint");
         SetObjectActive(12, 1, false, false);
 
         UIStartStory();//*******************************************************************待刪
+        Application.ExternalCall("ConsumePlayerPoint");
+
     }
 
     public void ConsumeFreeTimes_Button()
     {
         ClickSound();
-        Application.ExternalCall("ConsumePlayerPoint");
         SetObjectActive(11, 1, false, false);
 
         UIStartStory();//*******************************************************************待刪
+        Application.ExternalCall("ConsumePlayerPoint");
+
     }
 
     public void NextStory_Button()
@@ -278,6 +295,22 @@ public class UIController : MonoBehaviour
             
     }
 
+    public void Precautions_Button()
+    {
+        ClickSound();
+        Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
+
+        OpenStartPanel(1);//*******************************************************************待刪
+        SetNumber(2, 542, 4, true);
+        SetNumber(0, 665, 4, true);
+    }
+
+    public void Back_Button()
+    {
+        ClickSound();
+        CloseMenu(5);
+        OpenMenu(0);
+    }
     #endregion
 
     public void ClickSound()
@@ -295,14 +328,14 @@ public class UIController : MonoBehaviour
         {
             case 0:
                 SetImage(1, "Free", false, 1);
-                SetVerticalLayoutSpace(4);
+                SetStartVerticalLayoutSpace(4);
                 SetObjectActive(11, 1, true, true);
 
                 break;
             case 1:
                 SetImage(1, "Coin", true, 1);
                 SetObjectActive(8, 1, true, false);
-                SetVerticalLayoutSpace(10);
+                SetStartVerticalLayoutSpace(10);
                 SetObjectActive(12, 1, true, true);
 
                 break;
@@ -444,7 +477,7 @@ public class UIController : MonoBehaviour
         OpenMenu(3);
         ImageCollection[2].GetSprite("Result");
         SetNumber(7, StageDataController.Instance.TotalScore, 4, true);
-        SetVerticalLayoutSpace(-5);
+        SetStartVerticalLayoutSpace(-21);
 
         switch (winLose)
         {
@@ -474,6 +507,17 @@ public class UIController : MonoBehaviour
     {
         SetObjectActive(16, 1, true, true);
 
+    }
+
+    public void OpenPrecautions()
+    {
+        OpenMenu(5);
+        SetStartVerticalLayoutSpace(-11.8f);
+    }
+
+    public void OpenGuestMark()
+    {
+        OpenMenu(6);
     }
 
     #region 分數

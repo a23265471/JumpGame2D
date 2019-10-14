@@ -748,7 +748,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &4005338744529990507
 MonoBehaviour:
@@ -819,6 +819,7 @@ MonoBehaviour:
   buttonEvents: []
   verticalLayoutGroup: {fileID: 0}
   rectTransform: {fileID: 4005338743988406339}
+  PlayerID: {fileID: 0}
 --- !u!225 &4005338744529990551
 CanvasGroup:
   m_ObjectHideFlags: 0

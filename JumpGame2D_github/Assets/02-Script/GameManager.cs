@@ -24,11 +24,14 @@ public class GameManager : MonoBehaviour
     #region Panel
     [SerializeField]
     private GameObject[] UICanvas;
-  /*  [SerializeField]
-    private GameObject PlayCanvas;
+
     [SerializeField]
-    private GameObject MoveableCanvas;
-    */
+    private GameObject GuestMarkCanvas;
+    /*  [SerializeField]
+      private GameObject PlayCanvas;
+      [SerializeField]
+      private GameObject MoveableCanvas;
+      */
 
     #endregion
     [SerializeField]
@@ -62,6 +65,9 @@ public class GameManager : MonoBehaviour
     
     public int time;
     int waitSec;
+
+    string PlayerID;
+    string GameID;
 //    public int currentStory;
 
     IEnumerator timerCoroutine;
@@ -121,10 +127,13 @@ public class GameManager : MonoBehaviour
     {
         Player = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "Water", typeof(GameObject));
         Background = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "background2", typeof(GameObject));
-      /*  UICanvas[0]  = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "StaticCanvas", typeof(GameObject));
-        UICanvas[1] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "PlayCanvas", typeof(GameObject));
-        UICanvas[2] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "MoveableCanvas", typeof(GameObject));*/
-        
+        /*  UICanvas[0]  = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "StaticCanvas", typeof(GameObject));
+          UICanvas[1] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "PlayCanvas", typeof(GameObject));
+          UICanvas[2] = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "MoveableCanvas", typeof(GameObject));
+        GuestMarkCanvas = (GameObject)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, "GuestMarkCanvas", typeof(GameObject)); */
+
+
+
         ObstacleController.Instance.GetPrefab();
     }
 
@@ -136,8 +145,10 @@ public class GameManager : MonoBehaviour
         UICanvas[1] = Instantiate(UICanvas[1]);
         UICanvas[2] = Instantiate(UICanvas[2]);
 
+
+
         /*    PlayCanvas = Instantiate(PlayCanvas);
-            MoveableCanvas = Instantiate(MoveableCanvas);*/
+        MoveableCanvas = Instantiate(MoveableCanvas);*/
 
         StartCoroutine(SetGameObject());
 
@@ -163,8 +174,10 @@ public class GameManager : MonoBehaviour
 
     public void SetScene()//******************************************************************************要改ㄉ地方
     {
+        SetGuestMark();//******************************************************************************要改ㄉ地方
         GetPlayerInfo_PlayerID("s1414042214@gms.nutc.edu.tw");//******************************************************************************要改ㄉ地方
         SetPlayerInfo_GameID("8+95+5dfg654654dfg");//******************************************************************************要改ㄉ地方
+        Application.ExternalCall("GetPlayerInfo");
 
         time = PlayTime;
 
@@ -181,19 +194,9 @@ public class GameManager : MonoBehaviour
         UIController.instance.ResetText();
 
         ResetTimer();
-        
-        Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
 
-           OpenFreePanel();
-           SetPresetFreeCount(3);
-           SetPlayerFreeTimes(2);
+        OpenPrecautions();
 
-        // SetFreeTimePanel(1, 2);
-
-     /*   OpenConsumPointPanel();
-        SetConsumePoint(1026);
-        SetPlayerPoint(5678);*/
-        //StartPanel();
     }
 
     private void StartObstacle()
@@ -205,12 +208,18 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    public void GetPlayerInfo_PlayerID(string PlayerID)
+    
+    public void SetGuestMark()
+    {
+        GuestMarkCanvas = Instantiate(GuestMarkCanvas);
+    }
+
+    public void GetPlayerInfo_PlayerID(string playerID)//------------------被JS呼叫
     {
         UIController.instance.SetPlayerInfo_PlayerInfo(PlayerID);
     }
 
-    public void SetPlayerInfo_GameID(string GameID)
+    public void SetPlayerInfo_GameID(string gameID)//------------------被JS呼叫
     {
         UIController.instance.SetPlayerInfo_GameID(GameID);
     }
@@ -366,6 +375,11 @@ public class GameManager : MonoBehaviour
 
     #region UI們
 
+    public void OpenPrecautions()
+    {
+        UIController.instance.OpenPrecautions();
+    }
+
     #region 扣點欄
     public void OpenConsumPointPanel()//被javaScript呼叫,打開消耗點數的頁面
     {
@@ -398,9 +412,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayerFreeTimes(int playerFreeCount)//被javaScript呼叫,設置玩家的免費遊玩次數
     {
-        //   UIPanelController.instance.SetPlayerFreeCount(playerFreeCount);
         UIController.instance.SetNumber(1, playerFreeCount, 4, true);
-
     }
     #endregion
 

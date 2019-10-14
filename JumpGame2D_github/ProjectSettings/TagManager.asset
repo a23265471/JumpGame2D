@@ -16,10 +16,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - GuestMark
+  - UI_fix
+  - Player
+  - Obstacle
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GuestMark
+    uniqueID: 2896400193
     locked: 0

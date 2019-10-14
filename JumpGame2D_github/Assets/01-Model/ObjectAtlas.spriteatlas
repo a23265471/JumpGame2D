@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ea913b9b0a7464646a03f4ad8eec53ae, type: 3}
-    totalSpriteSurfaceArea: 808191
+    totalSpriteSurfaceArea: 805271
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -180,6 +180,19 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 042d054a022510642b5dbf9c4329ab53, type: 3}
   - {fileID: 21300000, guid: 90a3384ad9940f1488be5b60370608b3, type: 3}
   - {fileID: 21300000, guid: e9cc106a56316574ba5b06c44b4fcb9e, type: 3}
+  - {fileID: 21300014, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300012, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300010, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300024, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300006, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300008, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300000, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300002, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300004, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300016, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300018, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300020, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
+  - {fileID: 21300022, guid: bfeabdca7bf85d947aec71e9b5fa4644, type: 3}
   - {fileID: 21300000, guid: 09bab6fa34a7dfc4c900408b2d5b02d4, type: 3}
   - {fileID: 21300000, guid: 2db0341ccac26824d95b3c2060249ee5, type: 3}
   - {fileID: 21300000, guid: b185a33cba8da8d4180809364200f888, type: 3}
@@ -194,18 +207,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 594250ce9d9b49242a0e052e0e64195e, type: 3}
   - {fileID: 21300000, guid: a4e619de0842e0a40afdffba14169a11, type: 3}
   - {fileID: 21300000, guid: 676d7bfe6cb83d74abb7d039e7cbda1b, type: 3}
-  - {fileID: 21300018, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300006, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300022, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300002, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300004, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300020, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300000, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300016, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300008, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300010, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300012, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
-  - {fileID: 21300014, guid: 7c6b7d5f9bcf7c848897a98c9879d01c, type: 3}
   m_PackedSpriteNamesToIndex:
   - Obstacle_103
   - Obstacle_001
@@ -341,6 +342,19 @@ SpriteAtlas:
   - Obstacle_002
   - Obstacle_010
   - Obstacle_212
+  - Border_Down
+  - Border_Up
+  - StoryWater_4
+  - Back
+  - StoryWater_2
+  - StoryWater_3
+  - StoryWater_0
+  - StoryWater_1
+  - 1014-19_2
+  - ScorePoint_2
+  - ScorePoint_3
+  - ScorePoint_0
+  - Receive_Up
   - Obstacle_123
   - ScorePoint_1
   - Obstacle_223
@@ -355,17 +369,5 @@ SpriteAtlas:
   - Obstacle_120
   - Obstacle_303
   - Obstacle_203
-  - Border_Down
-  - Border_Up
-  - StoryWater_4
-  - StoryWater_2
-  - StoryWater_3
-  - StoryWater_0
-  - StoryWater_1
-  - Receive_Down
-  - ScorePoint_2
-  - ScorePoint_3
-  - ScorePoint_0
-  - Receive_Up
   m_Tag: ObjectAtlas
   m_IsVariant: 0

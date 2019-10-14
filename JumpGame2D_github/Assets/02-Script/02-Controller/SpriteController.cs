@@ -27,6 +27,7 @@ public enum spriteAtlas
     Plus_0, Plus_1, Plus_2, Plus_3,
     TimesUP, SpecialThank, SpecialThank_1, SpecialThank_2, SpecialThank_3, SpecialThanks_small,
     Title, Description_1, Description_2, Description_3, Coin, TextPanel, DescriptionPanel,
+    Back,Logo,
 
     //紅色 = 0,藍色 = 1,綠色 = 2,黃色 = 3
     Score_0, Score_1, Score_2,Score_3,//Score_顏色

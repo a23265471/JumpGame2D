@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3682049589614471966}
   - component: {fileID: 1138693642342179974}
   - component: {fileID: 1598047003}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Obstacle_L
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -126,3 +126,5 @@ MonoBehaviour:
   CurrentSprite: 0
   AtlasName: ObjectAtlas
   Atlas: {fileID: 0}
+  UIimageFitSize: 0
+  ScaleMultiple: 0
