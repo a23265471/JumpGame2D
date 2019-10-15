@@ -55,24 +55,9 @@ public class DownLoadAssetBundle : MonoBehaviour
 
       //  Debug.Log((request.downloadHandler as DownloadHandlerAssetBundle).assetBundle.name);
         AssetBundleDictionary[(int)assetBundleState] = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
-      //  Debug.Log(AssetBundleDictionary[(int)assetBundleState]);
+        Debug.Log(AssetBundleDictionary[(int)assetBundleState]);
             
     }
-
-
-    /*  IEnumerator LoadAsset(AssetBundleState assetBundleState, string assetBundleName)
-      {
-          //  IsDownLoaded = false;
-        //  path1 = "http://192.168.0.137/Dachuang/public/games/games011/AssetBundle/" + assetBundleName + ".unityassetbundle"; //本地资源包路径
-
-          while (Caching.ready == false)yield return null;   //是否准备好
-          www1 = WWW.LoadFromCacheOrDownload(@path1, 19);
-
-          yield return www1;
-
-
-          AssetBundleDictionary[(int)assetBundleState] = www1.assetBundle;
-      }*/
 
     public object GetAsset(AssetBundleState assetBundleState,string ObjectName,System.Type type)
     {

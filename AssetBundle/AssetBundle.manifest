@@ -1,11 +1,8 @@
 ManifestFileVersion: 0
-CRC: 3936766060
+CRC: 77234495
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: atlas.unityassetbundle
-      Dependencies: {}
-    Info_1:
-      Name: gameobjectbundle.unityassetbundle
+      Name: gameobject.unityassetbundle
       Dependencies:
-        Dependency_0: atlas.unityassetbundle
+        Dependency_0: 

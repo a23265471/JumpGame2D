@@ -33,18 +33,18 @@ public class StageDataController : MonoBehaviour
 
     public void SetData()//*******************************************要改回來
     {
-        /*  PlayerBehaviour.Instance.LoadData();        
+          PlayerBehaviour.Instance.LoadData();        
           GameManager.Instance.PlayTime = PlayerJson.Time;
           OneSmallSectorScore = PlayerJson.OneSmallSectorScore;
           OneMediumSectorScore = PlayerJson.OneMediumSectorScore;
           OneBigSectorScore = PlayerJson.OneBigSectorScore;
-          CircleCountMagnificationScore = PlayerJson.CircleCountMagnificationScore;*/
-        PlayerBehaviour.Instance.LoadData();
+          CircleCountMagnificationScore = PlayerJson.CircleCountMagnificationScore;
+       /* PlayerBehaviour.Instance.LoadData();
         GameManager.Instance.PlayTime = 5;
         OneSmallSectorScore = 5;
         OneMediumSectorScore = 3;
         OneBigSectorScore = 2;
-        CircleCountMagnificationScore = 10;
+        CircleCountMagnificationScore = 10;*/
     }
 
     

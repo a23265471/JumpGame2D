@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &6063525158579304902
 RectTransform:
@@ -55,7 +55,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &620689775850983766
 RectTransform:
@@ -126,6 +126,8 @@ MonoBehaviour:
   CurrentSprite: 1
   AtlasName: 
   Atlas: {fileID: 0}
+  UIimageFitSize: 0
+  ScaleMultiple: 0
 --- !u!114 &1090307406197062303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &5487698034187255375
 RectTransform:
@@ -231,6 +233,8 @@ MonoBehaviour:
   CurrentSprite: 1
   AtlasName: 
   Atlas: {fileID: 0}
+  UIimageFitSize: 0
+  ScaleMultiple: 0
 --- !u!114 &1090307406634615963
 MonoBehaviour:
   m_ObjectHideFlags: 0

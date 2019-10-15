@@ -16,25 +16,7 @@ public class UIController : MonoBehaviour
         string name;
         public int ID;
         public int[] ActiveObjectID;
-        public ImageInfo[] Image;
-        public NumberInfo[] Number;
-    }
-
-    [System.Serializable]
-    public struct NumberInfo
-    {
-        public int ID;
-        public int Value;
-        public bool DeletZore;
-        public delegate int GetValue(int value);
-    }
-
-    [System.Serializable]
-    public struct ImageInfo
-    {
-        public spriteAtlas ImageName;
-        public int ID;
-
+      
     }
 
     private UIBehaviour[] UICanvas;
@@ -124,9 +106,7 @@ public class UIController : MonoBehaviour
         ScorePanelTransform = UICanvas[2].rectTransform;
         scoreStartPos_Y = ScorePanelTransform.anchoredPosition.y;
         SetButtonEven();
-
-    //    CloseAllPanel();
-
+        
     }
 
     #region 物件設置
@@ -234,7 +214,7 @@ public class UIController : MonoBehaviour
         ClickSound();
         SetObjectActive(12, 1, false, false);
 
-        UIStartStory();//*******************************************************************待刪
+      //  UIStartStory();//*******************************************************************測試 2
         Application.ExternalCall("ConsumePlayerPoint");
 
     }
@@ -244,13 +224,14 @@ public class UIController : MonoBehaviour
         ClickSound();
         SetObjectActive(11, 1, false, false);
 
-        UIStartStory();//*******************************************************************待刪
+       // UIStartStory();//*******************************************************************測試 2
         Application.ExternalCall("ConsumePlayerPoint");
 
     }
 
     public void NextStory_Button()
     {
+        ClickSound();
         NextStory();
     }
 
@@ -268,10 +249,9 @@ public class UIController : MonoBehaviour
     public void Again_Button()
     {
         ClickSound();
-        Application.ExternalCall("AudioPause");
         GameManager.Instance.ResetGame();
         Application.ExternalCall("JudgeFreeOrConsumePoint");
-        GameManager.Instance.OpenConsumPointPanel();//*******************************************************************待刪
+       // GameManager.Instance.OpenConsumPointPanel();//*******************************************************************測試 end
     }
 
     public void Quit_Button()
@@ -300,16 +280,16 @@ public class UIController : MonoBehaviour
         ClickSound();
         Application.ExternalCall("JudgeFreeOrConsumePoint");//與資料庫取得資料
 
-        OpenStartPanel(1);//*******************************************************************待刪
-        SetNumber(2, 542, 4, true);
-        SetNumber(0, 665, 4, true);
+       // OpenStartPanel(0);//*******************************************************************測試 1
+      /*  SetNumber(2, 542, 4, true);//**********************************************************測試
+        SetNumber(0, 665, 4, true);//**********************************************************測試*/
     }
 
     public void Back_Button()
     {
         ClickSound();
-        CloseMenu(5);
-        OpenMenu(0);
+        Application.ExternalCall("BackToHouse");//與資料庫取得資料
+
     }
     #endregion
 
@@ -355,6 +335,8 @@ public class UIController : MonoBehaviour
         CloseAllPanel();
         OpenMenu(1);
         Story(0);
+        Application.ExternalCall("AudioPlay", "BGM_Story", 1, false);
+
     }
 
     public void NextStory()
@@ -513,6 +495,9 @@ public class UIController : MonoBehaviour
     {
         OpenMenu(5);
         SetStartVerticalLayoutSpace(-11.8f);
+        ImageCollection[2].GetSprite("Title");
+        ImageCollection[0].GetSprite("StoryBackground_B");
+
     }
 
     public void OpenGuestMark()
@@ -529,7 +514,9 @@ public class UIController : MonoBehaviour
         SetImage(16, "Plus_0", false, 1);
 
         NumberCollection[5].ChangeColor(0);//score
-        NumberCollection[5].DeleteZero(0);//score
+        NumberCollection[6].ChangeColor(0);//add score 
+        NumberCollection[3].ChangeColor(0);//minute
+        NumberCollection[4].ChangeColor(0);//second
     }
 
     public void SetPlayTextColor(int color)
@@ -547,7 +534,6 @@ public class UIController : MonoBehaviour
 
     public void AddScore(int value)
     {
-        // NumberCollection[5].SetNumber(5);
         SetObjectActive(20, 1, false, false);
         NumberCollection[6].SetNumber(value);
         NumberCollection[6].DeleteZero(value);

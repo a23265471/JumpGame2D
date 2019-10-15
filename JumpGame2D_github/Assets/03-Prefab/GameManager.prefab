@@ -1,0 +1,262 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9138973823808773158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3918627979322113837}
+  - component: {fileID: 9061852432425892956}
+  - component: {fileID: 7727921825960468818}
+  - component: {fileID: 9138973823808773157}
+  - component: {fileID: 840824170600668090}
+  - component: {fileID: 7748238089333643708}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3918627979322113837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.46182138, y: -6.2506523, z: 153.8694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9061852432425892956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c262c1eb3a15f4d86257627da2bc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentGameState: 0
+  PlayerStartPos: {x: 0, y: -4.4, z: 0}
+  UICanvas:
+  - {fileID: 826835171989146645, guid: 551175694bdc729479a03b3ad0813f43, type: 3}
+  - {fileID: 7677696920933822311, guid: 1b937835165c3a24c9635dfaa3e70da2, type: 3}
+  - {fileID: 4005338744529990505, guid: 36ca5cb0d10f92a4588b5ab1b5bcc817, type: 3}
+  GuestMarkCanvas: {fileID: 0}
+  Logo: {fileID: 0}
+  Player: {fileID: 0}
+  Background: {fileID: 0}
+  BackGroundCanvas: {fileID: 0}
+  Level: 0
+  PlayTime: 30
+  CurrentBackground: 0
+  BackgroundColor: 0
+  time: 0
+--- !u!114 &7727921825960468818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b692c6d97e7240746b2ecaa5326b7ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextObstaclePosition: {x: 0, y: 8, z: 0}
+  levelSetting:
+    Level: 0
+    circleAmountProportion:
+    - Name: 1 Circle
+      CircleProportion: 2
+    - Name: 2 Circle
+      CircleProportion: 7
+    - Name: 3 Circle
+      CircleProportion: 5
+    Circle_S:
+      Size: 0
+      MinSpeed: 50
+      MaxSpeed: 80
+      MaxSector: 2
+      AppearProportion: 4
+    Circle_M:
+      Size: 0
+      MinSpeed: 140
+      MaxSpeed: 170
+      MaxSector: 2
+      AppearProportion: 1
+    Circle_L:
+      Size: 0
+      MinSpeed: 200
+      MaxSpeed: 230
+      MaxSector: 1
+      AppearProportion: 8
+  ObstaclePrefab:
+  - Name: 0
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 0}
+  - Name: 1
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 0}
+  - Name: 2
+    ID: 0
+    Amount: 8
+    ObstaclePrefab: {fileID: 0}
+  - Name: 3
+    ID: 0
+    Amount: 6
+    ObstaclePrefab: {fileID: 0}
+  - Name: 4
+    ID: 0
+    Amount: 4
+    ObstaclePrefab: {fileID: 0}
+  - Name: 5
+    ID: 0
+    Amount: 2
+    ObstaclePrefab: {fileID: 0}
+  CircleCount: 0
+  BigSecterCount: 0
+  SmallSecterCount: 0
+  MediumSecterCount: 0
+  CurrentTotalScore: 0
+--- !u!114 &9138973823808773157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d092257a5b4b07438ef3d758b7084b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menu:
+  - name: Start Panel
+    ID: 0
+    ActiveObjectID: 0300000001000000000000001500000005000000
+    Image: []
+    Number: []
+  - name: Story Panel
+    ID: 1
+    ActiveObjectID: 0000000002000000030000000400000005000000110000000d00000012000000
+    Image: []
+    Number: []
+  - name: Thanks Panel
+    ID: 2
+    ActiveObjectID: 03000000110000001700000005000000
+    Image: []
+    Number: []
+  - name: Result
+    ID: 3
+    ActiveObjectID: 0f00000005000000030000000100000016000000
+    Image: []
+    Number: []
+  - name: Play Panel
+    ID: 4
+    ActiveObjectID: 050000000600000007000000
+    Image: []
+    Number: []
+  - name: Precautions
+    ID: 5
+    ActiveObjectID: 1b00000001000000190000001a0000000500000003000000
+    Image: []
+    Number: []
+  CurrentStory: 0
+--- !u!114 &840824170600668090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fe5f943094fe640b3fb666beccea48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerJson:
+    Gravity: 0
+    JumpForce: 0
+    Weight: 0
+    Time: 0
+    One_CircleProportion: 0
+    Two_CircleProportion: 0
+    Three_CircleProportion: 0
+    Small_MinSpeed: 0
+    Small_MaxSpeed: 0
+    Small_MaxSector: 0
+    Small_AppearProportion: 0
+    Medium_MinSpeed: 0
+    Medium_MaxSpeed: 0
+    Medium_MaxSector: 0
+    Medium_AppearProportion: 0
+    Big_MinSpeed: 0
+    Big_MaxSpeed: 0
+    Big_MaxSector: 0
+    Big_AppearProportion: 0
+    Stage1_One_CircleProportion: 0
+    Stage1_Two_CircleProportion: 0
+    Stage1_Three_CircleProportion: 0
+    Stage1_Small_MinSpeed: 0
+    Stage1_Small_MaxSpeed: 0
+    Stage1_Small_MaxSector: 0
+    Stage1_Small_AppearProportion: 0
+    Stage1_Medium_MinSpeed: 0
+    Stage1_Medium_MaxSpeed: 0
+    Stage1_Medium_MaxSector: 0
+    Stage1_Medium_AppearProportion: 0
+    Stage1_Big_MinSpeed: 0
+    Stage1_Big_MaxSpeed: 0
+    Stage1_Big_MaxSector: 0
+    Stage1_Big_AppearProportion: 0
+    Stage2_One_CircleProportion: 0
+    Stage2_Two_CircleProportion: 0
+    Stage2_Three_CircleProportion: 0
+    Stage2_Small_MinSpeed: 0
+    Stage2_Small_MaxSpeed: 0
+    Stage2_Small_MaxSector: 0
+    Stage2_Small_AppearProportion: 0
+    Stage2_Medium_MinSpeed: 0
+    Stage2_Medium_MaxSpeed: 0
+    Stage2_Medium_MaxSector: 0
+    Stage2_Medium_AppearProportion: 0
+    Stage2_Big_MinSpeed: 0
+    Stage2_Big_MaxSpeed: 0
+    Stage2_Big_MaxSector: 0
+    Stage2_Big_AppearProportion: 0
+    OneSmallSectorScore: 0
+    OneMediumSectorScore: 0
+    OneBigSectorScore: 0
+    CircleCountMagnificationScore: 0
+  TotalScore: 0
+  OneSmallSectorScore: 30
+  OneMediumSectorScore: 20
+  OneBigSectorScore: 10
+  CircleCountMagnificationScore: 0.3
+--- !u!114 &7748238089333643708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138973823808773158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6145a1d02a6e5a49a124b57c3de8022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

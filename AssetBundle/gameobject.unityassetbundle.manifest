@@ -1,0 +1,161 @@
+ManifestFileVersion: 0
+CRC: 3688385883
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2c08acb2d4d38bc20b3b4cb6bb081047
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d3ad33602183a2529bbafb7ad4a97a93
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 68
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 427ce2310c9d7d1459810ee7e0e1416c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 48e8fe91d9a5fbd41832b2b5a567bd99, type: 3}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cf9b1052d0ef05f4e9f64111c3b1739d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 68b51685e2d1927478507f63c7e0154a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7158af1633d247d449890442a3442ba5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b48b025818cbede499c51925f5e1790f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a0bf9bd9ae1d7bc479d883ad8c0458db, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 321ea5bc77d81fe45bb31e2ef5e4938d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+Assets:
+- Assets/03-Prefab/ScoreEffect.prefab
+- Assets/01-Model/Atlas/Obstacle_103.png
+- Assets/01-Model/Atlas/Obstacle_001.png
+- Assets/01-Model/UIBackground/Lose.png
+- Assets/01-Model/Atlas/Obstacle_112.png
+- Assets/01-Model/UIBackground/StoryBackground_B.png
+- Assets/01-Model/mark01.png
+- Assets/01-Model/Atlas/Obstacle_313.png
+- Assets/01-Model/Atlas/Obstacle_021.png
+- Assets/03-Prefab/UI/ScoreCanvas.prefab
+- Assets/01-Model/Atlas/Obstacle_311.png
+- Assets/01-Model/Atlas/Obstacle_301.png
+- Assets/01-Model/Atlas/Obstacle_221.png
+- Assets/01-Model/Atlas/Obstacle_121.png
+- Assets/01-Model/Atlas/Obstacle_012.png
+- Assets/03-Prefab/Water.prefab
+- Assets/01-Model/Atlas/Obstacle_011.png
+- Assets/01-Model/UIBackground/StoryBackground_P.png
+- Assets/01-Model/UIBackground/Win.png
+- Assets/01-Model/Atlas/Obstacle_302.png
+- Assets/01-Model/Atlas/Obstacle_101.png
+- Assets/01-Model/Atlas/Obstacle_022.png
+- Assets/01-Model/Atlas/Obstacle_020.png
+- Assets/03-Prefab/Obstacle_L.prefab
+- Assets/01-Model/Atlas/Obstacle_322.png
+- Assets/01-Model/Atlas/Obstacle_300.png
+- Assets/03-Prefab/UI/MovableCanvas.prefab
+- Assets/01-Model/Atlas/Obstacle_222.png
+- Assets/01-Model/Atlas/Obstacle_202.png
+- Assets/01-Model/Atlas/Obstacle_013.png
+- Assets/01-Model/Atlas/Obstacle_211.png
+- Assets/01-Model/Atlas/UIText-29.png
+- Assets/01-Model/Atlas/material-26-26.png
+- Assets/01-Model/Atlas/Obstacle_003.png
+- Assets/01-Model/Atlas/Obstacle_210.png
+- Assets/01-Model/Atlas/Obstacle_100.png
+- Assets/03-Prefab/ObstacleAll.prefab
+- Assets/01-Model/Atlas/Obstacle_200.png
+- Assets/01-Model/PlayBackground.png
+- Assets/03-Prefab/Background2.prefab
+- Assets/01-Model/Atlas/Obstacle_310.png
+- Assets/01-Model/Atlas/Obstacle_320.png
+- Assets/01-Model/Atlas/Obstacle_000.png
+- Assets/01-Model/UIAtlas.spriteatlas
+- Assets/01-Model/Atlas/Obstacle_312.png
+- Assets/01-Model/Atlas/Obstacle_102.png
+- Assets/01-Model/Atlas/Obstacle_213.png
+- Assets/03-Prefab/UI/StaticCanvas.prefab
+- Assets/01-Model/Atlas/Obstacle_122.png
+- Assets/01-Model/Atlas/UI2-23-23.png
+- Assets/01-Model/Atlas/Obstacle_002.png
+- Assets/01-Model/Atlas/Obstacle_010.png
+- Assets/01-Model/Atlas/Obstacle_212.png
+- Assets/01-Model/Atlas/1014-19.png
+- Assets/01-Model/Atlas/Obstacle_123.png
+- Assets/01-Model/ObjectAtlas.spriteatlas
+- Assets/01-Model/UIBackground/Story_5.png
+- Assets/01-Model/Atlas/ScorePoint_1.png
+- Assets/01-Model/Atlas/Obstacle_223.png
+- Assets/01-Model/Atlas/Obstacle_111.png
+- Assets/01-Model/Atlas/Obstacle_023.png
+- Assets/01-Model/Atlas/Obstacle_110.png
+- Assets/01-Model/Atlas/Obstacle_201.png
+- Assets/03-Prefab/Obstacle_S.prefab
+- Assets/01-Model/Atlas/Obstacle_321.png
+- Assets/01-Model/UIBackground/NoviceTeaching.png
+- Assets/01-Model/Atlas/Obstacle_113.png
+- Assets/03-Prefab/Obstacle_M.prefab
+- Assets/01-Model/Atlas/Obstacle_323.png
+- Assets/01-Model/Atlas/Obstacle_220.png
+- Assets/01-Model/Atlas/Obstacle_120.png
+- Assets/01-Model/Atlas/Obstacle_303.png
+- Assets/03-Prefab/Parent.prefab
+- Assets/01-Model/Atlas/Obstacle_203.png
+- Assets/01-Model/UI-19-19-19-19.png
+Dependencies:
+- D:/MoonMoonGames/00-TestGame/00-JumpGame2D/AssetBundle/atlas.unityassetbundle

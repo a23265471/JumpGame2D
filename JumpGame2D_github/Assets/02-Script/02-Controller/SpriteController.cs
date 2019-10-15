@@ -27,7 +27,7 @@ public enum spriteAtlas
     Plus_0, Plus_1, Plus_2, Plus_3,
     TimesUP, SpecialThank, SpecialThank_1, SpecialThank_2, SpecialThank_3, SpecialThanks_small,
     Title, Description_1, Description_2, Description_3, Coin, TextPanel, DescriptionPanel,
-    Back,Logo,
+    Back,Logo,GuestMark,
 
     //紅色 = 0,藍色 = 1,綠色 = 2,黃色 = 3
     Score_0, Score_1, Score_2,Score_3,//Score_顏色
@@ -116,7 +116,7 @@ public class SpriteController : MonoBehaviour
 
         if (Atlas == null)
         {
-            Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, assetName, type);
+            Atlas = (SpriteAtlas)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, assetName, type);
 
         }
 
@@ -145,7 +145,7 @@ public class SpriteController : MonoBehaviour
     IEnumerator GetRawImage()
     {
         yield return null;
-        rawImage.texture = (Texture)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Images, CurrentSprite.ToString(), typeof(Texture));
+        rawImage.texture = (Texture)DownLoadAssetBundle.Instance.GetAsset(AssetBundleState.Prefab, CurrentSprite.ToString(), typeof(Texture));
     }    
 
     public void GetSprite(string currentSprite)

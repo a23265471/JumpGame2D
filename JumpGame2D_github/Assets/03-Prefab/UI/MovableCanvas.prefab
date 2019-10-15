@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 61
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &5479869527449179149
@@ -259,7 +259,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &3408854171399341860
 RectTransform:
@@ -308,7 +308,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 49
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1
 --- !u!1 &3485759793843545117
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &3506628498480539314
@@ -443,7 +443,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &7553433507124819484
 RectTransform:
@@ -492,7 +492,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 51
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1
 --- !u!1 &4052523945926698914
@@ -535,7 +535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &4531970502837634547
 RectTransform:
@@ -584,7 +584,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 50
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1
 --- !u!1 &5035725620583792094
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 14
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &7188631905064493675
@@ -837,7 +837,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &7677696919344205959
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 7
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &79839020234296538
@@ -1190,7 +1190,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &7677696919605957024
@@ -1226,7 +1226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7677696919605957031}
   - component: {fileID: 7677696919605957028}
-  - component: {fileID: 7677696919605957029}
   - component: {fileID: 7677696919605957030}
   m_Layer: 5
   m_Name: Timer
@@ -1266,35 +1265,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677696919605957024}
   m_CullTransparentMesh: 0
---- !u!114 &7677696919605957029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677696919605957024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
 --- !u!114 &7677696919605957030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,7 +1434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 14
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &8240778280642435573
@@ -1545,7 +1515,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300020, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1568,7 +1538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1.5
 --- !u!1 &7677696919955109344
@@ -1637,7 +1607,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1808,7 +1778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 16
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!225 &7677696919991965052
@@ -1981,7 +1951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 53
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &7959409962506587381
@@ -2142,7 +2112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 10
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &7133921324382390209
@@ -2336,7 +2306,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300106, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2359,7 +2329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1.5
 --- !u!1 &7677696920260805730
@@ -2428,7 +2398,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2520,7 +2490,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2563,7 +2533,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &7677696920442797532
 RectTransform:
@@ -2616,7 +2586,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2703,7 +2673,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2726,7 +2696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &7677696920536425696
@@ -3023,7 +2993,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3046,7 +3016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &7677696920728047469
@@ -3115,7 +3085,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300030, guid: ac632f46022cd25428a2097fc618dbad, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3138,7 +3108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1.5
 --- !u!1 &7677696920738925497
@@ -3151,7 +3121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7677696920738925496}
   - component: {fileID: 7677696920738925501}
-  - component: {fileID: 7677696920738925502}
+  - component: {fileID: 5723458118314275696}
   - component: {fileID: 7677696920738925503}
   - component: {fileID: 5154851524553796}
   - component: {fileID: 5638847463961269677}
@@ -3189,7 +3159,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677696920738925497}
   m_CullTransparentMesh: 0
---- !u!114 &7677696920738925502
+--- !u!114 &5723458118314275696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3254,7 +3224,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7677696920738925502}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -3373,7 +3343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 0
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!1 &7677696920933822311
@@ -3688,7 +3658,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300112, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3713,7 +3683,7 @@ MonoBehaviour:
   AtlasName: ObjectAtlas
   Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
   UIimageFitSize: 1
-  ScaleMultiple: 1.5
+  ScaleMultiple: 0
 --- !u!1 &7677696921254991504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,7 +3750,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300028, guid: 3de2a8a92a1da3847b9ccfa0bcf20f02, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3952,7 +3922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 33
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &7461153355376387653
@@ -3984,7 +3954,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &7677696921285042137
 RectTransform:
@@ -4203,7 +4173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 12
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 0
   ScaleMultiple: 0
 --- !u!114 &4950775622729755882
@@ -4340,7 +4310,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &5126621524120132492
 RectTransform:
@@ -4431,7 +4401,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &4807173861049733030
 RectTransform:
@@ -4480,7 +4450,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cd6c1c569a0035740b2544b3ae769ebf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4503,6 +4473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: 52
   AtlasName: ObjectAtlas
-  Atlas: {fileID: 4343727234628468602, guid: d58b677b16171704f95c34861938c41f, type: 2}
+  Atlas: {fileID: 0}
   UIimageFitSize: 1
   ScaleMultiple: 1

@@ -48,10 +48,9 @@ public class PlayerBehaviour : MonoBehaviour
     IEnumerator loadData()//*******************************************要改回來
     {
         yield return null;
-       // Debug.Log(StageDataController.Instance.PlayerJson.JumpForce);
         playerData = StageDataController.Instance.PlayerJson;
 
-        jumpVector = new Vector2(0, /*playerData.JumpForce*/1500);//1500
+        jumpVector = new Vector2(0, playerData.JumpForce);//1500
     }
 
     private void Update()
@@ -99,8 +98,8 @@ public class PlayerBehaviour : MonoBehaviour
         rigidbody2.velocity = Vector2.zero;
         rigidbody2.AddForce(jumpVector);
 
-        rigidbody2.gravityScale = /*playerData.Gravity*/2;//2
-        rigidbody2.mass = /*playerData.Weight*/5;//5
+        rigidbody2.gravityScale =playerData.Gravity;//2
+        rigidbody2.mass = playerData.Weight;//5
         
     }
 
