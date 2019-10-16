@@ -513,6 +513,8 @@ public class UIController : MonoBehaviour
         SetImage(15, "Score_0", false, 1);
         SetImage(16, "Plus_0", false, 1);
 
+        NumberCollection[5].SetNumber(0);
+        NumberCollection[5].DeleteZero(0);
         NumberCollection[5].ChangeColor(0);//score
         NumberCollection[6].ChangeColor(0);//add score 
         NumberCollection[3].ChangeColor(0);//minute

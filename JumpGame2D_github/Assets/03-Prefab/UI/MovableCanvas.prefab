@@ -32,11 +32,11 @@ RectTransform:
   m_Father: {fileID: 7677696920442797532}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.9, y: 247.1}
-  m_SizeDelta: {x: 189.19, y: 36}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12.3, y: -37.2}
+  m_SizeDelta: {x: 143.96, y: 36}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &5676178887868995402
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -898,11 +898,11 @@ RectTransform:
   m_Father: {fileID: 7677696920442797532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.339844, y: -16.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10.28027, y: -16.5}
   m_SizeDelta: {x: 91.05, y: 16.53}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &7677696919344205979
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1252,11 +1252,11 @@ RectTransform:
   m_Father: {fileID: 7677696920442797532}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10.280273, y: -16.5}
-  m_SizeDelta: {x: 97.12, y: 16.53}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -9.339844, y: -16.5}
+  m_SizeDelta: {x: 97.119995, y: 16.53}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &7677696919605957028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3224,7 +3224,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 5723458118314275696}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
